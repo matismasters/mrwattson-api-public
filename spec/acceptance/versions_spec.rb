@@ -11,7 +11,7 @@ resource 'Versions' do
   let(:expected_content) { { "version" => "1.1" }.to_json }
 
   get '/' do
-    example 'Get version' do
+    example 'Get API version from root url' do
       do_request
 
       expect(status).to eq 200
@@ -21,7 +21,7 @@ resource 'Versions' do
   end
 
   get '/version' do
-    example 'Get version' do
+    example 'Get API version from version url' do
       do_request
 
       expect(status).to eq 200
