@@ -1,4 +1,4 @@
-class VersionController < ApplicationController
+class VersionsController < ApplicationController
   VERSION_NUMBER = '1.1'
 
   def show

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'version#show'
+  root 'versions#show'
 
-  get 'version/show'
+  resource :version, only: [:show]
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
-resource 'Version' do
+resource 'Versions' do
   header 'Accept', 'application/json'
 
   get '/' do
@@ -14,7 +14,7 @@ resource 'Version' do
     end
   end
 
-  get '/version/show' do
+  get '/version' do
     example 'Get version' do
       do_request
 
