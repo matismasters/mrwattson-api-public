@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/dcadenas/rspec_api_documentation.git
+  revision: b87b0ab58025c91136ac1ff1edeffe98a6eade73
+  ref: b87b0ab
+  specs:
+    rspec_api_documentation (4.7.0)
+      activesupport (>= 3.0.0)
+      json (~> 1.4, >= 1.4.6)
+      mustache (~> 1.0, >= 0.99.4)
+      rspec (~> 3.0, >= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,6 +54,7 @@ GEM
     byebug (9.0.5)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -61,6 +73,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    mustache (1.0.3)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -97,6 +110,27 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.0)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -127,6 +161,8 @@ DEPENDENCIES
   pg (~> 0.15)
   puma
   rails (= 4.2.6)
+  rspec-rails
+  rspec_api_documentation!
   sdoc (~> 0.4.0)
   spring
   web-console (~> 2.0)
