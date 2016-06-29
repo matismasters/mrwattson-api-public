@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'version#show', defaults: { format: :json }
+  root 'version#show'
+
+  get 'version/show'
 end
