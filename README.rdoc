@@ -1,28 +1,18 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is just a simple Rails clean installation, with the addition of the
+following gems and configurations.
 
-Things you may want to cover:
+* Database: PG
+* Server: Puma
+* Documentation: RSpec API Documentation
+* Code quality: Reek
+* Debugger: byebug
 
-* Ruby version
+## To install
 
-* System dependencies
+```
+bundle install
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+_by Matis Masters_
