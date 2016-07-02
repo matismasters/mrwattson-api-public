@@ -47,6 +47,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    apitome (0.1.0)
+      kramdown
+      railties
+      rspec_api_documentation
     arel (6.0.3)
     ast (2.2.0)
     axiom-types (0.1.1)
@@ -76,6 +80,7 @@ GEM
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     json (1.8.3)
+    kramdown (1.7.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -181,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apitome
   byebug
   jbuilder (~> 2.0)
   pg (~> 0.15)
