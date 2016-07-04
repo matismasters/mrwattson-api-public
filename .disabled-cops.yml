@@ -1,0 +1,6 @@
+Style/Documentation:
+  Enabled: false
+
+Style/AlignParameters:
+  Description: 'Ruby code looks better with some flexibility on aligning params'
+  Enabled: false

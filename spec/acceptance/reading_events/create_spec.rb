@@ -14,7 +14,7 @@ resource '/reading_events' do
     'Decimal::Read after the change(Amps). Use "." to separate decimals',
     required: true
 
-  let(:reading_event_params) {
+  let(:reading_event_params) do
     first_read = rand(0..4000)
     {
       device_id: Faker::Number.hexadecimal(10),
@@ -22,9 +22,9 @@ resource '/reading_events' do
       first_read: first_read,
       second_read: first_read + rand(0..1000)
     }
-  }
+  end
 
-  post '/activities' do
+  post '/reading_events' do
     example 'Create ReadingEvent' do
       do_request(reading_event_params)
 

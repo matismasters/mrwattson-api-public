@@ -6,7 +6,7 @@ RspecApiDocumentation.configure do |config|
   config.format = :json
   config.curl_host = 'http://localhost:3000'
   config.api_name = 'Generic API'
-  config.request_body_formatter = Proc.new do |params|
+  config.request_body_formatter = proc do |params|
     params.empty? ? nil : params.to_json
   end
 end

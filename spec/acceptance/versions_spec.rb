@@ -5,10 +5,11 @@ resource 'Versions' do
   header 'Content-Type', 'application/json'
   header 'Accept', 'application/json'
 
-  let(:expected_headers) {
-    { "Content-Type"=>"application/json", "Accept"=>"application/json" }
-  }
-  let(:expected_content) { { "version" => "1.1" }.to_json }
+  let(:expected_headers) do
+    { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
+  end
+
+  let(:expected_content) { { 'version' => '1.1' }.to_json }
 
   get '/' do
     example 'Get API version from root url' do
