@@ -34,12 +34,12 @@
         "Content-Type": "application/json; charset=utf-8",
         "ETag": "W/\"36b076ca35ebca80b00a45733d6f2369\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "95beeb2a-b38b-417e-b6de-41788e568cf4",
-        "X-Runtime": "0.001631",
+        "X-Request-Id": "35fa92cd-eb0e-4051-a54b-3ef2dc9b0c02",
+        "X-Runtime": "0.001447",
         "Content-Length": "17"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/version\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/version\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
