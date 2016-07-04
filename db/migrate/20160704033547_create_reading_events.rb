@@ -3,9 +3,9 @@ class CreateReadingEvents < ActiveRecord::Migration
     create_table :reading_events do |t|
       t.integer :device_id
       t.integer :sensor_id
-      t.decimal :first_read
-      t.decimal :second_read
-      t.decimal :read_difference
+      t.integer :first_read
+      t.integer :second_read
+      t.integer :read_difference
 
       t.timestamps null: false
     end
