@@ -7,22 +7,13 @@ resource 'Reading Events' do
 
   parameter :device_id, 'String::Particle deviceId', required: true
 
-  parameter :data,
-    'String::The reading event *data* should follow this format: ' \
-    '"a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-' \
-    'a|bbbbb.bb|ccccc.cc". ' \
-    '(a) => sensor_id(0,1,2,3). ' \
-    '(b) => first_read(Amps). ' \
-    '(c) => second_read(Amps). ' \
-    '(|) => separates fields. ' \
-    '(-) => separates rows. ' \
-    'The string should not end with | or -.' \
-    'There should not be a | after -.' \
-    'Each "Row" corresponds to a reading event from ONE sensor, the format ' \
-    'is prepared to support the reading events of several sensors in the ' \
-    'same published event, but it can also recieve one alone like ' \
-    'a|bbb.bb|cc.cc and it will work fine.',
+  parameter :data, 'String::MultiValue:: ' \
+    '"sensor_id|first_read|second_read"',
     required: true
+
+  parameter :'*data_sensor_id', 'Number::[0,1,2,3]'
+  parameter :'*data_first_read', 'Number::In watts'
+  parameter :'*data_second_read', 'Number::In watts'
 
   let(:reading_event_params) do
     { device_id: Faker::Number.number(10), data: '2|123|321' }

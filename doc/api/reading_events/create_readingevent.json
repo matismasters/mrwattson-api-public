@@ -13,7 +13,19 @@
     {
       "required": true,
       "name": "data",
-      "description": "String::The reading event *data* should follow this format: \"a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc\". (a) => sensor_id(0,1,2,3). (b) => first_read(Amps). (c) => second_read(Amps). (|) => separates fields. (-) => separates rows. The string should not end with | or -.There should not be a | after -.Each \"Row\" corresponds to a reading event from ONE sensor, the format is prepared to support the reading events of several sensors in the same published event, but it can also recieve one alone like a|bbb.bb|cc.cc and it will work fine."
+      "description": "String::MultiValue:: \"sensor_id|first_read|second_read\""
+    },
+    {
+      "name": "*data_sensor_id",
+      "description": "Number::[0,1,2,3]"
+    },
+    {
+      "name": "*data_first_read",
+      "description": "Number::In watts"
+    },
+    {
+      "name": "*data_second_read",
+      "description": "Number::In watts"
     }
   ],
   "response_fields": [
@@ -23,7 +35,7 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"7399390904\",\"data\":\"2|123|321\"}",
+      "request_body": "{\"device_id\":\"3824192562\",\"data\":\"2|123|321\"}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -35,20 +47,20 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "[\n  {\n    \"id\": 71,\n    \"device_id\": 98,\n    \"sensor_id\": 2,\n    \"first_read\": \"123.0\",\n    \"second_read\": \"321.0\",\n    \"read_difference\": \"198.0\",\n    \"created_at\": \"2016-07-04T11:01:13.202Z\",\n    \"updated_at\": \"2016-07-04T11:01:13.202Z\"\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 1,\n    \"device_id\": 1,\n    \"sensor_id\": 2,\n    \"first_read\": 123,\n    \"second_read\": 321,\n    \"read_difference\": 198,\n    \"created_at\": \"2016-07-04T22:15:15.454Z\",\n    \"updated_at\": \"2016-07-04T22:15:15.454Z\"\n  }\n]",
       "response_headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"3632aac55c9522fa478989e40dbb6e43\"",
+        "ETag": "W/\"5d1e8ed23d9aa56299e6b6484675e6c4\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "39336e6e-7963-4738-9231-f807e5f5ff9c",
-        "X-Runtime": "0.037395",
-        "Content-Length": "189"
+        "X-Request-Id": "3bf32510-eadc-4aa7-b482-c1fa57d6a4ec",
+        "X-Runtime": "0.039525",
+        "Content-Length": "175"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"7399390904\",\"data\":\"2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"3824192562\",\"data\":\"2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
