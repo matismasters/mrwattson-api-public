@@ -33,7 +33,7 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"c861e5b052\",\"sensor_id\":2,\"first_read\":3552,\"second_read\":4324}",
+      "request_body": "{\"device_id\":\"868635d844\",\"sensor_id\":3,\"first_read\":1319,\"second_read\":2178}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -52,12 +52,12 @@
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "826b19dd-eb77-442d-851a-d2756f03c3ae",
-        "X-Runtime": "0.001607",
+        "X-Request-Id": "96a7646a-e0f0-4e78-8c91-fb5db8d29344",
+        "X-Runtime": "0.002009",
         "Content-Length": "25"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"c861e5b052\",\"sensor_id\":2,\"first_read\":3552,\"second_read\":4324}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"868635d844\",\"sensor_id\":3,\"first_read\":1319,\"second_read\":2178}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

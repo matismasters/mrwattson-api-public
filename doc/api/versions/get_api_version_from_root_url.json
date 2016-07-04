@@ -34,12 +34,12 @@
         "Content-Type": "application/json; charset=utf-8",
         "ETag": "W/\"36b076ca35ebca80b00a45733d6f2369\"",
         "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "dd32ad29-098c-47f5-ab30-b750d249aa81",
-        "X-Runtime": "0.017709",
+        "X-Request-Id": "0e74bb5a-84a4-4f3b-922a-0da05e8008d3",
+        "X-Runtime": "0.018368",
         "Content-Length": "17"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+      "curl": "curl \"http://localhost:3000/\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
