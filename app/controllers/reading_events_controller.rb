@@ -19,9 +19,7 @@ class ReadingEventsController < ApplicationController
   def find_device
     @device = Device.find_by_particle_id(params[:device_id])
 
-    if @device.nil?
-      render json: { device_id: 'not found' }, status: 404
-    end
+    render json: { device_id: 'not found' }, status: 404 unless @device.present?
   end
 
   def reading_event_params

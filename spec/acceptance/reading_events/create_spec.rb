@@ -48,9 +48,9 @@ resource 'Reading Events' do
 
     example 'Create reading event without required fields', document: false do
       particle_id = reading_event_params[:device_id]
-      device = Device.create particle_id: particle_id
+      Device.create particle_id: particle_id
 
-      do_request({ device_id: particle_id })
+      do_request(device_id: particle_id)
 
       json_response = JSON.parse(response_body)
 

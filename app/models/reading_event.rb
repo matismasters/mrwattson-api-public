@@ -6,6 +6,7 @@ class ReadingEvent < ActiveRecord::Base
   before_save :calculate_read_difference
 
   private
+
   def calculate_read_difference
     self.read_difference = second_read - first_read
   end
