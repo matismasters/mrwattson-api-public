@@ -2,5 +2,14 @@ Rails.application.routes.draw do
   root 'versions#show'
 
   resource :version, only: [:show]
-  resources :reading_events, only: [:create]
+
+  post 'reading_events',
+    controller: 'reading_events',
+    action: 'create',
+    defaults: { format: :json }
+
+  get 'reading_events',
+    controller: 'reading_events',
+    action: 'index',
+    defaults: { format: :json }
 end

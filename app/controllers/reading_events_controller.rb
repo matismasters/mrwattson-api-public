@@ -1,5 +1,9 @@
 class ReadingEventsController < ApplicationController
-  before_action :find_device
+  before_action :find_device, only: :create
+
+  def index
+    render json: ReadingEvent.all, status: 200
+  end
 
   def create
     @reading_event =
