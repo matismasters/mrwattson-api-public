@@ -1,0 +1,42 @@
+{
+  "resources": [
+    {
+      "name": "Reading Events",
+      "examples": [
+        {
+          "description": "Create ReadingEvent",
+          "link": "reading_events/create_readingevent.json",
+          "groups": "all",
+          "route": "/reading_events",
+          "method": "post"
+        },
+        {
+          "description": "Create ReadingEvent with an inexistant device_id",
+          "link": "reading_events/create_readingevent_with_an_inexistant_device_id.json",
+          "groups": "all",
+          "route": "/reading_events",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Versions",
+      "examples": [
+        {
+          "description": "Get API version from root url",
+          "link": "versions/get_api_version_from_root_url.json",
+          "groups": "all",
+          "route": "/",
+          "method": "get"
+        },
+        {
+          "description": "Get API version from version url",
+          "link": "versions/get_api_version_from_version_url.json",
+          "groups": "all",
+          "route": "/version",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}
