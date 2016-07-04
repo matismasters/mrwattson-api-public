@@ -6,27 +6,28 @@ class ReadingEventsController < ApplicationController
   end
 
   def create
-    @reading_event =
-      ReadingEvent.create(reading_event_params.except(:device_id))
+    factory = ReadingEventsFactory.new(
+      @device.id,
+      permitted_params.require(:data)
+    )
+    factory.create_reading_events
 
-    @reading_event.device = @device
-
-    if @reading_event.save
-      render json: @reading_event, status: 201
+    if factory.no_errors?
+      render json: factory.created_reading_events, status: 201
     else
-      render json: @reading_event.errors, status: 422
+      render json: factory.errors, status: 422
     end
   end
 
   private
 
   def find_device
-    @device = Device.find_by_particle_id(params[:device_id])
+    @device = Device.find_by_particle_id(permitted_params.require(:device_id))
 
     render json: { device_id: 'not found' }, status: 404 unless @device.present?
   end
 
-  def reading_event_params
-    params.permit(:device_id, :sensor_id, :first_read, :second_read)
+  def permitted_params
+    params.permit(:device_id, :data)
   end
 end

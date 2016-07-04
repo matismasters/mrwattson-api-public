@@ -12,18 +12,8 @@
     },
     {
       "required": true,
-      "name": "sensor_id",
-      "description": "Number::Sensor identifier(0, 1, 2, 3)"
-    },
-    {
-      "required": true,
-      "name": "first_read",
-      "description": "Decimal::Read before the change(Amps). Use \".\" to separate decimals"
-    },
-    {
-      "required": true,
-      "name": "second_read",
-      "description": "Decimal::Read after the change(Amps). Use \".\" to separate decimals"
+      "name": "data",
+      "description": "String::The reading event *data* should follow this format: \"a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc\". (a) => sensor_id(0,1,2,3). (b) => first_read(Amps). (c) => second_read(Amps). (|) => separates fields. (-) => separates rows. The string should not end with | or -.There should not be a | after -.Each \"Row\" corresponds to a reading event from ONE sensor, the format is prepared to support the reading events of several sensors in the same published event, but it can also recieve one alone like a|bbb.bb|cc.cc and it will work fine."
     }
   ],
   "response_fields": [
@@ -33,7 +23,7 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"868635d844\",\"sensor_id\":3,\"first_read\":1319,\"second_read\":2178}",
+      "request_body": "{\"device_id\":\"6116012466\",\"data\":\"2|123|321\"}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -52,12 +42,12 @@
         "X-Content-Type-Options": "nosniff",
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache",
-        "X-Request-Id": "96a7646a-e0f0-4e78-8c91-fb5db8d29344",
-        "X-Runtime": "0.002009",
+        "X-Request-Id": "7433ccda-85ff-47c3-9809-ef76d636eaac",
+        "X-Runtime": "0.001827",
         "Content-Length": "25"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"868635d844\",\"sensor_id\":3,\"first_read\":1319,\"second_read\":2178}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://localhost:3000/reading_events\" -d '{\"device_id\":\"6116012466\",\"data\":\"2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

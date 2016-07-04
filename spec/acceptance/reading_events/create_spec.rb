@@ -6,22 +6,26 @@ resource 'Reading Events' do
   header 'Accept', 'application/json'
 
   parameter :device_id, 'String::Particle deviceId', required: true
-  parameter :sensor_id, 'Number::Sensor identifier(0, 1, 2, 3)', required: true
-  parameter :first_read,
-    'Decimal::Read before the change(Amps). Use "." to separate decimals',
-    required: true
-  parameter :second_read,
-    'Decimal::Read after the change(Amps). Use "." to separate decimals',
+
+  parameter :data,
+    'String::The reading event *data* should follow this format: ' \
+    '"a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-a|bbbbb.bb|ccccc.cc|-' \
+    'a|bbbbb.bb|ccccc.cc". ' \
+    '(a) => sensor_id(0,1,2,3). ' \
+    '(b) => first_read(Amps). ' \
+    '(c) => second_read(Amps). ' \
+    '(|) => separates fields. ' \
+    '(-) => separates rows. ' \
+    'The string should not end with | or -.' \
+    'There should not be a | after -.' \
+    'Each "Row" corresponds to a reading event from ONE sensor, the format ' \
+    'is prepared to support the reading events of several sensors in the ' \
+    'same published event, but it can also recieve one alone like ' \
+    'a|bbb.bb|cc.cc and it will work fine.',
     required: true
 
   let(:reading_event_params) do
-    first_read = rand(0..4000)
-    {
-      device_id: Faker::Number.hexadecimal(10),
-      sensor_id: rand(0..3),
-      first_read: first_read,
-      second_read: first_read + rand(0..1000)
-    }
+    { device_id: Faker::Number.number(10), data: '2|123|321' }
   end
 
   post '/reading_events' do
@@ -31,10 +35,11 @@ resource 'Reading Events' do
 
       expect(status).to eq 201
       reading_event = ReadingEvent.last
+
       expect(reading_event.device_id).to eq device.id
-      expect(reading_event.sensor_id).to eq reading_event_params[:sensor_id]
-      expect(reading_event.first_read).to eq reading_event_params[:first_read]
-      expect(reading_event.second_read).to eq reading_event_params[:second_read]
+      expect(reading_event.sensor_id).to eq 2
+      expect(reading_event.first_read).to eq 123
+      expect(reading_event.second_read).to eq 321
     end
 
     example 'Create ReadingEvent with an inexistant device_id' do
@@ -46,11 +51,12 @@ resource 'Reading Events' do
       expect(json_response['device_id']).to include 'not found'
     end
 
-    example 'Create reading event without required fields', document: false do
+    example 'Create Reading Event without required fields', document: false do
+      skip 'TODO: create failing examples for multiple events some failing'
       particle_id = reading_event_params[:device_id]
       Device.create particle_id: particle_id
 
-      do_request(device_id: particle_id)
+      do_request(device_id: particle_id, data: [])
 
       json_response = JSON.parse(response_body)
 
