@@ -17,9 +17,7 @@
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Host": "example.org",
-        "Cookie": ""
+        "Accept": "application/json"
       },
       "request_query_parameters": {
       },
@@ -28,15 +26,7 @@
       "response_status_text": "OK",
       "response_body": "[\n\n]",
       "response_headers": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"d751713988987e9331980363e24189ce\"",
-        "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "ea404602-2cf9-44a5-b2f7-9e06dae0acdd",
-        "X-Runtime": "0.002317",
-        "Content-Length": "2"
+        "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
       "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""

@@ -12,8 +12,6 @@ possible actions that can be performed on them by sending HTTP requests.
 are required or not
 * Request > Route: shows the HTTP method and URL to use
 * Request > Headers: shows the headers that need to be send on the HTTP request.
-Take into consideration that both Host, and Cookie are displayed but should NOT
-be sent
 * Request > Body: an example of the json body content that should be sent
 * Request > cURL: copy that code, change `localhost:3000` to
 `mrwattson-api.herokuapp.com` and run the command in your terminal to see

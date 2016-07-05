@@ -35,32 +35,22 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"7194926361\",\"data\":\"2|123|321\"}",
+      "request_body": "{\"device_id\":\"6490025738\",\"data\":\"2|123|321\"}",
       "request_headers": {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Host": "example.org",
-        "Cookie": ""
+        "Accept": "application/json"
       },
       "request_query_parameters": {
       },
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "[\n  {\n    \"id\": 8,\n    \"device_id\": 8,\n    \"sensor_id\": 2,\n    \"first_read\": 123,\n    \"second_read\": 321,\n    \"read_difference\": 198,\n    \"created_at\": \"2016-07-05T07:42:45.500Z\",\n    \"updated_at\": \"2016-07-05T07:42:45.500Z\"\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 18,\n    \"device_id\": 18,\n    \"sensor_id\": 2,\n    \"first_read\": 123,\n    \"second_read\": 321,\n    \"read_difference\": 198,\n    \"created_at\": \"2016-07-05T17:27:48.479-03:00\",\n    \"updated_at\": \"2016-07-05T17:27:48.479-03:00\"\n  }\n]",
       "response_headers": {
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "Content-Type": "application/json; charset=utf-8",
-        "ETag": "W/\"fcabf648bb1e53ce4801683b236a824f\"",
-        "Cache-Control": "max-age=0, private, must-revalidate",
-        "X-Request-Id": "8b4ea8d6-bdc8-4b01-9e35-3781a570c323",
-        "X-Runtime": "0.038333",
-        "Content-Length": "175"
+        "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"7194926361\",\"data\":\"2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"6490025738\",\"data\":\"2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
