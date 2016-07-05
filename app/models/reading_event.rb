@@ -1,4 +1,6 @@
 class ReadingEvent < ActiveRecord::Base
+  include TimestampsInMontevideoTimeZone
+
   validates :device, :sensor_id, :first_read, :second_read, presence: true
 
   belongs_to :device
