@@ -26,3 +26,5 @@ group :development do
   gem 'spring'
   gem 'reek'
 end
+
+gem 'newrelic_rpm'
