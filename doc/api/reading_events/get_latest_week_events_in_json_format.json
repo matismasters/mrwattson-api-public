@@ -24,7 +24,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n\n]",
+      "response_body": "[\n  {\n    \"id\": 52,\n    \"device_id\": 37,\n    \"sensor_id\": 1,\n    \"first_read\": 324,\n    \"second_read\": 818,\n    \"read_difference\": 494,\n    \"created_at\": \"2016-07-05T20:24:12.878-03:00\",\n    \"updated_at\": \"2016-07-05T20:24:12.878-03:00\"\n  },\n  {\n    \"id\": 53,\n    \"device_id\": 37,\n    \"sensor_id\": 3,\n    \"first_read\": 995,\n    \"second_read\": 514,\n    \"read_difference\": -481,\n    \"created_at\": \"2016-07-05T20:24:12.880-03:00\",\n    \"updated_at\": \"2016-07-05T20:24:12.880-03:00\"\n  },\n  {\n    \"id\": 54,\n    \"device_id\": 37,\n    \"sensor_id\": 3,\n    \"first_read\": 783,\n    \"second_read\": 813,\n    \"read_difference\": 30,\n    \"created_at\": \"2016-07-05T20:24:12.883-03:00\",\n    \"updated_at\": \"2016-07-05T20:24:12.883-03:00\"\n  },\n  {\n    \"id\": 55,\n    \"device_id\": 37,\n    \"sensor_id\": 3,\n    \"first_read\": 126,\n    \"second_read\": 927,\n    \"read_difference\": 801,\n    \"created_at\": \"2016-07-05T20:24:12.885-03:00\",\n    \"updated_at\": \"2016-07-05T20:24:12.885-03:00\"\n  },\n  {\n    \"id\": 56,\n    \"device_id\": 37,\n    \"sensor_id\": 3,\n    \"first_read\": 224,\n    \"second_read\": 906,\n    \"read_difference\": 682,\n    \"created_at\": \"2016-07-05T20:24:12.887-03:00\",\n    \"updated_at\": \"2016-07-05T20:24:12.887-03:00\"\n  }\n]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
