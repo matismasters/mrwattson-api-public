@@ -16,6 +16,13 @@
           "groups": "all",
           "route": "/reading_events",
           "method": "post"
+        },
+        {
+          "description": "Get latest week events in JSON format",
+          "link": "reading_events/get_latest_week_events_in_json_format.json",
+          "groups": "all",
+          "route": "/reading_events",
+          "method": "get"
         }
       ]
     },
