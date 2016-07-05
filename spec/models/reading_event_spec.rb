@@ -2,13 +2,8 @@ require 'spec_helper'
 
 describe 'ReadingEvent', type: :unit do
   it 'should return timestamps localized in Montevideo' do
-    device = Device.create(particle_id: 'testing')
-    reading_event = ReadingEvent.create(
-      device_id: device.id,
-      sensor_id: 0,
-      first_read: 1,
-      second_read: 2
-    )
+    device = create :device
+    reading_event = create :reading_event, device_id: device.id
 
     expect(reading_event.created_at.zone).to eq 'UYT'
     expect(reading_event.updated_at.zone).to eq 'UYT'

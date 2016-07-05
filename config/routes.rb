@@ -12,4 +12,9 @@ Rails.application.routes.draw do
     controller: 'reading_events',
     action: 'index',
     defaults: { format: :json }
+
+  get 'reading_events/latest',
+    controller: 'reading_events',
+    action: 'latest',
+    defaults: { format: :json }
 end

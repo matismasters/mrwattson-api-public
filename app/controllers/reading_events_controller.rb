@@ -1,5 +1,5 @@
 class ReadingEventsController < ApplicationController
-  before_action :find_device, only: :create
+  before_action :find_device, only: [:create, :latest]
 
   def index
     events = ReadingEvent
@@ -7,6 +7,16 @@ class ReadingEventsController < ApplicationController
       .order(:created_at)
 
     render json: events, status: 200
+  end
+
+  def latest
+    reading_event = @device.reading_events.order('created_at desc').limit(1)[0]
+
+    if reading_event
+      render json: reading_event, status: 200
+    else
+      render json: { device: "doesn't have readings yet" }, status: 200
+    end
   end
 
   def create

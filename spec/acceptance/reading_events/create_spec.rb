@@ -21,7 +21,7 @@ resource 'Reading Events' do
 
   post '/reading_events' do
     example 'Create ReadingEvent' do
-      device = Device.create particle_id: reading_event_params[:device_id]
+      device = create :device, particle_id: reading_event_params[:device_id]
       do_request(reading_event_params)
 
       expect(status).to eq 201
@@ -45,7 +45,7 @@ resource 'Reading Events' do
     example 'Create Reading Event without required fields', document: false do
       skip 'TODO: create failing examples for multiple events some failing'
       particle_id = reading_event_params[:device_id]
-      Device.create particle_id: particle_id
+      create :device, particle_id: particle_id
 
       do_request(device_id: particle_id, data: [])
 
