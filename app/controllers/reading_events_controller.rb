@@ -10,13 +10,9 @@ class ReadingEventsController < ApplicationController
   end
 
   def latest
-    reading_event = @device.reading_events.order('created_at desc').limit(1)[0]
+    sensors_last_reads = @device.sensors_last_reads
 
-    if reading_event
-      render json: reading_event, status: 200
-    else
-      render json: { device: "doesn't have readings yet" }, status: 200
-    end
+    render json: sensors_last_reads, status: 200
   end
 
   def create

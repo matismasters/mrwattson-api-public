@@ -6,6 +6,10 @@ class ReadingEvent < ActiveRecord::Base
   belongs_to :device
   before_save :calculate_read_difference
 
+  def to_watts
+    second_read
+  end
+
   private
 
   def calculate_read_difference

@@ -21,28 +21,53 @@ resource 'Reading Events' do
   end
 
   get '/reading_events/latest' do
+    parameter :device_id, 'String::The device id from Particle'
+
+    response_field :sensors_last_reads,
+      'Array::Each item has the latest second_read to each sensor, ' \
+      'in that corresponding order. sensor_id: 0 => first array item, ' \
+      'sensor_id: 1 => second array item, and so on'
+
     example 'Get latestet readings for a device in JSON format' do
       device_1, device_2 = create_list :device, 2
-      create_list :reading_event, 2, device_id: device_1.id
-      create_list :reading_event, 2, device_id: device_2.id
 
-      last_reading_for_device = create :reading_event, device_id: device_1.id
+      # Creating several readings to make sure later we pick up the latest
+      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 0
+      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 1
+      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 2
+      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 3
+
+      # Creating the latest reads
+      read_sensor_0 = create :reading_event,
+        device_id: device_1.id,
+        sensor_id: 0,
+        second_read: 100
+
+      read_sensor_1 = create :reading_event,
+        device_id: device_1.id,
+        sensor_id: 1,
+        second_read: 200
+
+      read_sensor_2 = create :reading_event,
+        device_id: device_1.id,
+        sensor_id: 2,
+        second_read: 300
+
+      read_sensor_3 = create :reading_event,
+        device_id: device_1.id,
+        sensor_id: 3,
+        second_read: 400
 
       do_request(device_id: device_1.particle_id)
 
       json_response = JSON.parse(response_body)
 
       expect(json_response.class).to eq Hash
-      expect(json_response['id']).to eq last_reading_for_device.id
-      expect(json_response['sensor_id']).to (
-        eq(last_reading_for_device.sensor_id)
-      )
-      expect(json_response['first_read']).to (
-        eq(last_reading_for_device.first_read)
-      )
-      expect(json_response['second_read']).to (
-        eq(last_reading_for_device.second_read)
-      )
+      last_reads = json_response['sensors_last_reads']
+      expect(last_reads[0]).to eq 100
+      expect(last_reads[1]).to eq 200
+      expect(last_reads[2]).to eq 300
+      expect(last_reads[3]).to eq 400
     end
   end
 end
