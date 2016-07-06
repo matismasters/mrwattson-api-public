@@ -6,6 +6,9 @@ Mr.Wattson's API.
 At the left you'll see the list of resources and within it(onClick), the
 possible actions that can be performed on them by sending HTTP requests.
 
+    DeviceId from the father of all Mr.Wattsons to come. The cursed child
+    380024000747353138383138
+
 ## Sections
 
 * Paramters: explains details about the expected params, including if they
