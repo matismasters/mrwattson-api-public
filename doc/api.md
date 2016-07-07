@@ -1,7 +1,7 @@
 # Mr.Wattson API Documentation
 
 Here you will be able to find the endpoints descriptions for connecting within
-Mr.Wattson's API.
+Mr.Wattson's API v1.2
 
 At the left you'll see the list of resources and within it(onClick), the
 possible actions that can be performed on them by sending HTTP requests.

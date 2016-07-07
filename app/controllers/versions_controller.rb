@@ -1,5 +1,5 @@
 class VersionsController < ApplicationController
-  VERSION_NUMBER = '1.1'.freeze
+  VERSION_NUMBER = '1.2'.freeze
 
   def show
     @version_number = VERSION_NUMBER

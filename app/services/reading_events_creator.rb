@@ -9,7 +9,7 @@ class ReadingEventsCreator
 
   def create_reading_events
     @created_reading_events = events_data.map do |data|
-      reading_event = ReadingEvent.create(data.merge({ device_id: @device_id }))
+      reading_event = ReadingEvent.create(data.merge(device_id: @device_id))
 
       add_error(
         data[:sensor_id],

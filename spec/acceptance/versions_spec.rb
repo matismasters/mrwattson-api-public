@@ -9,7 +9,7 @@ resource 'Versions' do
     { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
   end
 
-  let(:expected_content) { { 'version' => '1.1' }.to_json }
+  let(:expected_content) { { 'version' => '1.2' }.to_json }
 
   get '/' do
     example 'Get API version from root url' do

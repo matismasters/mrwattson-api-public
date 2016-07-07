@@ -1,18 +1,11 @@
 # README
 
-This is just a simple Rails clean installation, with the addition of the
-following gems and configurations.
+This is Mr.Wattson API.
 
-* Database: PG
-* Server: Puma
-* Documentation: RSpec API Documentation
-* Code quality: Reek
-* Debugger: byebug
+## Changelog
 
-## To install
+#### v1.2
 
-```
-bundle install
-```
+ - Working Rubocop and Reek
 
 _by Matis Masters_
