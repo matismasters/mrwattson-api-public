@@ -8,11 +8,11 @@ class ReadingEventsCreator
   end
 
   def create_reading_events
-    @created_reading_events = events_data.map do |event_data|
-      reading_event = create_reading_event(event_data)
+    @created_reading_events = events_data.map do |data|
+      reading_event = ReadingEvent.create(data.merge({ device_id: @device_id }))
 
       add_error(
-        event_data[:sensor_id],
+        data[:sensor_id],
         reading_event.errors
       ) unless reading_event.valid?
 
@@ -26,15 +26,6 @@ class ReadingEventsCreator
 
   def created_reading_events
     @created_reading_events.select(&:valid?)
-  end
-
-  def create_reading_event(data)
-    ReadingEvent.create(
-      device_id: @device_id,
-      sensor_id: data[:sensor_id],
-      first_read: data[:first_read],
-      second_read: data[:second_read]
-    )
   end
 
   private
