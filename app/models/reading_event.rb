@@ -1,6 +1,4 @@
 class ReadingEvent < ActiveRecord::Base
-  include TimestampsInMontevideoTimeZone
-
   validates :device, :sensor_id, :first_read, :second_read, presence: true
 
   belongs_to :device
@@ -12,6 +10,14 @@ class ReadingEvent < ActiveRecord::Base
 
   def to_watts
     second_read
+  end
+
+  def created_at
+    TimestampsInMontevideoTimeZone.in_montevideo(attributes['created_at'])
+  end
+
+  def updated_at
+    TimestampsInMontevideoTimeZone.in_montevideo(attributes['updated_at'])
   end
 
   private
