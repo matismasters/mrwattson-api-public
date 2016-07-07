@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'Reading Events Factory' do
+describe 'Reading Events Creator' do
   describe 'with an existant device_id and one sensor event' do
     it 'should create one ReadingEvent' do
       device = Device.create(particle_id: 'SAD')
       sensor_data = '3|123.12|321.12'
 
-      factory = ReadingEventsFactory.new(device.id, sensor_data)
+      factory = ReadingEventsCreator.new(device.id, sensor_data)
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 1
@@ -22,7 +22,7 @@ describe 'Reading Events Factory' do
     it 'should NOT create one ReadingEvent' do
       sensor_data = '3|123.12|321.12'
 
-      factory = ReadingEventsFactory.new(999, sensor_data)
+      factory = ReadingEventsCreator.new(999, sensor_data)
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 0
@@ -34,7 +34,7 @@ describe 'Reading Events Factory' do
       device = Device.create(particle_id: 'SAD')
       sensor_data = '3|123.12|321.12|-2|100.00|99'
 
-      factory = ReadingEventsFactory.new(device.id, sensor_data)
+      factory = ReadingEventsCreator.new(device.id, sensor_data)
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 2

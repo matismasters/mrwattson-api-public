@@ -1,4 +1,4 @@
-class ReadingEventsFactory
+class ReadingEventsCreator
   attr_reader :errors
 
   def initialize(device_id, particle_event_data)
