@@ -37,23 +37,26 @@ resource 'Reading Events' do
       create_list :reading_event, 2, device_id: device_1.id, sensor_id: 2
       create_list :reading_event, 2, device_id: device_1.id, sensor_id: 3
 
+      create_list :reading_event, 2, device_id: device_2.id, sensor_id: 2
+      create_list :reading_event, 2, device_id: device_2.id, sensor_id: 3
+
       # Creating the latest reads
-      read_sensor_0 = create :reading_event,
+      create :reading_event,
         device_id: device_1.id,
         sensor_id: 0,
         second_read: 100
 
-      read_sensor_1 = create :reading_event,
+      create :reading_event,
         device_id: device_1.id,
         sensor_id: 1,
         second_read: 200
 
-      read_sensor_2 = create :reading_event,
+      create :reading_event,
         device_id: device_1.id,
         sensor_id: 2,
         second_read: 300
 
-      read_sensor_3 = create :reading_event,
+      create :reading_event,
         device_id: device_1.id,
         sensor_id: 3,
         second_read: 400

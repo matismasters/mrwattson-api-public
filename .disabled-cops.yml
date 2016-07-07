@@ -4,3 +4,6 @@ Style/Documentation:
 Style/AlignParameters:
   Description: 'Ruby code looks better with some flexibility on aligning params'
   Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  Enabled: false

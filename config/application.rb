@@ -18,7 +18,7 @@ module Mwapi
     config.active_record.raise_in_transactional_callbacks = true
     config.action_dispatch.default_headers = {
       'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => %w{GET POST OPTIONS PUT}.join(',')
+      'Access-Control-Request-Method' => %w(GET POST OPTIONS PUT).join(',')
     }
   end
 end

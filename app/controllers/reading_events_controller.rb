@@ -2,9 +2,7 @@ class ReadingEventsController < ApplicationController
   before_action :find_device, only: [:create, :latest]
 
   def index
-    events = ReadingEvent
-      .where('created_at >= ?', Time.now - 7.days)
-      .order(:created_at)
+    events = ReadingEvent.all_readings_from_last_7_days
 
     render json: events, status: 200
   end
