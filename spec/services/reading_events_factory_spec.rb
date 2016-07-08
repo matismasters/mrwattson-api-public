@@ -4,7 +4,7 @@ describe 'Reading Events Creator' do
   describe 'with an existant device_id and one sensor event' do
     it 'should create one ReadingEvent' do
       device = Device.create(particle_id: 'SAD')
-      sensor_data = '3|123.12|321.12'
+      sensor_data = '3|123|321'
 
       factory = ReadingEventsCreator.new(device.id, sensor_data)
       factory.create_reading_events
@@ -12,15 +12,15 @@ describe 'Reading Events Creator' do
       expect(ReadingEvent.count).to eq 1
       reading_event = ReadingEvent.last
       expect(reading_event.sensor_id).to eq 3
-      expect(reading_event.start_read).to eq 123.12
-      expect(reading_event.end_read).to eq 321.12
+      expect(reading_event.start_read).to eq 123
+      expect(reading_event.end_read).to eq 321
       expect(reading_event.read_difference).to eq 198
     end
   end
 
   describe 'without an existant device_id and one sensor event' do
     it 'should NOT create one ReadingEvent' do
-      sensor_data = '3|123.12|321.12'
+      sensor_data = '3|123|321'
 
       factory = ReadingEventsCreator.new(999, sensor_data)
       factory.create_reading_events
@@ -32,7 +32,7 @@ describe 'Reading Events Creator' do
   describe 'with an existant device_id and two sensor events' do
     it 'should create two ReadingEvents' do
       device = Device.create(particle_id: 'SAD')
-      sensor_data = '3|123.12|321.12|-2|100.00|99'
+      sensor_data = '3|123|321|-2|100|99'
 
       factory = ReadingEventsCreator.new(device.id, sensor_data)
       factory.create_reading_events
@@ -40,8 +40,8 @@ describe 'Reading Events Creator' do
       expect(ReadingEvent.count).to eq 2
       reading_event_1 = ReadingEvent.first
       expect(reading_event_1.sensor_id).to eq 3
-      expect(reading_event_1.start_read).to eq 123.12
-      expect(reading_event_1.end_read).to eq 321.12
+      expect(reading_event_1.start_read).to eq 123
+      expect(reading_event_1.end_read).to eq 321
       expect(reading_event_1.read_difference).to eq 198
 
       reading_event_2 = ReadingEvent.last
