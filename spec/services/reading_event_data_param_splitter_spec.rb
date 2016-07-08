@@ -8,7 +8,7 @@ describe 'Reading Event data param splitter', type: :unit do
       result = subject.new('3|123.12|321.12').process
 
       expect(result.first).to(
-        eq(sensor_id: '3', first_read: '123.12', second_read: '321.12')
+        eq(sensor_id: '3', start_read: '123.12', end_read: '321.12')
       )
     end
   end
@@ -18,8 +18,8 @@ describe 'Reading Event data param splitter', type: :unit do
       result = subject.new('0|123.12|321.12|-1|444.44|333.33').process
 
       expected_result = [
-        { sensor_id: '0', first_read: '123.12', second_read: '321.12' },
-        { sensor_id: '1', first_read: '444.44', second_read: '333.33' }
+        { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
+        { sensor_id: '1', start_read: '444.44', end_read: '333.33' }
       ]
 
       expect(result).to eq expected_result
@@ -31,9 +31,9 @@ describe 'Reading Event data param splitter', type: :unit do
       result = subject.new('0|123.12|321.12|-1|444.44|333.33|-2|1|2').process
 
       expected_result = [
-        { sensor_id: '0', first_read: '123.12', second_read: '321.12' },
-        { sensor_id: '1', first_read: '444.44', second_read: '333.33' },
-        { sensor_id: '2', first_read: '1', second_read: '2' }
+        { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
+        { sensor_id: '1', start_read: '444.44', end_read: '333.33' },
+        { sensor_id: '2', start_read: '1', end_read: '2' }
       ]
 
       expect(result).to eq expected_result
@@ -46,10 +46,10 @@ describe 'Reading Event data param splitter', type: :unit do
         subject.new('0|123.12|321.12|-1|444.44|333.33|-2|1|2|-3|9|0').process
 
       expected_result = [
-        { sensor_id: '0', first_read: '123.12', second_read: '321.12' },
-        { sensor_id: '1', first_read: '444.44', second_read: '333.33' },
-        { sensor_id: '2', first_read: '1', second_read: '2' },
-        { sensor_id: '3', first_read: '9', second_read: '0' }
+        { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
+        { sensor_id: '1', start_read: '444.44', end_read: '333.33' },
+        { sensor_id: '2', start_read: '1', end_read: '2' },
+        { sensor_id: '3', start_read: '9', end_read: '0' }
       ]
 
       expect(result).to eq expected_result

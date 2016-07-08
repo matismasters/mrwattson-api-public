@@ -1,5 +1,5 @@
 class ReadingEvent < ActiveRecord::Base
-  validates :device, :sensor_id, :first_read, :second_read, presence: true
+  validates :device, :sensor_id, :start_read, :end_read, presence: true
 
   belongs_to :device
   before_save :calculate_read_difference
@@ -9,7 +9,7 @@ class ReadingEvent < ActiveRecord::Base
   }
 
   def to_watts
-    second_read
+    end_read
   end
 
   def created_at
@@ -23,6 +23,6 @@ class ReadingEvent < ActiveRecord::Base
   private
 
   def calculate_read_difference
-    self.read_difference = second_read - first_read
+    self.read_difference = end_read - start_read
   end
 end

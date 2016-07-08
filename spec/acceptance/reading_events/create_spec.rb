@@ -8,12 +8,12 @@ resource 'Reading Events' do
   parameter :device_id, 'String::Particle deviceId', required: true
 
   parameter :data, 'String::MultiValue:: ' \
-    '"sensor_id|first_read|second_read"',
+    '"sensor_id|start_read|end_read"',
     required: true
 
   parameter :'*data_sensor_id', 'Number::[0,1,2,3]'
-  parameter :'*data_first_read', 'Number::In watts'
-  parameter :'*data_second_read', 'Number::In watts'
+  parameter :'*data_start_read', 'Number::In watts'
+  parameter :'*data_end_read', 'Number::In watts'
 
   let(:reading_event_params) do
     { device_id: Faker::Number.number(10), data: '2|123|321' }
@@ -29,8 +29,8 @@ resource 'Reading Events' do
 
       expect(reading_event.device_id).to eq device.id
       expect(reading_event.sensor_id).to eq 2
-      expect(reading_event.first_read).to eq 123
-      expect(reading_event.second_read).to eq 321
+      expect(reading_event.start_read).to eq 123
+      expect(reading_event.end_read).to eq 321
     end
 
     example 'Create ReadingEvent with an inexistant device_id' do
@@ -53,8 +53,8 @@ resource 'Reading Events' do
 
       expect(status).to eq 422
       expect(json_response['sensor_id']).to include "can't be blank"
-      expect(json_response['first_read']).to include "can't be blank"
-      expect(json_response['second_read']).to include "can't be blank"
+      expect(json_response['start_read']).to include "can't be blank"
+      expect(json_response['end_read']).to include "can't be blank"
     end
   end
 end

@@ -9,8 +9,8 @@ class ReadingEventDataParamSplitter
     @data ||= events_data.map do |event_data|
       {
         sensor_id: event_data[0],
-        first_read: event_data[1],
-        second_read: event_data[2]
+        start_read: event_data[1],
+        end_read: event_data[2]
       }
     end
   end

@@ -12,8 +12,8 @@ describe 'Reading Events Creator' do
       expect(ReadingEvent.count).to eq 1
       reading_event = ReadingEvent.last
       expect(reading_event.sensor_id).to eq 3
-      expect(reading_event.first_read).to eq 123.12
-      expect(reading_event.second_read).to eq 321.12
+      expect(reading_event.start_read).to eq 123.12
+      expect(reading_event.end_read).to eq 321.12
       expect(reading_event.read_difference).to eq 198
     end
   end
@@ -40,14 +40,14 @@ describe 'Reading Events Creator' do
       expect(ReadingEvent.count).to eq 2
       reading_event_1 = ReadingEvent.first
       expect(reading_event_1.sensor_id).to eq 3
-      expect(reading_event_1.first_read).to eq 123.12
-      expect(reading_event_1.second_read).to eq 321.12
+      expect(reading_event_1.start_read).to eq 123.12
+      expect(reading_event_1.end_read).to eq 321.12
       expect(reading_event_1.read_difference).to eq 198
 
       reading_event_2 = ReadingEvent.last
       expect(reading_event_2.sensor_id).to eq 2
-      expect(reading_event_2.first_read).to eq 100
-      expect(reading_event_2.second_read).to eq 99
+      expect(reading_event_2.start_read).to eq 100
+      expect(reading_event_2.end_read).to eq 99
       expect(reading_event_2.read_difference).to eq(-1)
     end
   end

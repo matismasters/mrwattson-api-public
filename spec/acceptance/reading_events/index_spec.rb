@@ -24,7 +24,7 @@ resource 'Reading Events' do
     parameter :device_id, 'String::The device id from Particle'
 
     response_field :sensors_last_reads,
-      'Array::Each item has the latest second_read to each sensor, ' \
+      'Array::Each item has the latest end_read to each sensor, ' \
       'in that corresponding order. sensor_id: 0 => first array item, ' \
       'sensor_id: 1 => second array item, and so on'
 
@@ -44,22 +44,22 @@ resource 'Reading Events' do
       create :reading_event,
         device_id: device_1.id,
         sensor_id: 0,
-        second_read: 100
+        end_read: 100
 
       create :reading_event,
         device_id: device_1.id,
         sensor_id: 1,
-        second_read: 200
+        end_read: 200
 
       create :reading_event,
         device_id: device_1.id,
         sensor_id: 2,
-        second_read: 300
+        end_read: 300
 
       create :reading_event,
         device_id: device_1.id,
         sensor_id: 3,
-        second_read: 400
+        end_read: 400
 
       do_request(device_id: device_1.particle_id)
 
