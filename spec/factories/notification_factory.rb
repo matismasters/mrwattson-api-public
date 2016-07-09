@@ -5,5 +5,15 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     body { "#{Faker::Lorem.paragraph} {{id}}" }
     tokens { 'id|start_read' }
+
+    trait :max_read_difference do
+      sql_query do
+        'SELECT device_id, MAX(read_difference) AS ' \
+        'max_read_difference FROM reading_events GROUP BY device_id'
+      end
+
+      tokens { 'max_read_difference' }
+      body { 'The max event diff is {{max_read_difference}}' }
+    end
   end
 end
