@@ -1,7 +1,8 @@
 class Notification < ActiveRecord::Base
-  def process_and_send
+  def process_and_send(queue_manager)
+    NotificationSenderQueue.enqueue(1, 2, 3)
     CustomQuery.new(sql_query).execute.each do |row|
-      NotificationSenderQueue.enqueue(
+      queue_manager.enqueue(
         row['device_id'].to_i,
         title,
         TokenBasedInterpolations.interpolate(
