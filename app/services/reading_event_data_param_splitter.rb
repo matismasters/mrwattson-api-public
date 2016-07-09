@@ -13,6 +13,9 @@ class ReadingEventDataParamSplitter
         end_read: event_data[2]
       }
     end
+
+    puts @data
+    @data
   end
 
   def validate_format
