@@ -8,7 +8,7 @@ resource 'Reading Events' do
   parameter :device_id, 'String::Particle deviceId', required: true
 
   parameter :data, 'String::MultiValue:: ' \
-    '"sensor_id|start_read|end_read"',
+    '"d-sensor_id|start_read|end_read" (The initial "d-" is required)',
     required: true
 
   parameter :'*data_sensor_id', 'Number::[0,1,2,3]'
@@ -16,7 +16,7 @@ resource 'Reading Events' do
   parameter :'*data_end_read', 'Number::In watts'
 
   let(:reading_event_params) do
-    { device_id: Faker::Number.number(10), data: '2|123|321' }
+    { device_id: Faker::Number.number(10), data: 'd-2|123|321' }
   end
 
   post '/reading_events' do

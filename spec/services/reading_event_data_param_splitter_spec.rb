@@ -5,7 +5,7 @@ describe 'Reading Event data param splitter', type: :unit do
 
   describe 'With data for one sensor event' do
     it 'should return event fields in a hash within an array' do
-      result = subject.new('3|123.12|321.12').process
+      result = subject.new('d-3|123.12|321.12').process
 
       expect(result.first).to(
         eq(sensor_id: '3', start_read: '123.12', end_read: '321.12')
@@ -15,7 +15,7 @@ describe 'Reading Event data param splitter', type: :unit do
 
   describe 'With data for two sensor events' do
     it 'should return each event fields in a hash within an array' do
-      result = subject.new('0|123.12|321.12|-1|444.44|333.33').process
+      result = subject.new('d-0|123.12|321.12|-1|444.44|333.33').process
 
       expected_result = [
         { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
@@ -28,7 +28,7 @@ describe 'Reading Event data param splitter', type: :unit do
 
   describe 'With data for three sensor events' do
     it 'should return each event fields in a hash within an array' do
-      result = subject.new('0|123.12|321.12|-1|444.44|333.33|-2|1|2').process
+      result = subject.new('d-0|123.12|321.12|-1|444.44|333.33|-2|1|2').process
 
       expected_result = [
         { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
@@ -43,7 +43,7 @@ describe 'Reading Event data param splitter', type: :unit do
   describe 'With data for four sensor events' do
     it 'should return each event fields in a hash within an array' do
       result =
-        subject.new('0|123.12|321.12|-1|444.44|333.33|-2|1|2|-3|9|0').process
+        subject.new('d-0|123.12|321.12|-1|444.44|333.33|-2|1|2|-3|9|0').process
 
       expected_result = [
         { sensor_id: '0', start_read: '123.12', end_read: '321.12' },
@@ -59,25 +59,25 @@ describe 'Reading Event data param splitter', type: :unit do
   describe 'Format validation' do
     describe 'for one event' do
       it 'valid if right format' do
-        expect(subject.new('1|1|1').validate_format).to eq true
+        expect(subject.new('d-1|1|1').validate_format).to eq true
       end
 
       it 'invalid if missing field' do
-        expect(subject.new('1|1').validate_format).to eq false
+        expect(subject.new('d-1|1').validate_format).to eq false
       end
     end
 
     describe 'for several events' do
       it 'valid if right format' do
-        expect(subject.new('1|1|1-2|2|2').validate_format).to eq true
+        expect(subject.new('d-1|1|1-2|2|2').validate_format).to eq true
       end
 
       it 'invalid if missing field in any event' do
-        expect(subject.new('1|1|1-2|3').validate_format).to eq false
+        expect(subject.new('d-1|1|1-2|3').validate_format).to eq false
       end
 
       it 'invalid if ends with a |' do
-        expect(subject.new('1|1|1-2|3|').validate_format).to eq false
+        expect(subject.new('d-1|1|1-2|3|').validate_format).to eq false
       end
     end
   end

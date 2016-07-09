@@ -1,6 +1,6 @@
 class ReadingEventDataParamSplitter
   def initialize(param)
-    @param = param
+    @param = param[2..-1]
   end
 
   def process
