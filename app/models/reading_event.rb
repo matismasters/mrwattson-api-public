@@ -33,7 +33,7 @@ class ReadingEvent < ActiveRecord::Base
   # Making sure the TimeZones are not used using attributes
   def last_reading_event_for_device
     device.reading_events
-      .where('created_at < ?', created_at_or_now)
+      .where('created_at < ? AND sensor_id = ?', created_at_or_now, sensor_id)
       .order('created_at desc')
       .limit(1)
       .first

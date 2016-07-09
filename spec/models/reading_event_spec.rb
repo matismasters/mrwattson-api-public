@@ -17,11 +17,30 @@ describe 'ReadingEvent', type: :unit do
   it 'should save the time since last read in seconds' do
     Timecop.freeze(Time.now)
 
-    create :reading_event, device: device
+    create :reading_event, device: device, sensor_id: 1
 
     Timecop.freeze(Time.now + 500.seconds)
 
-    reading_event = create :reading_event, device: device
+    reading_event = create :reading_event, device: device, sensor_id: 1
+
+    reading_event.reload
+
+    expect(reading_event.seconds_since_last_read).to eq 500
+  end
+
+  it 'should be scoped to the sensor_id' do
+    start_time = Time.now
+    Timecop.freeze(start_time)
+
+    create :reading_event, device: device, sensor_id: 1
+
+    Timecop.freeze(start_time + 250.seconds)
+
+    create :reading_event, device: device, sensor_id: 2
+
+    Timecop.freeze(start_time + 500.seconds)
+
+    reading_event = create :reading_event, device: device, sensor_id: 1
 
     reading_event.reload
 
