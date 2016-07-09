@@ -8,7 +8,7 @@ resource 'Reading Events' do
   get '/reading_events' do
     example 'Get latest week events in JSON format' do
       device = create :device
-      create_list :reading_event, 5, device_id: device.id
+      create_list :reading_event, 5, device: device
       do_request
 
       json_response = JSON.parse(response_body)
@@ -32,32 +32,32 @@ resource 'Reading Events' do
       device_1, device_2 = create_list :device, 2
 
       # Creating several readings to make sure later we pick up the latest
-      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 0
-      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 1
-      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 2
-      create_list :reading_event, 2, device_id: device_1.id, sensor_id: 3
+      create_list :reading_event, 2, device: device_1, sensor_id: 0
+      create_list :reading_event, 2, device: device_1, sensor_id: 1
+      create_list :reading_event, 2, device: device_1, sensor_id: 2
+      create_list :reading_event, 2, device: device_1, sensor_id: 3
 
-      create_list :reading_event, 2, device_id: device_2.id, sensor_id: 2
-      create_list :reading_event, 2, device_id: device_2.id, sensor_id: 3
+      create_list :reading_event, 2, device: device_2, sensor_id: 2
+      create_list :reading_event, 2, device: device_2, sensor_id: 3
 
       # Creating the latest reads
       create :reading_event,
-        device_id: device_1.id,
+        device: device_1,
         sensor_id: 0,
         end_read: 100
 
       create :reading_event,
-        device_id: device_1.id,
+        device: device_1,
         sensor_id: 1,
         end_read: 200
 
       create :reading_event,
-        device_id: device_1.id,
+        device: device_1,
         sensor_id: 2,
         end_read: 300
 
       create :reading_event,
-        device_id: device_1.id,
+        device: device_1,
         sensor_id: 3,
         end_read: 400
 
