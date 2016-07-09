@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   root 'versions#show'
 
@@ -17,4 +19,6 @@ Rails.application.routes.draw do
     controller: 'reading_events',
     action: 'latest',
     defaults: { format: :json }
+
+  mount Resque::Server.new, at: '/resque'
 end
