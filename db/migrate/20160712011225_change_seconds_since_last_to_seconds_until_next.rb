@@ -1,4 +1,4 @@
-class ChangeSecondsSinceLastReadingEventToSecondsUntilNextReadingEventInReadingEvents < ActiveRecord::Migration
+class ChangeSecondsSinceLastToSecondsUntilNext < ActiveRecord::Migration
   def change
     rename_column :reading_events,
       :seconds_since_last_read,

@@ -13,7 +13,6 @@ class ReadingEvent < ActiveRecord::Base
     end_read
   end
 
-
   def created_at
     TimestampsInMontevideoTimeZone.in_montevideo(attributes['created_at'])
   end
