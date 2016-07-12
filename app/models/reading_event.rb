@@ -3,7 +3,7 @@ class ReadingEvent < ActiveRecord::Base
 
   belongs_to :device
   before_save :calculate_read_difference
-  before_save :calculate_seconds_since_last_reading_event
+  before_save :calculate_seconds_until_next_reading_event
 
   scope :all_readings_from_last_7_days, proc {
     where('created_at >= ?', Time.now - 7.days).order(:created_at)
@@ -22,25 +22,23 @@ class ReadingEvent < ActiveRecord::Base
     TimestampsInMontevideoTimeZone.in_montevideo(attributes['updated_at'])
   end
 
-  def calculate_seconds_since_last_reading_event
+  def calculate_seconds_until_next_reading_event
     last_reading_event = last_reading_event_for_device
     if last_reading_event.present?
-      self.seconds_since_last_read =
-        created_at_or_now.to_i - last_reading_event.created_at.to_i
+      last_reading_event.update_column(
+        :seconds_until_next_read,
+        Time.now.to_i - last_reading_event.created_at.to_i
+      ) unless last_reading_event.seconds_until_next_read != 0
     end
   end
 
   # Making sure the TimeZones are not used using attributes
   def last_reading_event_for_device
     device.reading_events
-      .where('created_at < ? AND sensor_id = ?', created_at_or_now, sensor_id)
+      .where('created_at < ? AND sensor_id = ?', Time.now, sensor_id)
       .order('created_at desc')
       .limit(1)
       .first
-  end
-
-  def created_at_or_now
-    attributes[:created_at] ? attributes[:created_at] : Time.now
   end
 
   private
