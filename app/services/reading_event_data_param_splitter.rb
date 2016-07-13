@@ -14,7 +14,6 @@ class ReadingEventDataParamSplitter
       }
     end
 
-    puts @data
     @data
   end
 
