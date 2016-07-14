@@ -27,7 +27,7 @@ class ReadingEvent < ActiveRecord::Base
       last_reading_event.update_column(
         :seconds_until_next_read,
         Time.now.to_i - last_reading_event.created_at.to_i
-      ) unless last_reading_event.seconds_until_next_read != 0
+      )
     end
   end
 
