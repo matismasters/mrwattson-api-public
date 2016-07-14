@@ -3,7 +3,7 @@ class ReadingEvent < ActiveRecord::Base
 
   belongs_to :device
   before_save :calculate_read_difference
-  before_save :calculate_seconds_until_next_reading_event
+  before_create :calculate_seconds_until_next_reading_event
 
   scope :all_readings_from_last_7_days, proc {
     where('created_at >= ?', Time.now - 7.days).order(:created_at)
