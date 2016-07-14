@@ -52,6 +52,23 @@ describe 'ReadingEvent', type: :unit do
     expect(reading_event.reload.seconds_until_next_read).to eq 12
   end
 
+  it 'should not change the seconds on save' do
+    start_time = Time.now
+    Timecop.freeze(start_time)
+
+    reading_event_1 = create :reading_event, device: device, sensor_id: 1
+
+    Timecop.freeze(start_time + 6.seconds)
+
+    reading_event_2 = create :reading_event, device: device, sensor_id: 2
+
+    expect(reading_event_2).not_to(
+      receive(:calculate_seconds_until_next_reading_event)
+    )
+
+    reading_event_2.save
+  end
+
   after do
     Timecop.return
   end
