@@ -1,10 +1,10 @@
-class NotificationSenderQueue
+class NotificationSenderJob
   def self.queue
     :notifications
   end
 
   def self.enqueue(data)
-    Resque.enqueue(NotificationSenderQueue, 'Slack', data)
+    Resque.enqueue(NotificationSenderJob, 'Slack', data)
   end
 
   # We have only one resque queue for notificaitons, and following

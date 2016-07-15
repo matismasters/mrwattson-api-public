@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Sending notifications' do
-  let(:queue_manager) { class_double('NotificationSenderQueue') }
+  let(:queue_manager) { class_double('NotificationSenderJob') }
 
   describe 'for 1 device' do
     it 'should add the notification to the send queue for that user' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Notifications Worker process' do
-  let(:queue_manager) { double('NotificationSenderQueue') }
+  let(:queue_manager) { double('NotificationSenderJob') }
 
   before do
     @device = create :device
