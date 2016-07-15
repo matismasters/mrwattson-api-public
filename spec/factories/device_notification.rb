@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :user_notification do
-    user factory: :user
+  factory :device_notification do
+    user factory: :device
     user factory: :notification
     opened { false }
   end

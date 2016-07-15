@@ -14,11 +14,15 @@ describe 'Sending notifications' do
         tokens: 'max_read_difference',
         body: 'The max event diff is {{max_read_difference}}'
 
+      maximum = ReadingEvent.maximum(:read_difference)
+
       expect(queue_manager).to(
         receive(:enqueue).with(
-          device.id,
-          notification.title,
-          "The max event diff is #{ReadingEvent.maximum(:read_difference)}"
+          device_id: device.id,
+          notification_id: notification.id,
+          token_values: { 'max_read_difference' => maximum.to_s },
+          title: notification.title,
+          body: "The max event diff is #{maximum}"
         )
       )
 
@@ -51,17 +55,21 @@ describe 'Sending notifications' do
 
       expect(queue_manager).to(
         receive(:enqueue).with(
-          device_1.id,
-          notification.title,
-          "The max event diff is #{device_1_maximum}"
+          device_id: device_1.id,
+          notification_id: notification.id,
+          token_values: { 'max_read_difference' => device_1_maximum.to_s },
+          title: notification.title,
+          body: "The max event diff is #{device_1_maximum}"
         )
       )
 
       expect(queue_manager).not_to(
         receive(:enqueue).with(
-          device_2.id,
-          notification.title,
-          "The max event diff is #{device_2_maximum}"
+          device_id: device_2.id,
+          notification_id: notification.id,
+          token_values: { 'max_read_difference' => device_2_maximum.to_s },
+          title: notification.title,
+          body: "The max event diff is #{device_2_maximum}"
         )
       )
 
@@ -89,17 +97,21 @@ describe 'Sending notifications' do
 
       expect(queue_manager).to(
         receive(:enqueue).with(
-          device_1.id,
-          notification.title,
-          "The max event diff is #{device_1_maximum}"
+          device_id: device_1.id,
+          notification_id: notification.id,
+          token_values: { 'max_read_difference' => device_1_maximum.to_s },
+          title: notification.title,
+          body: "The max event diff is #{device_1_maximum}"
         )
       )
 
       expect(queue_manager).to(
         receive(:enqueue).with(
-          device_2.id,
-          notification.title,
-          "The max event diff is #{device_2_maximum}"
+          device_id: device_2.id,
+          notification_id: notification.id,
+          token_values: { 'max_read_difference' => device_2_maximum.to_s },
+          title: notification.title,
+          body: "The max event diff is #{device_2_maximum}"
         )
       )
 
