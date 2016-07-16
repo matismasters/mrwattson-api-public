@@ -1,4 +1,5 @@
 class ReadingEventsController < ApplicationController
+  include FindDevice
   before_action :find_device, only: [:create, :latest]
 
   def index
@@ -28,12 +29,6 @@ class ReadingEventsController < ApplicationController
   end
 
   private
-
-  def find_device
-    @device = Device.find_by_particle_id(permitted_params.require(:device_id))
-
-    render json: { device_id: 'not found' }, status: 404 unless @device.present?
-  end
 
   def permitted_params
     params.permit(:device_id, :data)

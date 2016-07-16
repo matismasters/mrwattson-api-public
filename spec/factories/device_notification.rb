@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :device_notification do
-    user factory: :device
-    user factory: :notification
+    association :device, factory: :device
+    association :notification, factory: :notification
+    token_values { { 'sample' => '5' } }
     opened { false }
   end
 end

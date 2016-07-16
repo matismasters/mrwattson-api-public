@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     action: 'latest',
     defaults: { format: :json }
 
+  get 'devices/:device_id/notifications',
+    controller: 'devices',
+    action: 'notifications',
+    defaults: { format: :json }
+
   mount Resque::Server.new, at: '/resque'
 end
