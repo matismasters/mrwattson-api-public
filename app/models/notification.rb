@@ -15,19 +15,19 @@ class Notification < ActiveRecord::Base
 
   def process_and_send(queue_manager)
     CustomQuery.new(sql_query).execute.each do |row|
-      token_values = build_token_values(row)
-
-      queue_manager.enqueue(
-        device_id: row['device_id'].to_i,
-        notification_id: id,
-        token_values: token_values,
-        title: title,
-        body: TokenBasedInterpolations.interpolate(
-          token_values,
-          body
-        )
-      )
+      queue_manager.enqueue(build_queue_data(row))
     end && update_last_run
+  end
+
+  def build_queue_data(row)
+    token_values = build_token_values(row)
+    {
+      device_id: row['device_id'].to_i,
+      notification_id: id,
+      token_values: token_values,
+      title: title,
+      body: TokenBasedInterpolations.interpolate(token_values, body)
+    }
   end
 
   def build_token_values(row)

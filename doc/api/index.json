@@ -1,6 +1,18 @@
 {
   "resources": [
     {
+      "name": "Devices",
+      "examples": [
+        {
+          "description": "Get All notifications sorted by most recent",
+          "link": "devices/get_all_notifications_sorted_by_most_recent.json",
+          "groups": "all",
+          "route": "/devices/:device_id/notifications",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "name": "Reading Events",
       "examples": [
         {

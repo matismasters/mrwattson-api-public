@@ -19,14 +19,14 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/reading_events/latest?device_id=9a21ee046d",
+      "request_path": "/reading_events/latest?device_id=e71878ed3b",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       "request_query_parameters": {
-        "device_id": "9a21ee046d"
+        "device_id": "e71878ed3b"
       },
       "request_content_type": "application/json",
       "response_status": 200,
@@ -36,7 +36,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/latest?device_id=9a21ee046d\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/latest?device_id=e71878ed3b\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

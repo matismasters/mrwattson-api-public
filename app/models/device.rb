@@ -1,5 +1,6 @@
 class Device < ActiveRecord::Base
   has_many :reading_events
+  has_many :device_notifications
 
   def sensors_last_reads
     {

@@ -13,8 +13,7 @@ class NotificationSenderJob
   def self.perform(notification_methods, data)
     notification_methods.split('|').each do |notification_method|
       case notification_method
-      when 'Slack'
-        SlackNotifications.send(data)
+      when 'Slack' then SlackNotifications.send(data)
       end
 
       DeviceNotification.create(

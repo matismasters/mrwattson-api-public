@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Job runned by resque to send notifications' do
   describe '#perform' do
-    let(:data) {
+    let(:data) do
       {
         'device_id' => 1,
         'notification_id' => 1,
@@ -13,7 +13,7 @@ describe 'Job runned by resque to send notifications' do
         'title' => 'This is the title',
         'body' => 'this is the value1 compared to value2'
       }
-    }
+    end
 
     it 'should create a DeviceNotification' do
       # Prevent slack message trigger on tests
