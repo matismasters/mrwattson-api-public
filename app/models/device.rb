@@ -4,7 +4,7 @@ class Device < ActiveRecord::Base
 
   def sensors_last_reads
     {
-      sensors_last_reads: (0..3).map do |index|
+      sensors_last_reads: (1..4).map do |index|
         read = reading_events
           .where('sensor_id = ?', index)
           .order('created_at desc')

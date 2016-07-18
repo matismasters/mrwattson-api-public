@@ -11,7 +11,7 @@ resource 'Reading Events' do
     '"d-sensor_id|start_read|end_read" (The initial "d-" is required)',
     required: true
 
-  parameter :'*data_sensor_id', 'Number::[0,1,2,3]'
+  parameter :'*data_sensor_id', 'Number::[1,2,3,4]'
   parameter :'*data_start_read', 'Number::In watts'
   parameter :'*data_end_read', 'Number::In watts'
 

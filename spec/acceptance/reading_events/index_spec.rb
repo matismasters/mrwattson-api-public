@@ -25,40 +25,40 @@ resource 'Reading Events' do
 
     response_field :sensors_last_reads,
       'Array::Each item has the latest end_read to each sensor, ' \
-      'in that corresponding order. sensor_id: 0 => first array item, ' \
-      'sensor_id: 1 => second array item, and so on'
+      'in that corresponding order. sensor_id: 1 => first array item, ' \
+      'sensor_id: 2 => second array item, and so on'
 
     example 'Get latestet readings for a device in JSON format' do
       device_1, device_2 = create_list :device, 2
 
       # Creating several readings to make sure later we pick up the latest
-      create_list :reading_event, 2, device: device_1, sensor_id: 0
       create_list :reading_event, 2, device: device_1, sensor_id: 1
       create_list :reading_event, 2, device: device_1, sensor_id: 2
       create_list :reading_event, 2, device: device_1, sensor_id: 3
+      create_list :reading_event, 2, device: device_1, sensor_id: 4
 
-      create_list :reading_event, 2, device: device_2, sensor_id: 2
       create_list :reading_event, 2, device: device_2, sensor_id: 3
+      create_list :reading_event, 2, device: device_2, sensor_id: 4
 
       # Creating the latest reads
       create :reading_event,
         device: device_1,
-        sensor_id: 0,
+        sensor_id: 1,
         end_read: 100
 
       create :reading_event,
         device: device_1,
-        sensor_id: 1,
+        sensor_id: 2,
         end_read: 200
 
       create :reading_event,
         device: device_1,
-        sensor_id: 2,
+        sensor_id: 3,
         end_read: 300
 
       create :reading_event,
         device: device_1,
-        sensor_id: 3,
+        sensor_id: 4,
         end_read: 400
 
       do_request(device_id: device_1.particle_id)
