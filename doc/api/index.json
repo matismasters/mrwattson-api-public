@@ -9,6 +9,13 @@
           "groups": "all",
           "route": "/devices/:device_id/notifications",
           "method": "get"
+        },
+        {
+          "description": "Get latestet readings for a device in JSON format",
+          "link": "devices/get_latestet_readings_for_a_device_in_json_format.json",
+          "groups": "all",
+          "route": "/devices/:device_id/reading_events/latest",
+          "method": "get"
         }
       ]
     },
@@ -28,20 +35,6 @@
           "groups": "all",
           "route": "/reading_events",
           "method": "post"
-        },
-        {
-          "description": "Get latest week events in JSON format",
-          "link": "reading_events/get_latest_week_events_in_json_format.json",
-          "groups": "all",
-          "route": "/reading_events",
-          "method": "get"
-        },
-        {
-          "description": "Get latestet readings for a device in JSON format",
-          "link": "reading_events/get_latestet_readings_for_a_device_in_json_format.json",
-          "groups": "all",
-          "route": "/reading_events/latest",
-          "method": "get"
         }
       ]
     },

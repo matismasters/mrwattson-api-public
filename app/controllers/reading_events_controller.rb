@@ -1,18 +1,6 @@
 class ReadingEventsController < ApplicationController
   include FindDevice
-  before_action :find_device, only: [:create, :latest]
-
-  def index
-    events = ReadingEvent.all_readings_from_last_7_days
-
-    render json: events, status: 200
-  end
-
-  def latest
-    sensors_last_reads = @device.sensors_last_reads
-
-    render json: sensors_last_reads, status: 200
-  end
+  before_action :find_device, only: :create
 
   def create
     factory = ReadingEventsCreator.new(

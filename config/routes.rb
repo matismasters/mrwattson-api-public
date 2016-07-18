@@ -10,13 +10,8 @@ Rails.application.routes.draw do
     action: 'create',
     defaults: { format: :json }
 
-  get 'reading_events',
-    controller: 'reading_events',
-    action: 'index',
-    defaults: { format: :json }
-
-  get 'reading_events/latest',
-    controller: 'reading_events',
+  get 'devices/:device_id/reading_events/latest',
+    controller: 'devices',
     action: 'latest',
     defaults: { format: :json }
 

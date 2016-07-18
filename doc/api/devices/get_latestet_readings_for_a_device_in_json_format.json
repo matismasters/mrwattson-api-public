@@ -1,7 +1,7 @@
 {
-  "resource": "Reading Events",
+  "resource": "Devices",
   "http_method": "GET",
-  "route": "/reading_events/latest",
+  "route": "/devices/:device_id/reading_events/latest",
   "description": "Get latestet readings for a device in JSON format",
   "explanation": null,
   "parameters": [
@@ -19,14 +19,13 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/reading_events/latest?device_id=29031d99d5",
+      "request_path": "/devices/5a36e84103/reading_events/latest",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       "request_query_parameters": {
-        "device_id": "29031d99d5"
       },
       "request_content_type": "application/json",
       "response_status": 200,
@@ -36,7 +35,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/latest?device_id=29031d99d5\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/5a36e84103/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

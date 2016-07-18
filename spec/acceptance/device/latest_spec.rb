@@ -1,26 +1,11 @@
 require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
-resource 'Reading Events' do
+resource 'Devices' do
   header 'Content-Type', 'application/json'
   header 'Accept', 'application/json'
 
-  get '/reading_events' do
-    example 'Get latest week events in JSON format' do
-      device = create :device
-      create_list :reading_event, 5, device: device
-      do_request
-
-      json_response = JSON.parse(response_body)
-
-      expect(json_response.class).to eq Array
-      expect(json_response.size).to(
-        eq(ReadingEvent.where('created_at >= ?', Time.now - 7.days).size)
-      )
-    end
-  end
-
-  get '/reading_events/latest' do
+  get '/devices/:device_id/reading_events/latest' do
     parameter :device_id, 'String::The device id from Particle'
 
     response_field :sensors_last_reads,

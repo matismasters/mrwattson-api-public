@@ -61,3 +61,8 @@ as optional parameters, and will start with a prefix `*compoundfieldname_param`.
 The virtual parameters *SHOULD NOT BE PART OF THE REQUEST BODY*, they are just
 explanatory, and they will be part of the `compound field name`, which will
 most likely be `data`.
+
+## Changelog
+
+* Latest device reads is now accessed through the `Device` section on the docs
+* Change latest device reads to url /devices/123ABCDEF/reading_events/latest
