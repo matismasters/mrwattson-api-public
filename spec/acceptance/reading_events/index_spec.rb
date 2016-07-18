@@ -25,8 +25,8 @@ resource 'Reading Events' do
 
     response_field :sensors_last_reads,
       'Array::Each item has the latest end_read to each sensor, ' \
-      'in that corresponding order. sensor_id: 1 => first array item, ' \
-      'sensor_id: 2 => second array item, and so on'
+      'in that corresponding order. sensor_id: 1 => array[1], ' \
+      'sensor_id: 2 => array[2], and so on. array[0] is always 0'
 
     example 'Get latestet readings for a device in JSON format' do
       device_1, device_2 = create_list :device, 2
@@ -67,10 +67,10 @@ resource 'Reading Events' do
 
       expect(json_response.class).to eq Hash
       last_reads = json_response['sensors_last_reads']
-      expect(last_reads[0]).to eq 100
-      expect(last_reads[1]).to eq 200
-      expect(last_reads[2]).to eq 300
-      expect(last_reads[3]).to eq 400
+      expect(last_reads[1]).to eq 100
+      expect(last_reads[2]).to eq 200
+      expect(last_reads[3]).to eq 300
+      expect(last_reads[4]).to eq 400
     end
   end
 end

@@ -13,30 +13,30 @@
   "response_fields": [
     {
       "name": "sensors_last_reads",
-      "description": "Array::Each item has the latest end_read to each sensor, in that corresponding order. sensor_id: 1 => first array item, sensor_id: 2 => second array item, and so on"
+      "description": "Array::Each item has the latest end_read to each sensor, in that corresponding order. sensor_id: 1 => array[1], sensor_id: 2 => array[2], and so on. array[0] is always 0"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/reading_events/latest?device_id=ce99bd2521",
+      "request_path": "/reading_events/latest?device_id=29031d99d5",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       "request_query_parameters": {
-        "device_id": "ce99bd2521"
+        "device_id": "29031d99d5"
       },
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"sensors_last_reads\": [\n    100,\n    200,\n    300,\n    400\n  ]\n}",
+      "response_body": "{\n  \"sensors_last_reads\": [\n    0,\n    100,\n    200,\n    300,\n    400\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/latest?device_id=ce99bd2521\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/latest?device_id=29031d99d5\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
