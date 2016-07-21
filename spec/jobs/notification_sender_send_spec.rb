@@ -12,6 +12,7 @@ describe 'Sending notifications' do
         sql_query: 'SELECT device_id, MAX(read_difference) AS ' \
           'max_read_difference FROM reading_events GROUP BY device_id',
         tokens: 'max_read_difference',
+        title: 'Max is {{max_read_difference}}',
         body: 'The max event diff is {{max_read_difference}}'
 
       maximum = ReadingEvent.maximum(:read_difference)
@@ -21,7 +22,7 @@ describe 'Sending notifications' do
           device_id: device.id,
           notification_id: notification.id,
           token_values: { 'max_read_difference' => maximum.to_s },
-          title: notification.title,
+          title: "Max is #{maximum}",
           body: "The max event diff is #{maximum}"
         )
       )

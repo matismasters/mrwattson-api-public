@@ -25,7 +25,7 @@ class Notification < ActiveRecord::Base
       device_id: row['device_id'].to_i,
       notification_id: id,
       token_values: token_values,
-      title: title,
+      title: TokenBasedInterpolations.interpolate(token_values, title),
       body: TokenBasedInterpolations.interpolate(token_values, body)
     }
   end
