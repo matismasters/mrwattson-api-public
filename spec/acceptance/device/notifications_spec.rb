@@ -25,8 +25,14 @@ resource 'Devices' do
 
       expect(json_response.class).to be Array
       expect(json_response.size).to be 5
-      expect(json_response.first['device_id']).to eq device.id
-      expect(json_response.first['notification_id']).to eq notification.id
+
+      first_device_notificaiton = json_response.first
+      expect(first_device_notificaiton['title']).not_to be_empty
+      expect(first_device_notificaiton['body']).not_to be_empty
+      expect(first_device_notificaiton['device_id']).to eq device.id
+      expect(first_device_notificaiton['notification_id']).to eq notification.id
+
+      expect(first_device_notificaiton['token_values'].class).to be Hash
     end
   end
 end

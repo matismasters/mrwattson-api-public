@@ -22,6 +22,8 @@ describe 'Job runned by resque to send notifications' do
       NotificationSenderJob.perform('Slack', data)
       device_notification = DeviceNotification.first
 
+      expect(device_notification.title).to eq data['title']
+      expect(device_notification.body).to eq data['body']
       expect(device_notification.device_id).to eq data['device_id']
       expect(device_notification.notification_id).to eq data['notification_id']
       expect(device_notification.token_values).to eq data['token_values']

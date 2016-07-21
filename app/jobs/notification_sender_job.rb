@@ -19,7 +19,9 @@ class NotificationSenderJob
       DeviceNotification.create(
         device_id: data['device_id'],
         notification_id: data['notification_id'],
-        token_values: data['token_values']
+        token_values: data['token_values'],
+        title: data['title'],
+        body: data['body']
       )
     end
   end

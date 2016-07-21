@@ -4,5 +4,7 @@ FactoryGirl.define do
     association :notification, factory: :notification
     token_values { { 'sample' => '5' } }
     opened { false }
+    title { 'some title, token 5' }
+    body { 'some body, token 5' }
   end
 end
