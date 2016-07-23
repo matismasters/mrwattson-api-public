@@ -4,7 +4,7 @@ class ReadingEventsController < ApplicationController
 
   def create
     factory = ReadingEventsCreator.new(
-      @device.id,
+      @device,
       permitted_params.require(:data)
     )
     factory.create_reading_events

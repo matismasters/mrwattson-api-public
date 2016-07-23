@@ -1,22 +1,24 @@
 class ReadingEventsCreator
   attr_reader :errors
 
-  def initialize(device_id, particle_event_data)
-    @device_id = device_id
+  def initialize(device, particle_event_data)
+    @device = device
     @particle_event_data = particle_event_data
     @errors = {}
   end
 
   def create_reading_events
     @created_reading_events = events_data.map do |data|
-      reading_event = ReadingEvent.create(data.merge(device_id: @device_id))
+      reading_event = ReadingEvent.new(data)
+      reading_event.device = @device
+      reading_event.save
 
       add_error(
         data[:sensor_id],
         reading_event.errors
       ) unless reading_event.valid?
 
-      puts data.merge(device_id: @device_id)
+      puts data.merge(device_id: @device.id)
 
       reading_event
     end

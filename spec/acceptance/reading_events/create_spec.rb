@@ -42,8 +42,8 @@ resource 'Reading Events' do
       expect(json_response['device_id']).to include 'not found'
     end
 
-    example 'Create Reading Event without required fields', document: false do
-      skip 'TODO: create failing examples for multiple events some failing'
+    example 'Try creating Reading Event without required fields',
+      document: false do
       particle_id = reading_event_params[:device_id]
       create :device, particle_id: particle_id
 
@@ -51,10 +51,26 @@ resource 'Reading Events' do
 
       json_response = JSON.parse(response_body)
 
-      expect(status).to eq 422
-      expect(json_response['sensor_id']).to include "can't be blank"
-      expect(json_response['start_read']).to include "can't be blank"
-      expect(json_response['end_read']).to include "can't be blank"
+      expect(status).to eq 400
+    end
+
+    example 'Create Reading Event for a disabled sensor and <= 5000',
+      document: false do
+      particle_id = reading_event_params[:device_id]
+      create :device, particle_id: particle_id
+      device = create :device,
+        particle_id: particle_id,
+        configuration: {
+          sensor_1_active: true,
+          sensor_2_active: true,
+          sensor_3_active: false,
+          sensor_4_active: false
+        }
+
+      do_request(device_id: particle_id, data: 'd-3|100|200|-4|199|290')
+
+      expect(status).to eq 201
+      expect(ReadingEvent.count).to eq 2
     end
   end
 end

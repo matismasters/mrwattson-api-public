@@ -6,7 +6,7 @@ describe 'Reading Events Creator' do
       device = Device.create(particle_id: 'SAD')
       sensor_data = 'd-3|123|321'
 
-      factory = ReadingEventsCreator.new(device.id, sensor_data)
+      factory = ReadingEventsCreator.new(device, sensor_data)
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 1
@@ -18,23 +18,12 @@ describe 'Reading Events Creator' do
     end
   end
 
-  describe 'without an existant device_id and one sensor event' do
-    it 'should NOT create one ReadingEvent' do
-      sensor_data = 'd-3|123|321'
-
-      factory = ReadingEventsCreator.new(999, sensor_data)
-      factory.create_reading_events
-
-      expect(ReadingEvent.count).to eq 0
-    end
-  end
-
   describe 'with an existant device_id and two sensor events' do
     it 'should create two ReadingEvents' do
       device = Device.create(particle_id: 'SAD')
       sensor_data = 'd-3|123|321|-2|100|99'
 
-      factory = ReadingEventsCreator.new(device.id, sensor_data)
+      factory = ReadingEventsCreator.new(device, sensor_data)
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 2
