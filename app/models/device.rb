@@ -20,6 +20,10 @@ class Device < ActiveRecord::Base
     }
   end
 
+  def sensor_disabled?(sensor_id)
+    configuration[:"sensor_#{sensor_id}_active"] == false
+  end
+
   private
 
   def basic_configuration

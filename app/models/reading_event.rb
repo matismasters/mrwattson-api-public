@@ -1,5 +1,6 @@
 class ReadingEvent < ActiveRecord::Base
   validates :device, :sensor_id, :start_read, :end_read, presence: true
+  validate :big_read_on_disabled_sensor
 
   belongs_to :device
   before_save :calculate_read_difference
@@ -53,6 +54,12 @@ class ReadingEvent < ActiveRecord::Base
   end
 
   private
+
+  def big_read_on_disabled_sensor
+    if end_read >= 5000 && device.sensor_disabled?(sensor_id)
+      errors.add(:configuration, "sensor #{sensor_id} is disabled")
+    end
+  end
 
   def calculate_read_difference
     self.read_difference = end_read - start_read
