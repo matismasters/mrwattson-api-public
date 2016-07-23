@@ -20,5 +20,15 @@ Rails.application.routes.draw do
     action: 'notifications',
     defaults: { format: :json }
 
+  get 'devices/:device_id/configuration',
+    controller: 'devices',
+    action: 'configuration',
+    defaults: { format: :json }
+
+  put 'devices/:device_id/configuration',
+    controller: 'devices',
+    action: 'update_configuration',
+    defaults: { format: :json }
+
   mount Resque::Server.new, at: '/resque'
 end

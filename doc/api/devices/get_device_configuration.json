@@ -1,8 +1,8 @@
 {
   "resource": "Devices",
   "http_method": "GET",
-  "route": "/devices/:device_id/reading_events/latest",
-  "description": "Get latestet readings for a device in JSON format",
+  "route": "/devices/:device_id/configuration",
+  "description": "Get device configuration",
   "explanation": null,
   "parameters": [
     {
@@ -12,14 +12,14 @@
   ],
   "response_fields": [
     {
-      "name": "sensors_last_reads",
-      "description": "Array::Each item has the latest end_read to each sensor, in that corresponding order. sensor_id: 1 => array[1], sensor_id: 2 => array[2], and so on. array[0] is always 0"
+      "name": "configuration",
+      "description": "Hash::Each key contains configurations specific to this device"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/5433ac5b96/reading_events/latest",
+      "request_path": "/devices/037177a737/configuration",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -30,12 +30,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"sensors_last_reads\": [\n    0,\n    100,\n    200,\n    300,\n    400\n  ]\n}",
+      "response_body": "{\n  \"configuration\": {\n    \"sensor_1_active\": true,\n    \"sensor_2_active\": true,\n    \"sensor_3_active\": false,\n    \"sensor_4_active\": false\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/5433ac5b96/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/037177a737/configuration\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
