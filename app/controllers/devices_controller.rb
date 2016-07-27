@@ -15,12 +15,12 @@ class DevicesController < ApplicationController
   end
 
   def configuration
-    render json: { configuration: @device.configuration }, status: 200
+    render json: { configuration: @device.configuration() }, status: 200
   end
 
   def update_configuration
     @device.configuration = @device.configuration.merge(configuration_params)
-    
+
     if @device.save
       render json: {}, status: 200
     else
