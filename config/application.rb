@@ -16,9 +16,11 @@ module Mwapi
   class Application < Rails::Application
     config.assets.enabled = false
     config.active_record.raise_in_transactional_callbacks = true
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => %w(GET POST OPTIONS PUT).join(',')
-    }
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %w(GET PUT POST OPTIONS)
+      end
+    end
   end
 end
