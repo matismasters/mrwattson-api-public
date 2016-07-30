@@ -5,7 +5,8 @@ class DevicesController < ApplicationController
 
   def notifications
     render(
-      json: @device.device_notifications.order('created_at desc'),
+      json: @device.device_notifications
+        .order('created_at::DATE desc, notification_id'),
       status: 200
     )
   end
