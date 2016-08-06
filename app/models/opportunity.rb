@@ -1,0 +1,2 @@
+class Opportunity < Notification
+end
