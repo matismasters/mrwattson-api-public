@@ -19,7 +19,9 @@ module Mwapi
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: %w(GET PUT POST OPTIONS)
+        resource '*',
+          headers: :any,
+          methods: %w(GET PUT POST OPTIONS)
       end
     end
   end

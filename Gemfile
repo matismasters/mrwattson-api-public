@@ -8,7 +8,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'resque'
 gem 'http'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 # Gems needed for API Docs
 gem 'apitome'

@@ -1,6 +1,9 @@
 inherit_from:
   - .disabled-cops.yml
 
+Metrics/LineLength:
+  Max: 120
+
 AllCops:
   # Include common Ruby source files.
   Include:
