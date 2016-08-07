@@ -21,7 +21,10 @@ class NotificationSenderJob
         notification_id: data['notification_id'],
         token_values: data['token_values'],
         title: data['title'],
-        body: data['body']
+        body: data['body'],
+        processed_discovery: data['processed_discovery'],
+        processed_opportunity: data['processed_opportunity'],
+        processed_solution: data['processed_solution']
       )
     end
   end

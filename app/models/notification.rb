@@ -25,8 +25,16 @@ class Notification < ActiveRecord::Base
       device_id: row['device_id'].to_i,
       notification_id: id,
       token_values: token_values,
-      title: TokenBasedInterpolations.interpolate(token_values, title),
-      body: TokenBasedInterpolations.interpolate(token_values, body)
+      title:
+        TokenBasedInterpolations.interpolate(token_values, title),
+      body:
+        TokenBasedInterpolations.interpolate(token_values, body),
+      processed_discovery:
+        TokenBasedInterpolations.interpolate(token_values, discovery),
+      processed_opportunity:
+        TokenBasedInterpolations.interpolate(token_values, opportunity),
+      processed_solution:
+        TokenBasedInterpolations.interpolate(token_values, solution)
     }
   end
 

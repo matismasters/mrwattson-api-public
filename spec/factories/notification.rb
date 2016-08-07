@@ -5,6 +5,9 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     body { "#{Faker::Lorem.paragraph} {{id}}" }
     tokens { 'id|start_read' }
+    discovery { 'is {{start_read}}'}
+    opportunity { '{{start_read}} is too much'}
+    solution { 'change {{id}}'}
 
     trait :max_read_difference do
       sql_query do
