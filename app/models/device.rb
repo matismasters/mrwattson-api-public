@@ -24,6 +24,10 @@ class Device < ActiveRecord::Base
     configuration[:"sensor_#{sensor_id}_active"] == false
   end
 
+  def active_opportunities
+    LatestDeviceNotification.active_opportunities_for_device(id)
+  end
+
   private
 
   def basic_configuration
