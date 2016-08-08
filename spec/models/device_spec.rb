@@ -45,6 +45,56 @@ describe 'Device' do
       expect(device.active_opportunities.size).to eq 0
     end
 
+    it 'should return opportunity only if weekly notification was created within ' \
+       '1 week and it was marked as opportunity' do
+      device = create :device
+      notification = create :notification,
+        frequency: 'weekly',
+        type: 'Opportunity'
+
+      now = Time.now
+      Timecop.freeze(now)
+
+      device_notification = create :device_notification,
+        device: device,
+        notification: notification
+
+      Timecop.freeze(now + 3.days)
+
+      opportunities = device.active_opportunities
+      expect(opportunities.size).to eq 1
+      expect(opportunities.first.id).to eq device_notification.id
+
+      Timecop.freeze(now + 8.days)
+
+      expect(device.active_opportunities.size).to eq 0
+    end
+
+    it 'should return opportunity only if monthly notification was created within ' \
+       '1 month and it was marked as opportunity' do
+      device = create :device
+      notification = create :notification,
+        frequency: 'monthly',
+        type: 'Opportunity'
+
+      now = Time.now
+      Timecop.freeze(now)
+
+      device_notification = create :device_notification,
+        device: device,
+        notification: notification
+
+      Timecop.freeze(now + 3.days)
+
+      opportunities = device.active_opportunities
+      expect(opportunities.size).to eq 1
+      expect(opportunities.first.id).to eq device_notification.id
+
+      Timecop.freeze(now + 2.month)
+
+      expect(device.active_opportunities.size).to eq 0
+    end
+
     it 'should return only the latest device notification of each notification ' do
       device = create :device
       notification_1 = create :notification,
