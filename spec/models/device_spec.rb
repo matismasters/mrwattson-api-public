@@ -108,7 +108,7 @@ describe 'Device' do
       now = Time.now
       Timecop.freeze(now)
 
-      device_notification_1 = create :device_notification,
+      create :device_notification,
         device: device,
         notification: notification_1
 
@@ -123,7 +123,6 @@ describe 'Device' do
       Timecop.freeze(now + 18.hours)
 
       opportunities = device.active_opportunities
-      opportunity_ids = opportunities.map(&:id)
 
       expect(opportunities.size).to eq 2
       expect(opportunities.map(&:id)).to include device_notification_2.id

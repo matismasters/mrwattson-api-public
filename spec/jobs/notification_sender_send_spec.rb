@@ -21,11 +21,11 @@ describe 'Sending notifications' do
   let(:enqueue_expected_params) do
     {
       token_values: { 'max_read_difference' => '150' },
-      title: "Max is 150",
-      body: "The max event diff is 150",
-      processed_discovery: "We found 150w is your max read difference",
-      processed_opportunity: "150w could be lower",
-      processed_solution: "Change the appliance that uses 150w"
+      title: 'Max is 150',
+      body: 'The max event diff is 150',
+      processed_discovery: 'We found 150w is your max read difference',
+      processed_opportunity: '150w could be lower',
+      processed_solution: 'Change the appliance that uses 150w'
     }
   end
 

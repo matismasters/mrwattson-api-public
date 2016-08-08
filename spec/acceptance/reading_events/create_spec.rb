@@ -49,8 +49,6 @@ resource 'Reading Events' do
 
       do_request(device_id: particle_id, data: [])
 
-      json_response = JSON.parse(response_body)
-
       expect(status).to eq 400
     end
 
@@ -58,7 +56,7 @@ resource 'Reading Events' do
             'should succeed', document: false do
       particle_id = reading_event_params[:device_id]
       create :device, particle_id: particle_id
-      device = create :device,
+      create :device,
         particle_id: particle_id,
         configuration: {
           sensor_1_active: true,
@@ -76,7 +74,7 @@ resource 'Reading Events' do
     example 'Create Reading Event for disabled sensors with >= 5000 end_read ' \
             'should fail', document: false do
       particle_id = reading_event_params[:device_id]
-      device = create :device,
+      create :device,
         particle_id: particle_id,
         configuration: {
           sensor_1_active: true,
