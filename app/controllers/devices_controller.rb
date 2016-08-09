@@ -5,8 +5,19 @@ class DevicesController < ApplicationController
 
   def notifications
     render(
-      json: @device.device_notifications
-        .order('created_at::DATE desc, notification_id'),
+      json: {
+        notifications: @device.device_notifications
+          .order('created_at::DATE desc, notification_id')
+      },
+      status: 200
+    )
+  end
+
+  def active_opportunities
+    render(
+      json: {
+        notifications: @device.active_opportunities
+      },
       status: 200
     )
   end

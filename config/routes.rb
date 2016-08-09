@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     action: 'notifications',
     defaults: { format: :json }
 
+  get 'devices/:device_id/active_opportunities',
+    controller: 'devices',
+    action: 'active_opportunities',
+    defaults: { format: :json }
+
   get 'devices/:device_id/configuration',
     controller: 'devices',
     action: 'configuration',

@@ -23,7 +23,7 @@ class LatestDeviceNotification < ActiveRecord::Base
       )
       .where(device_id: device_id)
       .where('notifications.type = ?', 'Opportunity')
-      .order('notifications.frequency')
+      .order('latest_device_notifications.updated_at desc, notifications.frequency')
       .map(&:device_notification_id)
     )
   end
