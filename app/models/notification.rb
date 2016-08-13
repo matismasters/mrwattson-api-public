@@ -7,7 +7,7 @@ class Notification < ActiveRecord::Base
       "(frequency like 'daily' AND last_run <= ?) OR " \
       "(frequency like 'weekly' AND last_run <= ?) OR " \
       "(frequency like 'monthly' AND last_run <= ?)",
-      Time.now - 1.day,
+      Time.now - 1410.minutes, # 23 hours and 30 minutes
       Time.now - 7.days,
       Time.now - 30.days
     )
