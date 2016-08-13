@@ -12,7 +12,30 @@
     }
   ],
   "response_fields": [
-
+    {
+      "name": "notifications",
+      "description": "Array::All notifications"
+    },
+    {
+      "name": "*title",
+      "description": "String::Notification title"
+    },
+    {
+      "name": "*body",
+      "description": "String::Notification summary"
+    },
+    {
+      "name": "*processed_discovery",
+      "description": "String::Details about what was found"
+    },
+    {
+      "name": "*processed_opportunity",
+      "description": "String::Details about what can be improved"
+    },
+    {
+      "name": "*processed_solution",
+      "description": "String::Details about how to improve it"
+    }
   ],
   "requests": [
     {
@@ -28,7 +51,7 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n  {\n    \"id\": 397,\n    \"device_id\": 2300,\n    \"notification_id\": 1455,\n    \"opened\": false,\n    \"token_values\": {\n      \"sample\": \"5\"\n    },\n    \"created_at\": \"2016-07-23T14:27:36.927Z\",\n    \"updated_at\": \"2016-07-23T14:27:36.927Z\",\n    \"title\": \"some title, token 5\",\n    \"body\": \"some body, token 5\"\n  },\n  {\n    \"id\": 396,\n    \"device_id\": 2300,\n    \"notification_id\": 1455,\n    \"opened\": false,\n    \"token_values\": {\n      \"sample\": \"5\"\n    },\n    \"created_at\": \"2016-07-23T14:27:36.925Z\",\n    \"updated_at\": \"2016-07-23T14:27:36.925Z\",\n    \"title\": \"some title, token 5\",\n    \"body\": \"some body, token 5\"\n  },\n  {\n    \"id\": 395,\n    \"device_id\": 2300,\n    \"notification_id\": 1455,\n    \"opened\": false,\n    \"token_values\": {\n      \"sample\": \"5\"\n    },\n    \"created_at\": \"2016-07-23T14:27:36.922Z\",\n    \"updated_at\": \"2016-07-23T14:27:36.922Z\",\n    \"title\": \"some title, token 5\",\n    \"body\": \"some body, token 5\"\n  },\n  {\n    \"id\": 394,\n    \"device_id\": 2300,\n    \"notification_id\": 1455,\n    \"opened\": false,\n    \"token_values\": {\n      \"sample\": \"5\"\n    },\n    \"created_at\": \"2016-07-23T14:27:36.920Z\",\n    \"updated_at\": \"2016-07-23T14:27:36.920Z\",\n    \"title\": \"some title, token 5\",\n    \"body\": \"some body, token 5\"\n  },\n  {\n    \"id\": 393,\n    \"device_id\": 2300,\n    \"notification_id\": 1455,\n    \"opened\": false,\n    \"token_values\": {\n      \"sample\": \"5\"\n    },\n    \"created_at\": \"2016-07-23T14:27:36.916Z\",\n    \"updated_at\": \"2016-07-23T14:27:36.916Z\",\n    \"title\": \"some title, token 5\",\n    \"body\": \"some body, token 5\"\n  }\n]",
+      "response_body": "{\n  \"notifications\": [\n    {\n      \"id\": 1024,\n      \"device_id\": 3686,\n      \"notification_id\": 2042,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-08-13T19:35:38.177Z\",\n      \"updated_at\": \"2016-08-13T19:35:38.177Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1023,\n      \"device_id\": 3686,\n      \"notification_id\": 2042,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-08-13T19:35:38.173Z\",\n      \"updated_at\": \"2016-08-13T19:35:38.173Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1022,\n      \"device_id\": 3686,\n      \"notification_id\": 2042,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-08-13T19:35:38.169Z\",\n      \"updated_at\": \"2016-08-13T19:35:38.169Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1021,\n      \"device_id\": 3686,\n      \"notification_id\": 2042,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-08-13T19:35:38.164Z\",\n      \"updated_at\": \"2016-08-13T19:35:38.164Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1020,\n      \"device_id\": 3686,\n      \"notification_id\": 2042,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-08-13T19:35:38.152Z\",\n      \"updated_at\": \"2016-08-13T19:35:38.152Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    }\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },

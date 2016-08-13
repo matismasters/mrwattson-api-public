@@ -11,6 +11,13 @@
           "method": "get"
         },
         {
+          "description": "Get active opportunities sorted by most recent",
+          "link": "devices/get_active_opportunities_sorted_by_most_recent.json",
+          "groups": "all",
+          "route": "/devices/:device_id/active_opportunities",
+          "method": "get"
+        },
+        {
           "description": "Get device configuration",
           "link": "devices/get_device_configuration.json",
           "groups": "all",
@@ -44,8 +51,8 @@
           "method": "post"
         },
         {
-          "description": "Create ReadingEvent with an inexistant device_id",
-          "link": "reading_events/create_readingevent_with_an_inexistant_device_id.json",
+          "description": "Create ReadingEvent with an inexistant device_id should fail",
+          "link": "reading_events/create_readingevent_with_an_inexistant_device_id_should_fail.json",
           "groups": "all",
           "route": "/reading_events",
           "method": "post"
