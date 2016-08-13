@@ -1,6 +1,6 @@
 class DeviceNotification < ActiveRecord::Base
   belongs_to :device
-  belongs_to :notification
+  belongs_to :notification, polymorphic: true
 
   serialize :token_values, Hash
   after_create :update_latest_device_notification_pointer

@@ -29,7 +29,7 @@ describe 'Notifications Worker process' do
     end
   end
 
-  describe 'Daily Notifications should run only once every 24 hours' do
+  describe 'Notifications should run depending on its frequency' do
     after do
       Timecop.return
     end
