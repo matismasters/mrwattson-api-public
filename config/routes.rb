@@ -1,6 +1,7 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'User', at: 'auth'
   root 'versions#show'
 
   resource :version, only: [:show]

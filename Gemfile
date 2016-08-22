@@ -4,6 +4,7 @@ gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise_token_auth'
 
 gem 'puma'
 gem 'resque'
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'timecop'
+  gem 'mailcatcher'
 end
 
 group :development do
