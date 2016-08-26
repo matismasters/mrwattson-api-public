@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       'Content-Type' => 'text/plain',
       'Access-Control-Allow-Origin' => '*',
       'Access-Control-Allow-Methods' => 'POST, GET, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, Token',
+      'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, Token, if-modified-since',
       'Access-Control-Max-Age' => "1728000",
     }, []]
   }
