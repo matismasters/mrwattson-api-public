@@ -36,6 +36,11 @@ Rails.application.routes.draw do
     action: 'update_configuration',
     defaults: { format: :json }
 
+  get 'operator/reads_total',
+    controller: 'operators',
+    action: 'reads_total',
+    defaults: { format: :json }
+
   mount Resque::Server.new, at: '/resque'
 
   match '*path', via: [:options], to:  lambda { |_|

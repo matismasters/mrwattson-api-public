@@ -53,6 +53,21 @@ class ReadingEvent < ActiveRecord::Base
     order('id asc').each(&:calculate_seconds_since_last_reading_event)
   end
 
+  def self.reads_total
+    select('SUM(end_read) as reads_total')
+      .where(sensor_id: 1)
+      .where('created_at = (' \
+        'SELECT MAX(created_at) ' \
+        'FROM reading_events AS inner_re ' \
+        'WHERE inner_re.device_id = reading_events.device_id ' \
+        'AND inner_re.sensor_id = 1 ' \
+      ')')
+      .group('device_id')
+      .order('device_id')
+      .map(&:reads_total)
+      .reduce(:+)
+  end
+
   private
 
   def big_read_on_disabled_sensor
