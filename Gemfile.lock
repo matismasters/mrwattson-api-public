@@ -9,6 +9,13 @@ GIT
       mustache (~> 1.0, >= 0.99.4)
       rspec (~> 3.0, >= 3.0.0)
 
+GIT
+  remote: git://github.com/tigrish/devise-i18n.git
+  revision: fbb729d7a31dbb67fb2bf6a30dc01d4365b0ffc5
+  branch: master
+  specs:
+    devise-i18n (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -272,6 +279,7 @@ PLATFORMS
 DEPENDENCIES
   apitome
   byebug
+  devise-i18n!
   devise_token_auth
   factory_girl_rails
   faker

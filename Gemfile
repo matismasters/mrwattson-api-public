@@ -5,6 +5,9 @@ gem 'pg', '~> 0.15'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise_token_auth'
+gem 'devise-i18n',
+  github: 'tigrish/devise-i18n',
+  branch: 'master'
 
 gem 'puma'
 gem 'resque'
