@@ -32,8 +32,8 @@ es:
   devise:
     mailer:
       confirmation_instructions:
-        subject: "Instrucciones de confirmación"
-        confirm_link_msg: "Para confirmar su cuenta ingrese en el siguiente link:"
+        subject: "Confirmación tu cuenta de Mr.Wattson!"
+        confirm_link_msg: "Muchas gracias por crear tu cuenta. Para confirmar la cuenta solo tienes que clickear en el siguiente link:"
         confirm_account_link: "Confirmar cuenta"
       reset_password_instructions:
         subject: "Instrucciones para restablecer su contraseña"
