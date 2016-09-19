@@ -1,4 +1,4 @@
-class ReadingEventsController < SecuredApplicationController
+class ReadingEventsController < ApplicationController
   include FindDevice
   before_action :find_device, only: :create
 

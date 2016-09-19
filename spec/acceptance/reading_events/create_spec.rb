@@ -3,11 +3,6 @@ require 'rspec_api_documentation/dsl'
 
 resource 'Reading Events' do
   include DefaultHeaders
-  include AuthenticationHelpers
-
-  before do
-    add_signed_in_user_authentication_headers
-  end
 
   parameter :device_id, 'String::Particle deviceId', required: true
 
