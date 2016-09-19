@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Devices' do
-  header 'Content-Type', 'application/json'
-  header 'Accept', 'application/json'
+  include DefaultHeaders
 
   get '/devices/:device_id/reading_events/latest' do
     parameter :device_id, 'String::The device id from Particle'

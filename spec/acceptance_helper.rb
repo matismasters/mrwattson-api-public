@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'rspec_api_documentation'
 require 'rspec_api_documentation/dsl'
+require_relative('./acceptance/default_headers_concern.rb')
 
 RspecApiDocumentation.configure do |config|
   config.format = :json

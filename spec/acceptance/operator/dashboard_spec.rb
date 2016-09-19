@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Operator' do
-  header 'Content-Type', 'application/json'
-  header 'Accept', 'application/json'
+  include DefaultHeaders
 
   response_field :reads_total, 'Int::Current total consumption of all devices'
 

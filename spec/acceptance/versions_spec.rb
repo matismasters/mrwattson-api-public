@@ -2,9 +2,8 @@ require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Versions' do
-  header 'Content-Type', 'application/json'
-  header 'Accept', 'application/json'
-
+  include DefaultHeaders
+  
   let(:expected_headers) do
     { 'Content-Type' => 'application/json', 'Accept' => 'application/json' }
   end
