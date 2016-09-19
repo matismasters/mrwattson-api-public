@@ -50,5 +50,6 @@ DeviseTokenAuth.setup do |config|
   # knows where to redirect users after successful email confirmation. If this
   # param is set, the API will redirect to this value when no value is provided
   # by the client.
-  config.default_confirm_success_url = 'http://localhost:300/confirm-thankyou.html'
+  config.default_confirm_success_url = 
+    'https://mrwattson-api.herokuapp.com/confirm-thankyou.html'
 end
