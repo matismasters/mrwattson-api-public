@@ -17,6 +17,6 @@ Rails.application.configure do
     user_name: ENV["SENDGRID_USERNAME"],
     password: ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key, when user_name is "apikey".
     authentication: 'login',
-    domain: 'yourdomain.com', # your domain to identify your server when connecting
+    domain: 'mrwattson.com', # your domain to identify your server when connecting
   }
 end
