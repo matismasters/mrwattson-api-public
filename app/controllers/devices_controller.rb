@@ -1,4 +1,4 @@
-class DevicesController < ApplicationController
+class DevicesController < SecuredApplicationController
   include FindDevice
 
   before_action :find_device

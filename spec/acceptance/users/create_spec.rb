@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Users' do
-  header 'Content-Type', 'application/json'
-  header 'Accept', 'application/json'
+  include DefaultHeaders
 
   let(:user_params) do
     {

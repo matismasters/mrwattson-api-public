@@ -18,8 +18,6 @@ class ReadingEventsCreator
         reading_event.errors
       ) unless reading_event.valid?
 
-      puts data.merge(device_id: @device.id)
-
       reading_event
     end
   end

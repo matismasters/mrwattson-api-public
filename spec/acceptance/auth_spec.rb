@@ -2,20 +2,22 @@ require 'spec_helper'
 require 'rspec_api_documentation/dsl'
 
 resource 'Authentication' do
-  header 'Content-Type', 'application/json'
-  header 'Accept', 'application/json'
-
-  let(:sign_in_user) do
-    create(
-      :user,
-      password: 'asdfasdf',
-      password_confirmation: 'asdfasdf'
-    ).tap(&:confirm)
-  end
+  include DefaultHeaders
+  include AuthenticationHelpers
 
   post '/auth/sign_in' do
     example 'Get token' do
-      do_request(email: sign_in_user.email, password: 'asdfasdf')
+      do_request(email: @confirmed_user.email, password: 'asdfasdf')
+
+      expect(status).to eq 200
+    end
+  end
+
+  get '/operator/reads_total' do
+    example 'Access restricted Area' do
+      add_signed_in_user_authentication_headers
+
+      do_request
 
       expect(status).to eq 200
     end

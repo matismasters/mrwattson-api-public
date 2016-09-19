@@ -3,6 +3,11 @@ require 'rspec_api_documentation/dsl'
 
 resource 'Devices' do
   include DefaultHeaders
+  include AuthenticationHelpers
+
+  before do
+    add_signed_in_user_authentication_headers
+  end
 
   get '/devices/:device_id/reading_events/latest' do
     parameter :device_id, 'String::The device id from Particle'
