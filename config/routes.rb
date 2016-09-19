@@ -42,14 +42,4 @@ Rails.application.routes.draw do
     defaults: { format: :json }
 
   mount Resque::Server.new, at: '/resque'
-
-  match '*path', via: [:options], to:  lambda { |_|
-    [204, {
-      'Content-Type' => 'text/plain',
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Allow-Methods' => 'POST, GET, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, Token, if-modified-since',
-      'Access-Control-Max-Age' => "1728000",
-    }, []]
-  }
 end

@@ -22,7 +22,8 @@ module Mwapi
         origins '*'
         resource '*',
           headers: :any,
-          methods: %w(GET PUT POST OPTIONS)
+          expose:  ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :delete, :put, :options]
       end
     end
   end
