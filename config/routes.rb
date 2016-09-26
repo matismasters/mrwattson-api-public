@@ -41,5 +41,15 @@ Rails.application.routes.draw do
     action: 'reads_total',
     defaults: { format: :json }
 
+  post 'users/devices',
+    controller: 'users',
+    action: 'assign_device',
+    defaults: { format: :json }
+
+  delete 'users/devices',
+    controller: 'users',
+    action: 'unassign_device',
+    defaults: { format: :json }
+
   mount Resque::Server.new, at: '/resque'
 end
