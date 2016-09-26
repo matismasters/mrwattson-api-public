@@ -7,7 +7,7 @@ resource 'Authentication' do
 
   post '/auth/sign_in' do
     example 'Get token' do
-      do_request(email: @confirmed_user.email, password: 'asdfasdf')
+      do_request(email: current_user.email, password: 'asdfasdf')
 
       expect(status).to eq 200
     end
