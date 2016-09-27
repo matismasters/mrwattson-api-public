@@ -41,6 +41,22 @@ resource 'Users' do
       expect(current_user.reload.devices.first.id).to eq device.id
     end
 
+    example 'Assign multiple', document: false do
+      device_1 = create(:device)
+      device_2 = create(:device)
+
+      do_request(device_id: device_1.id)
+      do_request(device_id: device_2.id)
+
+      expect(
+        UserDevice.where(user_id: current_user.id).count
+      ).to eq 2
+
+      expect(current_user.reload.assigned_devices).to(
+        eq("#{device_1.id},#{device_2.id}")
+      )
+    end
+
     example 'Assign is unique', document: false do
       device = create(:device)
 
@@ -55,6 +71,8 @@ resource 'Users' do
       expect(
         UserDevice.where(device_id: device.id, user_id: current_user.id).count
       ).to eq 1
+
+      expect(current_user.reload.assigned_devices).to eq "#{device.id}"
     end
 
     example 'Without right device id', document: false do
