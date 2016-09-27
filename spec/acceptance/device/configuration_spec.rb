@@ -9,7 +9,7 @@ resource 'Devices' do
     add_signed_in_user_authentication_headers
   end
 
-  parameter :device_id, 'String::The device id from Particle'
+  parameter :device_id, 'Integer::The device id'
 
   get '/devices/:device_id/configuration' do
     response_field :configuration,
@@ -23,7 +23,7 @@ resource 'Devices' do
         sensor_4_active: false
       }
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       configuration = JSON.parse(response_body)['configuration']
       expect(configuration.class).to be Hash
@@ -37,7 +37,7 @@ resource 'Devices' do
     example 'Get device sensor configuration if not set', document: false do
       device = create :device
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       configuration = JSON.parse(response_body)['configuration']
 
@@ -77,7 +77,7 @@ resource 'Devices' do
         }
 
       do_request(
-        device_id: device.particle_id,
+        device_id: device.id,
         configuration: {
           sensor_1_active: true,
           sensor_2_active: false,
@@ -105,7 +105,7 @@ resource 'Devices' do
         }
 
       do_request(
-        device_id: device.particle_id,
+        device_id: device.id,
         configuration: {
           sensor_1_active: true,
           sensor_3_active: true,

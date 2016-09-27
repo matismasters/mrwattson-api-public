@@ -10,7 +10,7 @@ resource 'Devices' do
   end
 
   get '/devices/:device_id/reading_events/latest' do
-    parameter :device_id, 'String::The device id from Particle'
+    parameter :device_id, 'Integer::The device id'
 
     response_field :sensors_last_reads,
       'Array::Each item has the latest end_read to each sensor, ' \
@@ -50,7 +50,7 @@ resource 'Devices' do
         sensor_id: 4,
         end_read: 400
 
-      do_request(device_id: device_1.particle_id)
+      do_request(device_id: device_1.id)
 
       json_response = JSON.parse(response_body)
 

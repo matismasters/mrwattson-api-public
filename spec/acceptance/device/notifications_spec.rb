@@ -19,7 +19,7 @@ resource 'Devices' do
 
   get '/devices/:device_id/notifications' do
     example 'Get All notifications sorted by most recent' do
-      device = create :device, particle_id: 'particleId123'
+      device = create :device
       notification = create :notification
 
       create_list(
@@ -29,7 +29,7 @@ resource 'Devices' do
         notification_id: notification.id
       )
 
-      do_request(device_id: 'particleId123')
+      do_request(device_id: device.id)
 
       json_response = JSON.parse(response_body)['notifications']
 
@@ -48,7 +48,7 @@ resource 'Devices' do
 
   get '/devices/:device_id/active_opportunities' do
     example 'Get active opportunities sorted by most recent' do
-      device = create :device, particle_id: 'particleId123'
+      device = create :device
       notification_1 = create :notification, type: 'Opportunity'
       notification_2 = create :notification, type: 'Opportunity'
 
@@ -66,7 +66,7 @@ resource 'Devices' do
         notification_id: notification_2.id
       )
 
-      do_request(device_id: 'particleId123')
+      do_request(device_id: device.id)
 
       json_response = JSON.parse(response_body)['notifications']
 

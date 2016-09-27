@@ -1,6 +1,6 @@
 class ReadingEventsController < ApplicationController
   include FindDevice
-  before_action :find_device, only: :create
+  before_action :find_device_by_particle_id, only: :create
 
   def create
     factory = ReadingEventsCreator.new(

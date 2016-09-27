@@ -30,27 +30,27 @@ resource 'Users' do
   end
 
   post '/users/devices' do
-    parameter :device_id, 'String::The device id from Particle'
+    parameter :device_id, 'Integer::The device id'
 
     example 'Assign device to current user' do
       device = create(:device)
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       expect([200, 201]).to include(status)
-      expect(current_user.reload.devices.first.particle_id).to eq device.particle_id
+      expect(current_user.reload.devices.first.id).to eq device.id
     end
 
     example 'Assign is unique', document: false do
       device = create(:device)
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       expect(
         UserDevice.where(device_id: device.id, user_id: current_user.id).count
       ).to eq 1
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       expect(
         UserDevice.where(device_id: device.id, user_id: current_user.id).count
@@ -58,7 +58,7 @@ resource 'Users' do
     end
 
     example 'Without right device id', document: false do
-      do_request(device_id: 'asdf')
+      do_request(device_id: 99999)
 
       expect(status).to eq 404
     end
@@ -72,14 +72,14 @@ resource 'Users' do
       create :user_device, device_id: device.id, user_id: current_user.id
       expect(current_user.reload.devices.size).to eq 1
 
-      do_request(device_id: device.particle_id)
+      do_request(device_id: device.id)
 
       expect(status).to eq 200
       expect(current_user.reload.devices.size).to eq 0
     end
 
     example 'Without right device id', document: false do
-      do_request(device_id: 'asdf')
+      do_request(device_id: 99999)
 
       expect(status).to eq 404
     end
