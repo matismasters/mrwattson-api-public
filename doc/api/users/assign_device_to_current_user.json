@@ -1,0 +1,38 @@
+{
+  "resource": "Users",
+  "http_method": "POST",
+  "route": "/users/devices",
+  "description": "Assign device to current user",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "device_id",
+      "description": "String::The device id from Particle"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/users/devices",
+      "request_body": "{\"device_id\":\"c6c37ba37b\"}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":\"c6c37ba37b\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: gb_StwTU_m9fiaZxUI0_eg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: hCNNF9xwJYcN0gRpeoovXg\" \\\n\t-H \"Expiry: 1476185218\" \\\n\t-H \"Uid: elna.kling@mitchell.net\""
+    }
+  ]
+}

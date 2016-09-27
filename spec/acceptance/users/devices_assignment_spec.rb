@@ -11,8 +11,8 @@ resource 'Users' do
 
   get '/users/devices' do
     response_field :devices, 'Array::List of assigned devices'
-    response_field :"*device_id", 'Integer::Particle id'
-    response_field :"*device_type", 'String::Type of device'
+    response_field :"*id", 'Integer::Particle id'
+    response_field :"*type", 'String::Type of device'
 
     example 'Get all User Devices' do
       user_devices = create_list :user_device, 2, user: current_user

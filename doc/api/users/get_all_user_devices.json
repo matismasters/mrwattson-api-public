@@ -1,0 +1,46 @@
+{
+  "resource": "Users",
+  "http_method": "GET",
+  "route": "/users/devices",
+  "description": "Get all User Devices",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "name": "devices",
+      "description": "Array::List of assigned devices"
+    },
+    {
+      "name": "*id",
+      "description": "Integer::Particle id"
+    },
+    {
+      "name": "*type",
+      "description": "String::Type of device"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/users/devices",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 240,\n    \"particle_id\": \"5e09557b90\",\n    \"created_at\": \"2016-09-27T11:26:58.180Z\",\n    \"updated_at\": \"2016-09-27T11:26:58.180Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_2_active\": true,\n      \"sensor_3_active\": true,\n      \"sensor_4_active\": true\n    }\n  },\n  {\n    \"id\": 241,\n    \"particle_id\": \"d9b81a09a8\",\n    \"created_at\": \"2016-09-27T11:26:58.187Z\",\n    \"updated_at\": \"2016-09-27T11:26:58.187Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_2_active\": true,\n      \"sensor_3_active\": true,\n      \"sensor_4_active\": true\n    }\n  }\n]",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: MQUgI9ZXHXnJs6a7v9QQSA\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: 6WBOJQrjWpjwGhjvnbNx8A\" \\\n\t-H \"Expiry: 1476185218\" \\\n\t-H \"Uid: audreanne@bogisich.name\""
+    }
+  ]
+}

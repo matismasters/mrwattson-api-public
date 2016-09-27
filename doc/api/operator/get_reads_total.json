@@ -1,0 +1,38 @@
+{
+  "resource": "Operator",
+  "http_method": "GET",
+  "route": "/operator/reads_total",
+  "description": "Get reads total",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "name": "reads_total",
+      "description": "Int::Current total consumption of all devices"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/operator/reads_total",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"reads_total\": 150\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/operator/reads_total\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: uzrZG5l0WS9jGOQgKQdMBg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: EO5GGu4bWpyuqpdsHZ_N1g\" \\\n\t-H \"Expiry: 1476185217\" \\\n\t-H \"Uid: toney_jacobson@thiel.io\""
+    }
+  ]
+}

@@ -1,6 +1,25 @@
 {
   "resources": [
     {
+      "name": "Authentication",
+      "examples": [
+        {
+          "description": "Access restricted Area",
+          "link": "authentication/access_restricted_area.json",
+          "groups": "all",
+          "route": "/operator/reads_total",
+          "method": "get"
+        },
+        {
+          "description": "Get token",
+          "link": "authentication/get_token.json",
+          "groups": "all",
+          "route": "/auth/sign_in",
+          "method": "post"
+        }
+      ]
+    },
+    {
       "name": "Devices",
       "examples": [
         {
@@ -41,6 +60,18 @@
       ]
     },
     {
+      "name": "Operator",
+      "examples": [
+        {
+          "description": "Get reads total",
+          "link": "operator/get_reads_total.json",
+          "groups": "all",
+          "route": "/operator/reads_total",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "name": "Reading Events",
       "examples": [
         {
@@ -56,6 +87,39 @@
           "groups": "all",
           "route": "/reading_events",
           "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "examples": [
+        {
+          "description": "Assign device to current user",
+          "link": "users/assign_device_to_current_user.json",
+          "groups": "all",
+          "route": "/users/devices",
+          "method": "post"
+        },
+        {
+          "description": "Get all User Devices",
+          "link": "users/get_all_user_devices.json",
+          "groups": "all",
+          "route": "/users/devices",
+          "method": "get"
+        },
+        {
+          "description": "Sign up with email",
+          "link": "users/sign_up_with_email.json",
+          "groups": "all",
+          "route": "/auth",
+          "method": "post"
+        },
+        {
+          "description": "Unassign device",
+          "link": "users/unassign_device.json",
+          "groups": "all",
+          "route": "/users/devices",
+          "method": "delete"
         }
       ]
     },
