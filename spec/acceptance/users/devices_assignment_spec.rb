@@ -9,6 +9,26 @@ resource 'Users' do
     add_signed_in_user_authentication_headers
   end
 
+  get '/users/devices' do
+    response_field :devices, 'Array::List of assigned devices'
+    response_field :"*device_id", 'Integer::Particle id'
+    response_field :"*device_type", 'String::Type of device'
+
+    example 'Get all User Devices' do
+      user_devices = create_list :user_device, 2, user: current_user
+
+      do_request
+
+      json_response = JSON.parse(response_body)
+      expect(json_response).to be_an(Array)
+      expect(json_response.size).to eq 2
+
+      devices_id = json_response.map { |device| device['id'] }
+      expect(devices_id).to include(user_devices[0].device_id)
+      expect(devices_id).to include(user_devices[1].device_id)
+    end
+  end
+
   post '/users/devices' do
     parameter :device_id, 'String::The device id from Particle'
 

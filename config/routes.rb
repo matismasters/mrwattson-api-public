@@ -51,5 +51,10 @@ Rails.application.routes.draw do
     action: 'unassign_device',
     defaults: { format: :json }
 
+  get 'users/devices',
+    controller: 'users',
+    action: 'index',
+    defaults: { format: :json }
+
   mount Resque::Server.new, at: '/resque'
 end
