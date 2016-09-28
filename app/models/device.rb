@@ -33,9 +33,13 @@ class Device < ActiveRecord::Base
   def basic_configuration
     self.configuration = {
       sensor_1_active: true,
+      sensor_1_label: '',
       sensor_2_active: true,
+      sensor_2_label: '',
       sensor_3_active: true,
-      sensor_4_active: true
+      sensor_3_label: '',
+      sensor_4_active: true,
+      sensor_4_label: true
     }.merge(self.configuration)
   end
 end
