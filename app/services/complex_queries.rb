@@ -1,9 +1,9 @@
 class ComplexQueries
-  def self.yesterday_spending(device_id)
+  def self.yesterday_spendings(device_id)
     daily_spending(device_id, 1)
   end
 
-  def self.yesterday_from_last_week(device_id)
+  def self.yesterday_from_last_week_spendings(device_id)
     daily_spending(device_id, 8)
   end
 
@@ -28,7 +28,7 @@ class ComplexQueries
     ).results
   end
 
-  def self.latest_3_hours_spending(device_id)
+  def self.latest_3_hours_spendings(device_id)
     CustomQuery.new(
       'SELECT ' \
       '  round( ' \

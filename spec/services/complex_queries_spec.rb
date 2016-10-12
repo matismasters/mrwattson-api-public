@@ -5,7 +5,7 @@ describe 'Complex Queries service', type: :unit do
     Timecop.return
   end
 
-  describe 'yesterday_spending' do
+  describe 'yesterday_spendings' do
     it 'should return $120 for a day with 24 kw/h' do
       device = create :device
       now = Time.now
@@ -26,9 +26,9 @@ describe 'Complex Queries service', type: :unit do
         sensor_id: 1,
         seconds_until_next_read: 86400
 
-      Timecop.freeze(Time.now)
+      Timecop.freeze(now)
 
-      result = ComplexQueries.yesterday_spending(device.id).first
+      result = ComplexQueries.yesterday_spendings(device.id).first
 
       expect(result['daily_spending']).to eq "120"
     end
@@ -73,7 +73,7 @@ describe 'Complex Queries service', type: :unit do
 
       Timecop.freeze(now) # Because we are using NOW() from DATABASE
 
-      result = ComplexQueries.latest_3_hours_spending(device.id)
+      result = ComplexQueries.latest_3_hours_spendings(device.id)
 
       expect(result[0]['hourly_spending']).to eq '5'
       expect(result[1]['hourly_spending']).to eq '5'

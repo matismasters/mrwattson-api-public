@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     action: 'latest',
     defaults: { format: :json }
 
+  get 'devices/:device_id/latest_spendings',
+    controller: 'devices',
+    action: 'latest_spendings',
+    defaults: { format: :json }
+
   get 'devices/:device_id/notifications',
     controller: 'devices',
     action: 'notifications',
