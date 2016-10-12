@@ -30,7 +30,7 @@ describe 'Complex Queries service', type: :unit do
 
       result = ComplexQueries.yesterday_spendings(device.id).first
 
-      expect(result['daily_spending']).to eq "120"
+      expect(result['daily_spendings']).to eq "120"
     end
   end
 
@@ -75,9 +75,9 @@ describe 'Complex Queries service', type: :unit do
 
       result = ComplexQueries.latest_3_hours_spendings(device.id)
 
-      expect(result[0]['hourly_spending']).to eq '5'
-      expect(result[1]['hourly_spending']).to eq '5'
-      expect(result[2]['hourly_spending']).to eq '5'
+      expect(result[0]['hourly_spendings']).to eq '5'
+      expect(result[1]['hourly_spendings']).to eq '5'
+      expect(result[2]['hourly_spendings']).to eq '5'
     end
   end
 end

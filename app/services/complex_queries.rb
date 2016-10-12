@@ -19,7 +19,7 @@ class ComplexQueries
       '        ) * 24 ' \
       '     ) / 1000 ' \
       '    ) * 5 ' \
-      '  ) as daily_spending ' \
+      '  ) as daily_spendings ' \
       'FROM reading_events ' \
       'WHERE ' \
       "  date_trunc('day', reading_events.created_at) = date_trunc('day', now()::DATE - #{days_before}) AND " \
@@ -38,7 +38,7 @@ class ComplexQueries
       '        (SUM(seconds_until_next_read)::FLOAT + 1) ' \
       '     ) / 1000 ' \
       '    ) * 5 ' \
-      '  ) as hourly_spending ' \
+      '  ) as hourly_spendings ' \
       'FROM reading_events ' \
       'WHERE ' \
       '  sensor_id = 1 AND ' \
