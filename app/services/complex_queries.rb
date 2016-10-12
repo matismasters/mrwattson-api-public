@@ -1,5 +1,13 @@
 class ComplexQueries
   def self.yesterday_spending(device_id)
+    daily_spending(device_id, 1)
+  end
+
+  def self.yesterday_from_last_week(device_id)
+    daily_spending(device_id, 8)
+  end
+
+  def self.daily_spending(device_id, days_before)
     CustomQuery.new(
       'SELECT ' \
       '  round( ' \
@@ -11,10 +19,10 @@ class ComplexQueries
       '        ) * 24 ' \
       '     ) / 1000 ' \
       '    ) * 5 ' \
-      '  ) as yesterday_spending ' \
+      '  ) as daily_spending ' \
       'FROM reading_events ' \
       'WHERE ' \
-      "  date_trunc('day', reading_events.created_at) = date_trunc('day', now()::DATE - 1) AND " \
+      "  date_trunc('day', reading_events.created_at) = date_trunc('day', now()::DATE - #{days_before}) AND " \
       '  sensor_id = 1 AND ' \
       "  device_id = #{device_id} "
     ).results
