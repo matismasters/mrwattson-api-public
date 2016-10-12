@@ -7,7 +7,7 @@
   "parameters": [
     {
       "name": "device_id",
-      "description": "String::The device id from Particle"
+      "description": "Integer::The device id"
     }
   ],
   "response_fields": [
@@ -19,7 +19,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/ca3e299963/configuration",
+      "request_path": "/devices/2166/configuration",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -30,12 +30,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"configuration\": {\n    \"sensor_1_active\": true,\n    \"sensor_2_active\": true,\n    \"sensor_3_active\": false,\n    \"sensor_4_active\": false\n  }\n}",
+      "response_body": "{\n  \"configuration\": {\n    \"sensor_1_active\": true,\n    \"sensor_1_label\": \"\",\n    \"sensor_2_active\": true,\n    \"sensor_2_label\": \"\",\n    \"sensor_3_active\": false,\n    \"sensor_3_label\": \"\",\n    \"sensor_4_active\": false,\n    \"sensor_4_label\": true\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/ca3e299963/configuration\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: d-s59evNQeAWjBp8nFYbQw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: i4PGPLYCIEb2XDQLQzaSqA\" \\\n\t-H \"Expiry: 1476185216\" \\\n\t-H \"Uid: dolly@koch.com\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2166/configuration\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: ZHRqqToY0TlmDQfWeFLNJg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: TZF0GFjgG1LdzTjSb-i1Hg\" \\\n\t-H \"Expiry: 1477487809\" \\\n\t-H \"Uid: warren@beckerkeebler.info\""
     }
   ]
 }

@@ -17,7 +17,7 @@
     {
       "request_method": "DELETE",
       "request_path": "/users/devices",
-      "request_body": "{\"device_id\":\"8d86b9d50d\"}",
+      "request_body": "{\"device_id\":2189}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":\"8d86b9d50d\"}' -X DELETE \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: iXld73_KOaq4P4tz_6jd6A\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: hVE7D4Td_qAW1UivJP8wbg\" \\\n\t-H \"Expiry: 1476185218\" \\\n\t-H \"Uid: ophelia_leffler@bergnaum.name\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":2189}' -X DELETE \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: eOJyK8MkRLwAhiqz8AFonw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: T9LnaCRsEko_30rdNRmVjA\" \\\n\t-H \"Expiry: 1477487812\" \\\n\t-H \"Uid: chanel@durgan.biz\""
     }
   ]
 }

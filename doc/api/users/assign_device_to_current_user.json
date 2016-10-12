@@ -7,7 +7,7 @@
   "parameters": [
     {
       "name": "device_id",
-      "description": "String::The device id from Particle"
+      "description": "Integer::The device id"
     }
   ],
   "response_fields": [
@@ -17,7 +17,7 @@
     {
       "request_method": "POST",
       "request_path": "/users/devices",
-      "request_body": "{\"device_id\":\"c6c37ba37b\"}",
+      "request_body": "{\"device_id\":2185}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":\"c6c37ba37b\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: gb_StwTU_m9fiaZxUI0_eg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: hCNNF9xwJYcN0gRpeoovXg\" \\\n\t-H \"Expiry: 1476185218\" \\\n\t-H \"Uid: elna.kling@mitchell.net\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":2185}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: Q-29nGHgeGM6gDhxYkHl3Q\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: TG2zlM5WSwnp6xvoGtqPvQ\" \\\n\t-H \"Expiry: 1477487811\" \\\n\t-H \"Uid: lucius_mertz@hoeger.info\""
     }
   ]
 }

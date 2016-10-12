@@ -7,7 +7,7 @@
   "parameters": [
     {
       "name": "device_id",
-      "description": "String::The device id from Particle"
+      "description": "Integer::The device id"
     }
   ],
   "response_fields": [
@@ -19,7 +19,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/e190b3e83c/reading_events/latest",
+      "request_path": "/devices/2170/reading_events/latest",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/e190b3e83c/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: zGT_CU6ImDGt0sr2-GLapA\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: D8fT_sxb08avZAeoRd4PPw\" \\\n\t-H \"Expiry: 1476185217\" \\\n\t-H \"Uid: ralph@cronabayer.info\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2170/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: R5lPUQTKeAcBYHW7x5K9jA\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: QKbxuvLDNYzkd0Nvh1fXlQ\" \\\n\t-H \"Expiry: 1477487810\" \\\n\t-H \"Uid: jerel@bogisich.co\""
     }
   ]
 }

@@ -20,6 +20,18 @@
       ]
     },
     {
+      "name": "Device",
+      "examples": [
+        {
+          "description": "Get latest spendings for device",
+          "link": "device/get_latest_spendings_for_device.json",
+          "groups": "all",
+          "route": "/devices/:device_id/latest_spendings",
+          "method": "get"
+        }
+      ]
+    },
+    {
       "name": "Devices",
       "examples": [
         {

@@ -29,7 +29,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/operator/reads_total\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: T6HoeuBmbu_ReoQzE_6o2g\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: vhKYdDwX78a8x6nLmkUA-Q\" \\\n\t-H \"Expiry: 1476185216\" \\\n\t-H \"Uid: shyann_towne@deckow.com\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/operator/reads_total\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: 0LNAT0JJkacIB2FfPP032A\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: 4xAneXg1WhtrPOvjIhqO-Q\" \\\n\t-H \"Expiry: 1477487809\" \\\n\t-H \"Uid: abagail.nader@legros.org\""
     }
   ]
 }

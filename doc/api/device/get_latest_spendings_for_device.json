@@ -1,0 +1,53 @@
+{
+  "resource": "Device",
+  "http_method": "GET",
+  "route": "/devices/:device_id/latest_spendings",
+  "description": "Get latest spendings for device",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "device_id",
+      "description": "Integer::The device id"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "latest_spendings",
+      "description": "Hash::with latest spending calculations "
+    },
+    {
+      "name": "*yesterday_from_last_week",
+      "description": "Float::Calculation in pesos of 8 days before today"
+    },
+    {
+      "name": "*yesterday",
+      "description": "Float::Calculation in pesos of 1 day before today"
+    },
+    {
+      "name": "*latest_hours",
+      "description": "Array::Each item contains the spending the current hour minus the array index + 1. Example: hourly_spendings[0] => spendings from 1 hour ago"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/devices/2172/latest_spendings",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"latest_spendings\": {\n    \"yesterday_from_last_week\": 120.0,\n    \"yesterday\": 120.0,\n    \"latest_hours\": [\n      5.0,\n      5.0,\n      5.0\n    ]\n  }\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2172/latest_spendings\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: 05jHBBYDnPmrhMTX_tvE1A\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: SKrqc2c5Hnv6b_HrZHSInQ\" \\\n\t-H \"Expiry: 1477487810\" \\\n\t-H \"Uid: lyda_howell@corwin.co\""
+    }
+  ]
+}

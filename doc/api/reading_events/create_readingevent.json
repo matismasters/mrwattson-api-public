@@ -35,7 +35,7 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"3532729122\",\"data\":\"d-2|123|321\"}",
+      "request_body": "{\"device_id\":\"8782898404\",\"data\":\"d-2|123|321\"}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -45,12 +45,12 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "[\n  {\n    \"id\": 244,\n    \"device_id\": 235,\n    \"sensor_id\": 2,\n    \"start_read\": 123,\n    \"end_read\": 321,\n    \"read_difference\": 198,\n    \"created_at\": \"2016-09-27T11:26:57.871Z\",\n    \"updated_at\": \"2016-09-27T11:26:57.871Z\",\n    \"seconds_until_next_read\": 0\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 4194,\n    \"device_id\": 2178,\n    \"sensor_id\": 2,\n    \"start_read\": 123,\n    \"end_read\": 321,\n    \"read_difference\": 198,\n    \"created_at\": \"2016-10-12T13:16:51.504Z\",\n    \"updated_at\": \"2016-10-12T13:16:51.504Z\",\n    \"seconds_until_next_read\": 0\n  }\n]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"3532729122\",\"data\":\"d-2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"8782898404\",\"data\":\"d-2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }
