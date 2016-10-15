@@ -30,12 +30,24 @@ class ReadingEventsController < ApplicationController
       .where('created_at >= ? AND created_at <= ?', start_date, end_date)
       .where('sensor_id = ?', report_permitted_params[:sensor_id])
 
+    total_seconds = 0
+    total_w = 0
+
     csv_string = CSV.generate do |csv|
       csv << reading_events.attribute_names
-      reading_events.all.each do |user|
-        csv << user.attributes.values
+      reading_events.all.each do |reading_event|
+        total_seconds += reading_event.seconds_until_next_read
+        total_w += (
+          reading_event.seconds_until_next_read *
+          reading_event.end_read
+        )
+        csv << reading_event.attributes.values
       end
+      total_kwh = (total_w / total_seconds) * (total_seconds/3600)
+      csv << ["Total seconds, #{total_seconds}, kW/h ,(#{total_kwh})"]
     end
+
+
 
     render text: csv_string, status: 200
   end
