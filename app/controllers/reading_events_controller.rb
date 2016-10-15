@@ -20,11 +20,11 @@ class ReadingEventsController < ApplicationController
   def report
     start_date = DateTime.new(*(
       report_permitted_params[:start_date].split('-').map(&:to_i) + [0]
-    )) + 3.hours
+    ))
 
     end_date = DateTime.new(*(
       report_permitted_params[:end_date].split('-').map(&:to_i) + [0]
-    )) + 3.hours
+    ))
 
     reading_events = @device.reading_events
       .where('created_at >= ? AND created_at <= ?', start_date, end_date)

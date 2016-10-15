@@ -38,8 +38,8 @@ resource 'Reading Events' do
         end_read: 0,
         sensor_id: 1
 
-      start_date = (now - 4.hours).strftime('%Y-%m-%d-%H-%M')
-      end_date = (now - 1.hours).strftime('%Y-%m-%d-%H-%M')
+      start_date = ((now - 4.hours).utc).strftime('%Y-%m-%d-%H-%M')
+      end_date = ((now - 1.hours).utc).strftime('%Y-%m-%d-%H-%M')
 
       Timecop.freeze(now)
 
