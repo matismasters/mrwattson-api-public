@@ -14,7 +14,7 @@
     {
       "request_method": "POST",
       "request_path": "/auth/sign_in",
-      "request_body": "{\"email\":\"darren.shields@gutkowski.co\",\"password\":\"asdfasdf\"}",
+      "request_body": "{\"email\":\"israel.hegmann@haleyoconnell.info\",\"password\":\"asdfasdf\"}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -24,12 +24,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"data\": {\n    \"id\": 806,\n    \"provider\": \"email\",\n    \"uid\": \"darren.shields@gutkowski.co\",\n    \"name\": null,\n    \"nickname\": null,\n    \"image\": null,\n    \"email\": \"darren.shields@gutkowski.co\",\n    \"assigned_devices\": null\n  }\n}",
+      "response_body": "{\n  \"data\": {\n    \"id\": 1076,\n    \"provider\": \"email\",\n    \"uid\": \"israel.hegmann@haleyoconnell.info\",\n    \"name\": null,\n    \"nickname\": null,\n    \"image\": null,\n    \"email\": \"israel.hegmann@haleyoconnell.info\",\n    \"assigned_devices\": null\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/auth/sign_in\" -d '{\"email\":\"darren.shields@gutkowski.co\",\"password\":\"asdfasdf\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/auth/sign_in\" -d '{\"email\":\"israel.hegmann@haleyoconnell.info\",\"password\":\"asdfasdf\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

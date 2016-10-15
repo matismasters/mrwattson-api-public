@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/operator/reads_total\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: Y9zYHZXk6GEAfBXhikqmJQ\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: RXmwbFh2Gu5m6xtCnvJX5Q\" \\\n\t-H \"Expiry: 1477487811\" \\\n\t-H \"Uid: frieda_kub@bruen.info\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/operator/reads_total\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: oPiByE7fm9pALLH9qTfl0w\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: zx7y5-TpL0XQKBoezLA6DA\" \\\n\t-H \"Expiry: 1477754682\" \\\n\t-H \"Uid: alexzander.ruecker@gerlach.net\""
     }
   ]
 }

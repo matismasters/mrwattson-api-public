@@ -35,12 +35,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n  {\n    \"id\": 2183,\n    \"particle_id\": \"b56882b47b\",\n    \"created_at\": \"2016-10-12T13:16:51.811Z\",\n    \"updated_at\": \"2016-10-12T13:16:51.811Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_1_label\": \"\",\n      \"sensor_2_active\": true,\n      \"sensor_2_label\": \"\",\n      \"sensor_3_active\": true,\n      \"sensor_3_label\": \"\",\n      \"sensor_4_active\": true,\n      \"sensor_4_label\": true\n    }\n  },\n  {\n    \"id\": 2184,\n    \"particle_id\": \"515b8b3c0d\",\n    \"created_at\": \"2016-10-12T13:16:51.828Z\",\n    \"updated_at\": \"2016-10-12T13:16:51.828Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_1_label\": \"\",\n      \"sensor_2_active\": true,\n      \"sensor_2_label\": \"\",\n      \"sensor_3_active\": true,\n      \"sensor_3_label\": \"\",\n      \"sensor_4_active\": true,\n      \"sensor_4_label\": true\n    }\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 2940,\n    \"particle_id\": \"b55b1c4ce2\",\n    \"created_at\": \"2016-10-15T15:24:42.515Z\",\n    \"updated_at\": \"2016-10-15T15:24:42.515Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_1_label\": \"\",\n      \"sensor_2_active\": true,\n      \"sensor_2_label\": \"\",\n      \"sensor_3_active\": true,\n      \"sensor_3_label\": \"\",\n      \"sensor_4_active\": true,\n      \"sensor_4_label\": true\n    }\n  },\n  {\n    \"id\": 2941,\n    \"particle_id\": \"9210ab20b0\",\n    \"created_at\": \"2016-10-15T15:24:42.533Z\",\n    \"updated_at\": \"2016-10-15T15:24:42.533Z\",\n    \"configuration\": {\n      \"sensor_1_active\": true,\n      \"sensor_1_label\": \"\",\n      \"sensor_2_active\": true,\n      \"sensor_2_label\": \"\",\n      \"sensor_3_active\": true,\n      \"sensor_3_label\": \"\",\n      \"sensor_4_active\": true,\n      \"sensor_4_label\": true\n    }\n  }\n]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: eIuthit1QgWhaVOkBLSUOw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: vEnKQ1sFLHq7ZifmPmB4xw\" \\\n\t-H \"Expiry: 1477487811\" \\\n\t-H \"Uid: cloyd.balistreri@stroman.co\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: 9z_9wXprWmpxAUh1YNpF_g\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: TlntGHuzPob_kxJwQQuOZw\" \\\n\t-H \"Expiry: 1477754682\" \\\n\t-H \"Uid: mohammed_bechtelar@braun.org\""
     }
   ]
 }

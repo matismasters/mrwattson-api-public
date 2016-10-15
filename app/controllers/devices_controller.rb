@@ -32,7 +32,7 @@ class DevicesController < SecuredApplicationController
     one_day_ago_spendings =
       ComplexQueries.yesterday_spendings @device.id
     latest_hours_spendings =
-      ComplexQueries.latest_3_hours_spendings @device.id
+      ComplexQueries.latest_6_hours_spendings @device.id
 
     render(
       json: {
@@ -41,8 +41,8 @@ class DevicesController < SecuredApplicationController
             eight_days_ago_spendings.first['daily_spendings'].to_f,
           yesterday:
             one_day_ago_spendings.first['daily_spendings'].to_f,
-          latest_hours:
-            latest_hours_spendings.map { |row| row['hourly_spendings'].to_f }
+          latest_6_hours:
+            latest_hours_spendings.first['hourly_spendings'].to_f
         }
       },
       status: 200

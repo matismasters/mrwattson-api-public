@@ -17,10 +17,8 @@ resource 'Device' do
       'Float::Calculation in pesos of 8 days before today'
     response_field :'*yesterday',
       'Float::Calculation in pesos of 1 day before today'
-    response_field :'*latest_hours',
-      'Array::Each item contains the spending the current hour minus the ' \
-      'array index + 1. Example: hourly_spendings[0] => spendings from ' \
-      '1 hour ago'
+    response_field :'*latest_6_hours',
+      'Float::Calculation in pesos of the latest 6 hours' \
 
     after do
       Timecop.return
@@ -31,23 +29,36 @@ resource 'Device' do
       now = Time.now
 
       # Creating event for 8 days back
-      current_day = now - 8.days
-      Timecop.freeze(current_day)
+      Timecop.freeze(now - 8.days)
       create :reading_event,
         device_id: device.id,
         start_read: 0,
         end_read: 1000,
-        sensor_id: 1,
-        seconds_until_next_read: 86400
+        sensor_id: 1
+
+      # Creating event for 7 days back (will not be tracked)
+      Timecop.freeze(now - 7.days)
+      create :reading_event,
+        device_id: device.id,
+        start_read: 0,
+        end_read: 1000,
+        sensor_id: 1
 
       # Creating event for yesterday
-      Timecop.freeze(now - 1.day)
+      Timecop.freeze((now - 1.day).beginning_of_day)
       create :reading_event,
         device_id: device.id,
         start_read: 0,
         end_read: 1000,
-        sensor_id: 1,
-        seconds_until_next_read: 86400
+        sensor_id: 1
+
+      # Creating event for yesterday
+      Timecop.freeze(now.beginning_of_day)
+      create :reading_event,
+        device_id: device.id,
+        start_read: 1000,
+        end_read: 0,
+        sensor_id: 1
 
       # Creating events for latest hours
       Timecop.freeze(now - 3.hours)
@@ -83,10 +94,7 @@ resource 'Device' do
       expect(json_response['latest_spendings']).to be_a(Hash)
       expect(json_response['latest_spendings']['yesterday_from_last_week']).to eq 120
       expect(json_response['latest_spendings']['yesterday']).to eq 120
-      expect(json_response['latest_spendings']['latest_hours']).to be_a(Array)
-      expect(json_response['latest_spendings']['latest_hours'][0]).to eq 5
-      expect(json_response['latest_spendings']['latest_hours'][1]).to eq 5
-      expect(json_response['latest_spendings']['latest_hours'][2]).to eq 5
+      expect(json_response['latest_spendings']['latest_6_hours']).to eq 15
     end
 
   end

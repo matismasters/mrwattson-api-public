@@ -19,7 +19,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/2166/configuration",
+      "request_path": "/devices/2923/configuration",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2166/configuration\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: ZHRqqToY0TlmDQfWeFLNJg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: TZF0GFjgG1LdzTjSb-i1Hg\" \\\n\t-H \"Expiry: 1477487809\" \\\n\t-H \"Uid: warren@beckerkeebler.info\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2923/configuration\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: Vc6pXxp9ZjmjnTH91PrIrw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: j2AkuwNGOU4IbCHdow6t0g\" \\\n\t-H \"Expiry: 1477754680\" \\\n\t-H \"Uid: elliot@swift.info\""
     }
   ]
 }

@@ -34,12 +34,36 @@ describe 'Complex Queries service', type: :unit do
     end
   end
 
-  describe 'latest_3_hours_spending' do
-    it 'should return $5 for each hour on 1 kw/h spent' do
+  describe 'latest_6_hours_spending' do
+    it 'should return $30 for each hour on 1 kw/h spent' do
       device = create :device
       now = Time.now
 
-      Timecop.freeze(now - 4.hours) # should not count
+      Timecop.freeze(now - 7.hours) # should not count
+      create :reading_event,
+        device_id: device.id,
+        start_read: 0,
+        end_read: 1000,
+        sensor_id: 1,
+        seconds_until_next_read: 3600
+
+      Timecop.freeze(now - 6.hours)
+      create :reading_event,
+        device_id: device.id,
+        start_read: 0,
+        end_read: 1000,
+        sensor_id: 1,
+        seconds_until_next_read: 3600
+
+      Timecop.freeze(now - 5.hours)
+      create :reading_event,
+        device_id: device.id,
+        start_read: 0,
+        end_read: 1000,
+        sensor_id: 1,
+        seconds_until_next_read: 3600
+
+      Timecop.freeze(now - 4.hours)
       create :reading_event,
         device_id: device.id,
         start_read: 0,
@@ -71,13 +95,11 @@ describe 'Complex Queries service', type: :unit do
         sensor_id: 1,
         seconds_until_next_read: 3600
 
-      Timecop.freeze(now) # Because we are using NOW() from DATABASE
+      Timecop.freeze(now)
 
-      result = ComplexQueries.latest_3_hours_spendings(device.id)
+      result = ComplexQueries.latest_6_hours_spendings(device.id)
 
-      expect(result[0]['hourly_spendings']).to eq '5'
-      expect(result[1]['hourly_spendings']).to eq '5'
-      expect(result[2]['hourly_spendings']).to eq '5'
+      expect(result[0]['hourly_spendings']).to eq '30'
     end
   end
 end

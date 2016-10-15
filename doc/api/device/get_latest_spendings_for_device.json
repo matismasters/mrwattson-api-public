@@ -24,14 +24,14 @@
       "description": "Float::Calculation in pesos of 1 day before today"
     },
     {
-      "name": "*latest_hours",
-      "description": "Array::Each item contains the spending the current hour minus the array index + 1. Example: hourly_spendings[0] => spendings from 1 hour ago"
+      "name": "*latest_6_hours",
+      "description": "Float::Calculation in pesos of the latest 6 hours"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/2172/latest_spendings",
+      "request_path": "/devices/2929/latest_spendings",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -42,12 +42,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"latest_spendings\": {\n    \"yesterday_from_last_week\": 120.0,\n    \"yesterday\": 120.0,\n    \"latest_hours\": [\n      5.0,\n      5.0,\n      5.0\n    ]\n  }\n}",
+      "response_body": "{\n  \"latest_spendings\": {\n    \"yesterday_from_last_week\": 120.0,\n    \"yesterday\": 120.0,\n    \"latest_6_hours\": 15.0\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2172/latest_spendings\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: 05jHBBYDnPmrhMTX_tvE1A\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: SKrqc2c5Hnv6b_HrZHSInQ\" \\\n\t-H \"Expiry: 1477487810\" \\\n\t-H \"Uid: lyda_howell@corwin.co\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2929/latest_spendings\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: cQ4RfqYyksIB1zU7peH97Q\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: QRt00ErNXTFTeGVIzNDOWA\" \\\n\t-H \"Expiry: 1477754681\" \\\n\t-H \"Uid: francis_deckow@kochwunsch.net\""
     }
   ]
 }
