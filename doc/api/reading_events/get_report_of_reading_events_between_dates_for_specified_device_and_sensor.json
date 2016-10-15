@@ -1,0 +1,61 @@
+{
+  "resource": "Reading Events",
+  "http_method": "GET",
+  "route": "/reading_events/:device_id/report/:sensor_id/:start_date/:end_date",
+  "description": "Get report of Reading Events between dates for specified device and sensor",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "device_id",
+      "description": "String::Particle deviceId"
+    },
+    {
+      "required": true,
+      "name": "sensor_id",
+      "description": "Integer::1-4, sensor id"
+    },
+    {
+      "required": true,
+      "name": "start_date",
+      "description": "String::YYYY-MM-DD-HH-mm"
+    },
+    {
+      "required": true,
+      "name": "end_date",
+      "description": "String::YYYY-MM-DD-HH-mm"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "csv",
+      "description": "CSV::The response will be a CSV with all fields of the corresponding Reading Events"
+    },
+    {
+      "name": "*first_row",
+      "description": "Will contain the spending calculation in pesos"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/reading_events/6047b79542/report/1/2016-10-15-11-56/2016-10-15-14-56",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "id,device_id,sensor_id,start_read,end_read,read_difference,created_at,updated_at,seconds_until_next_read\n6265,3193,1,0,1000,1000,2016-10-15 15:56:34 UTC,2016-10-15 16:56:34 UTC,3600\n6266,3193,1,1000,0,-1000,2016-10-15 16:56:34 UTC,2016-10-15 16:56:34 UTC,0\n",
+      "response_headers": {
+        "Content-Type": "text/csv; charset=utf-8"
+      },
+      "response_content_type": "text/csv; charset=utf-8",
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events/6047b79542/report/1/2016-10-15-11-56/2016-10-15-14-56\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+    }
+  ]
+}

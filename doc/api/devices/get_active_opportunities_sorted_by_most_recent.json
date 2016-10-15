@@ -40,7 +40,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/2931/active_opportunities",
+      "request_path": "/devices/3184/active_opportunities",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -51,12 +51,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"notifications\": [\n    {\n      \"id\": 1112,\n      \"device_id\": 2931,\n      \"notification_id\": 1259,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T15:24:41.892Z\",\n      \"updated_at\": \"2016-10-15T15:24:41.892Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1117,\n      \"device_id\": 2931,\n      \"notification_id\": 1260,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T15:24:41.914Z\",\n      \"updated_at\": \"2016-10-15T15:24:41.914Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"notifications\": [\n    {\n      \"id\": 1208,\n      \"device_id\": 3184,\n      \"notification_id\": 1343,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.678Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.678Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1213,\n      \"device_id\": 3184,\n      \"notification_id\": 1344,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.699Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.699Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    }\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2931/active_opportunities\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: 1i-kLrjnoypea7AnESGJ3w\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: BldSX3fpKcft1yy15buVcw\" \\\n\t-H \"Expiry: 1477754681\" \\\n\t-H \"Uid: bernita@marvin.name\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3184/active_opportunities\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: jxnNbpPqNDJUoyg7gzAT9g\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: sWQ5OvWmPzWB5UApGmpkLg\" \\\n\t-H \"Expiry: 1477767393\" \\\n\t-H \"Uid: destiney@crist.com\""
     }
   ]
 }

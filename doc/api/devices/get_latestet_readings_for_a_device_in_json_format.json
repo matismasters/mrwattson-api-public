@@ -19,7 +19,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/2927/reading_events/latest",
+      "request_path": "/devices/3180/reading_events/latest",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2927/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: skNmzVXjwHkbU1XXOeTnqA\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: _oP_-MzPEVdbXMfl3fauQA\" \\\n\t-H \"Expiry: 1477754681\" \\\n\t-H \"Uid: damon@wunsch.info\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3180/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: AJxvWXw2_ZqPBXvRm4WD6w\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: 0bVdum3hHkMcUcdWvJaSKQ\" \\\n\t-H \"Expiry: 1477767393\" \\\n\t-H \"Uid: bettie@kihn.biz\""
     }
   ]
 }

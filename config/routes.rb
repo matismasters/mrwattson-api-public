@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     action: 'create',
     defaults: { format: :json }
 
+  get '/reading_events/:device_id/report/:sensor_id/:start_date/:end_date',
+    controller: 'reading_events',
+    action: 'report',
+    defaults: { format: :csv }
+
   get 'devices/:device_id/reading_events/latest',
     controller: 'devices',
     action: 'latest',

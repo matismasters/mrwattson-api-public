@@ -36,7 +36,7 @@
   "requests": [
     {
       "request_method": "PUT",
-      "request_path": "/devices/2925/configuration",
+      "request_path": "/devices/3178/configuration",
       "request_body": "{\"configuration\":{\"sensor_1_active\":true,\"sensor_2_active\":false,\"sensor_3_active\":true,\"sensor_4_active\":false}}",
       "request_headers": {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/2925/configuration\" -d '{\"configuration\":{\"sensor_1_active\":true,\"sensor_2_active\":false,\"sensor_3_active\":true,\"sensor_4_active\":false}}' -X PUT \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: qxX-loc7zUQGEvXFJPuiew\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: bmnqDQ4nsVOwR9Y9H1l_EQ\" \\\n\t-H \"Expiry: 1477754680\" \\\n\t-H \"Uid: savannah_mayer@koch.io\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3178/configuration\" -d '{\"configuration\":{\"sensor_1_active\":true,\"sensor_2_active\":false,\"sensor_3_active\":true,\"sensor_4_active\":false}}' -X PUT \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: s1s7T-FFhbHZOc1FC-JOSg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: OtwPKXJOReJKoC46WHJRkg\" \\\n\t-H \"Expiry: 1477767392\" \\\n\t-H \"Uid: laron@blick.com\""
     }
   ]
 }

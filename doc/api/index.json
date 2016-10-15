@@ -99,6 +99,13 @@
           "groups": "all",
           "route": "/reading_events",
           "method": "post"
+        },
+        {
+          "description": "Get report of Reading Events between dates for specified device and sensor",
+          "link": "reading_events/get_report_of_reading_events_between_dates_for_specified_device_and_sensor.json",
+          "groups": "all",
+          "route": "/reading_events/:device_id/report/:sensor_id/:start_date/:end_date",
+          "method": "get"
         }
       ]
     },
