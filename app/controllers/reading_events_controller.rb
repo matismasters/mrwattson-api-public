@@ -43,7 +43,7 @@ class ReadingEventsController < ApplicationController
         )
         csv << reading_event.attributes.values
       end
-      total_kwh = ((total_w / total_seconds) * (total_seconds/3600)) / 1000
+      total_kwh = ((total_w / total_seconds) * (total_seconds/3600))
       csv << ["Total seconds, #{total_seconds}, kW/h , #{total_kwh}"]
     end
 
