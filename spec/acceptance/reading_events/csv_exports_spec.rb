@@ -52,7 +52,8 @@ resource 'Reading Events' do
 
       csv_parse = CSV.parse(response_body)
 
-      expect(csv_parse.size).to eq 3
+      expect(csv_parse.size).to eq 4
+      expect(csv_parse.last[0]).to eq 'Total seconds, 3600, kW/h , 1'
     end
   end
 end
