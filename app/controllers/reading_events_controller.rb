@@ -38,13 +38,12 @@ class ReadingEventsController < ApplicationController
       reading_events.all.each do |reading_event|
         total_seconds += reading_event.seconds_until_next_read
         total_w += (
-          reading_event.seconds_until_next_read *
-          reading_event.end_read
+          reading_event.seconds_until_next_read * reading_event.end_read
         )
         csv << reading_event.attributes.values
       end
-      total_kwh = ((total_w / total_seconds) * (total_seconds/3600))
-      csv << ["Total seconds, #{total_seconds}, kW/h , #{total_kwh}"]
+      total_wh = ((total_w.to_f / total_seconds) * (total_seconds.to_f / 3600))
+      csv << ["Total seconds, #{total_seconds}, w/h , #{total_wh}"]
     end
 
 
