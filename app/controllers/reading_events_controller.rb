@@ -4,6 +4,7 @@ class ReadingEventsController < ApplicationController
   before_action :find_device_by_particle_id, only: [:create, :report]
 
   def create
+    puts params
     factory = ReadingEventsCreator.new(
       @device,
       permitted_params.require(:data)
