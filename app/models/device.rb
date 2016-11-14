@@ -6,20 +6,6 @@ class Device < ActiveRecord::Base
 
   before_create :basic_configuration
 
-  def sensors_last_reads
-    {
-      sensors_last_reads: (0..4).map do |index|
-        read = reading_events
-          .where('sensor_id = ?', index)
-          .order('created_at desc')
-          .limit(1)
-          .first
-
-        read ? read.to_watts : 0
-      end
-    }
-  end
-
   def sensor_disabled?(sensor_id)
     configuration[:"sensor_#{sensor_id}_active"] == false
   end
@@ -33,7 +19,21 @@ class Device < ActiveRecord::Base
     ReadingEvent.find(reading_event_id) unless reading_event_id.blank?
   end
 
+  def last_reading_events_reads
+    [0] + last_reading_events.map(&:to_watts)
+  end
+
   private
+
+  def last_reading_events_ids
+    (1..4).map do |sensor_id|
+      send(:"last_reading_event_for_sensor_#{sensor_id}")
+    end.compact
+  end
+
+  def last_reading_events
+    ReadingEvent.where(id: last_reading_events_ids).order(:sensor_id)
+  end
 
   def basic_configuration
     self.configuration = {

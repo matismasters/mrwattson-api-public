@@ -23,7 +23,12 @@ class DevicesController < SecuredApplicationController
   end
 
   def latest
-    render json: @device.sensors_last_reads, status: 200
+    render(
+      json: {
+        sensors_last_reads: @device.last_reading_events_reads,
+        status: 200
+      }
+    )
   end
 
   def latest_spendings
