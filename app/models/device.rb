@@ -28,6 +28,11 @@ class Device < ActiveRecord::Base
     LatestDeviceNotification.active_opportunities_for_device(id)
   end
 
+  def last_reading_event_for_sensor(sensor_id)
+    reading_event_id = send(:"last_reading_event_for_sensor_#{sensor_id}")
+    ReadingEvent.find(reading_event_id) unless reading_event_id.blank?
+  end
+
   private
 
   def basic_configuration

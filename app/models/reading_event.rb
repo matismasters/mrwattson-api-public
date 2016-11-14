@@ -4,7 +4,7 @@ class ReadingEvent < ActiveRecord::Base
 
   belongs_to :device
   before_save :calculate_read_difference
-  before_create :calculate_seconds_since_last_reading_event
+  after_create :update_seconds_and_device_last_reading_events_id
 
   scope :all_readings_from_last_7_days, proc {
     where('created_at >= ?', Time.now - 7.days).order(:created_at)
@@ -22,35 +22,9 @@ class ReadingEvent < ActiveRecord::Base
     TimestampsInMontevideoTimeZone.in_montevideo(attributes['updated_at'])
   end
 
-  def calculate_seconds_since_last_reading_event
-    last_reading_event = last_reading_event_for_device
-    if last_reading_event.present?
-      last_reading_event.update_attribute(
-        :seconds_until_next_read,
-        created_at_or_now.to_i - last_reading_event.created_at.to_i
-      )
-    end
-  end
-
-  def last_reading_event_for_device
-    device.reading_events.where(
-      'created_at < ? AND sensor_id = ? AND id != ?',
-      created_at_or_now,
-      sensor_id,
-      (id || 0)
-    )
-    .order('created_at desc')
-    .limit(1)
-    .first
-  end
-
   def created_at_or_now
     created = attributes['created_at']
     created ? created : Time.now
-  end
-
-  def self.recalculate_seconds_between_all_reading_events
-    order('id asc').each(&:calculate_seconds_since_last_reading_event)
   end
 
   def self.reads_total
@@ -69,6 +43,30 @@ class ReadingEvent < ActiveRecord::Base
   end
 
   private
+
+  def update_seconds_and_device_last_reading_events_id
+    calculate_seconds_since_last_reading_event
+    save_last_reading_event_id_to_device
+  end
+
+  def calculate_seconds_since_last_reading_event
+    last_reading_event = device.last_reading_event_for_sensor(sensor_id)
+    if last_reading_event.present?
+      last_reading_event.update_attribute(
+        :seconds_until_next_read,
+        created_at_or_now.to_i - last_reading_event.created_at.to_i
+      )
+    end
+  end
+
+  def save_last_reading_event_id_to_device
+    if persisted?
+      device.update_attribute(
+        :"last_reading_event_for_sensor_#{sensor_id}",
+        self.id
+      )
+    end
+  end
 
   def big_read_on_disabled_sensor
     if end_read >= 5000 && device.sensor_disabled?(sensor_id)

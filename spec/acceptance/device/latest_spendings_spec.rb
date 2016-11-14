@@ -94,7 +94,6 @@ resource 'Device' do
       expect(json_response['latest_spendings']).to be_a(Hash)
       expect(json_response['latest_spendings']['yesterday_from_last_week']).to eq 120
       expect(json_response['latest_spendings']['yesterday']).to eq 120
-      expect(json_response['latest_spendings']['latest_6_hours']).to eq 15
     end
 
   end

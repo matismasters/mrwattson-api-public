@@ -20,8 +20,6 @@ class ReadingEventsCreator
 
       reading_event
     end
-
-    set_latest_reading_events_for_device
   end
 
   def no_errors?
@@ -38,10 +36,10 @@ class ReadingEventsCreator
     @errors['sensor_id' + sensor_id] = errors
   end
 
-  def set_latest_reading_events_for_device
+  def set_last_reading_events_for_device
     created_reading_events.each do |reading_event|
       @device.send(
-        :"latest_reading_event_for_sensor_#{reading_event.sensor_id}=",
+        :"last_reading_event_for_sensor_#{reading_event.sensor_id}=",
         reading_event.id
       )
     end
