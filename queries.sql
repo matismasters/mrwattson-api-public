@@ -155,50 +155,38 @@ FROM
     device_id,
     particle_id,
     to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS yesterday,
-    SUM(read_count_sensor1) AS reads_count_sensor_1,
-    SUM(read_count_sensor2) AS reads_count_sensor_2,
-    SUM(read_count_sensor3) AS reads_count_sensor_3,
-    SUM(read_count_sensor4) AS reads_count_sensor_4,
-    SUM(seconds_until_next_read_sensor1) AS total_seconds_sensor1,
-    SUM(seconds_until_next_read_sensor2) AS total_seconds_sensor2,
-    SUM(seconds_until_next_read_sensor3) AS total_seconds_sensor3,
-    SUM(seconds_until_next_read_sensor4) AS total_seconds_sensor4,
-    ROUND(ABS(((SUM(seconds_until_next_read_sensor1) / 86400.0) * 100) - 100)) AS error_percentage_sensor1,
-    ROUND(ABS(((SUM(seconds_until_next_read_sensor2) / 86400.0) * 100) - 100)) AS error_percentage_sensor2,
-    ROUND(ABS(((SUM(seconds_until_next_read_sensor3) / 86400.0) * 100) - 100)) AS error_percentage_sensor3,
-    ROUND(ABS(((SUM(seconds_until_next_read_sensor4) / 86400.0) * 100) - 100)) AS error_percentage_sensor4,
-    MAX(read_difference_sensor1) AS max_read_difference_sensor1,
-    MAX(read_difference_sensor2) AS max_read_difference_sensor2,
-    MAX(read_difference_sensor3) AS max_read_difference_sensor3,
-    MAX(read_difference_sensor4) AS max_read_difference_sensor4,
-    MIN(read_difference_sensor1) AS min_read_difference_sensor_1,
-    MIN(read_difference_sensor2) AS min_read_difference_sensor_2,
-    MIN(read_difference_sensor3) AS min_read_difference_sensor_3,
-    MIN(read_difference_sensor4) AS min_read_difference_sensor_4,
-    MAX(end_read_sensor1) AS max_end_read_sensor1,
-    MAX(end_read_sensor2) AS max_end_read_sensor2,
-    MAX(end_read_sensor3) AS max_end_read_sensor3,
-    MAX(end_read_sensor4) AS max_end_read_sensor4,
-    MIN(end_read_sensor1) AS min_end_read_sensor1,
-    MIN(end_read_sensor1) AS min_end_read_sensor2,
-    MIN(end_read_sensor1) AS min_end_read_sensor3,
-    MIN(end_read_sensor1) AS min_end_read_sensor4,
     ROUND((
       (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
-    ) * 5) AS yesterday_spendings_sensor1,
+    ) * 5, 1) AS yesterday_spendings_sensor1,
     ROUND((
       (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000
-    ) * 5) AS yesterday_spendings_sensor2,
+    ) * 5, 1) AS yesterday_spendings_sensor2,
     ROUND((
       (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000
-    ) * 5) AS yesterday_spendings_sensor3,
+    ) * 5, 1) AS yesterday_spendings_sensor3,
     ROUND((
       (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000
-    ) * 5) AS yesterday_spendings_sensor4
+    ) * 5, 1) AS yesterday_spendings_sensor4,
+    ROUND(
+      (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)::FLOAT) *
+      (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
+    ) AS yesterday_spendings_sensor1,
+    ROUND(
+      (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)::FLOAT) *
+      (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000
+    ) AS yesterday_spendings_sensor2,
+    ROUND(
+      (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)::FLOAT) *
+      (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000
+    ) AS yesterday_spendings_sensor3,
+    ROUND(
+      (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)::FLOAT) *
+      (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000
+    ) AS yesterday_spendings_sensor4
   FROM reading_events_for_sensor
   INNER JOIN devices
     ON reading_events_for_sensor.device_id = devices.id
@@ -209,8 +197,8 @@ INNER JOIN devices
 
 /* GASTO ENTRE LAS 17 y las 23 */
 
-with reading_events_for_sensor AS (
-select id, device_id, sensor_id,
+WITH reading_events_for_sensor AS (
+SELECT id, device_id, sensor_id,
 CASE WHEN sensor_id = 1 THEN start_read ELSE 0 END AS start_read_sensor1,
 CASE WHEN sensor_id = 2 THEN start_read ELSE 0 END AS start_read_sensor2,
 CASE WHEN sensor_id = 3 THEN start_read ELSE 0 END AS start_read_sensor3,
@@ -223,7 +211,7 @@ CASE WHEN sensor_id = 1 THEN read_difference ELSE 0 END AS read_difference_senso
 CASE WHEN sensor_id = 2 THEN read_difference ELSE 0 END AS read_difference_sensor2,
 CASE WHEN sensor_id = 3 THEN read_difference ELSE 0 END AS read_difference_sensor3,
 CASE WHEN sensor_id = 4 THEN read_difference ELSE 0 END AS read_difference_sensor4,
-CASE WHEN sensor_id = 1 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor1,  
+CASE WHEN sensor_id = 1 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor1,
 CASE WHEN sensor_id = 2 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor2,
 CASE WHEN sensor_id = 3 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor3,
 CASE WHEN sensor_id = 4 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor4,
@@ -233,19 +221,29 @@ WHERE
   (reading_events.created_at::DATE = NOW()::DATE-1) AND
   (EXTRACT(HOUR FROM reading_events.created_at) BETWEEN 17 AND 23)
 )
-SELECT
-  device_id,
-  particle_id,
-  to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS yesterday,
-  ROUND(((AVG(end_read_sensor1) * (SUM(seconds_until_next_read_sensor1) / 3600.0)) / 1000.00) * 5) AS spendings_sensor1,
-  ROUND(((AVG(end_read_sensor2) * (SUM(seconds_until_next_read_sensor2) / 3600.0)) / 1000.00) * 5) AS spendings_sensor2,
-  ROUND(((AVG(end_read_sensor3) * (SUM(seconds_until_next_read_sensor3) / 3600.0)) / 1000.00) * 5) AS spendings_sensor3,
-  ROUND(((AVG(end_read_sensor4) * (SUM(seconds_until_next_read_sensor4) / 3600.0)) / 1000.00) * 5) AS spendings_sensor4,
-  ROUND(ABS(((SUM(seconds_until_next_read_sensor1) / 21600.0) * 100) - 100)) AS error_percentage_sensor1,
-  ROUND(ABS(((SUM(seconds_until_next_read_sensor2) / 21600.0) * 100) - 100)) AS error_percentage_sensor2,
-  ROUND(ABS(((SUM(seconds_until_next_read_sensor3) / 21600.0) * 100) - 100)) AS error_percentage_sensor3,
-  ROUND(ABS(((SUM(seconds_until_next_read_sensor4) / 21600.0) * 100) - 100)) AS error_percentage_sensor4
-FROM reading_events_for_sensor
+SELECT *
+FROM
+(
+  SELECT
+    device_id,
+    particle_id,
+    to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS yesterday,
+    ROUND(((AVG(end_read_sensor1) * (SUM(seconds_until_next_read_sensor1) / 3600.0)) / 1000.00) * 5, 1) AS spendings_sensor1,
+    ROUND(((AVG(end_read_sensor2) * (SUM(seconds_until_next_read_sensor2) / 3600.0)) / 1000.00) * 5, 1) AS spendings_sensor2,
+    ROUND(((AVG(end_read_sensor3) * (SUM(seconds_until_next_read_sensor3) / 3600.0)) / 1000.00) * 5, 1) AS spendings_sensor3,
+    ROUND(((AVG(end_read_sensor4) * (SUM(seconds_until_next_read_sensor4) / 3600.0)) / 1000.00) * 5, 1) AS spendings_sensor4,
+    ROUND(((AVG(end_read_sensor1) * (SUM(seconds_until_next_read_sensor1) / 3600.0)) / 1000.00), 1) AS spendings_sensor1_kwh,
+    ROUND(((AVG(end_read_sensor2) * (SUM(seconds_until_next_read_sensor2) / 3600.0)) / 1000.00), 1) AS spendings_sensor2_kwh,
+    ROUND(((AVG(end_read_sensor3) * (SUM(seconds_until_next_read_sensor3) / 3600.0)) / 1000.00), 1) AS spendings_sensor3_kwh,
+    ROUND(((AVG(end_read_sensor4) * (SUM(seconds_until_next_read_sensor4) / 3600.0)) / 1000.00), 1) AS spendings_sensor4_kwh,
+    ROUND(ABS(((SUM(seconds_until_next_read_sensor1) / 21600.0) * 100) - 100)) AS error_percentage_sensor1,
+    ROUND(ABS(((SUM(seconds_until_next_read_sensor2) / 21600.0) * 100) - 100)) AS error_percentage_sensor2,
+    ROUND(ABS(((SUM(seconds_until_next_read_sensor3) / 21600.0) * 100) - 100)) AS error_percentage_sensor3,
+    ROUND(ABS(((SUM(seconds_until_next_read_sensor4) / 21600.0) * 100) - 100)) AS error_percentage_sensor4
+  FROM reading_events_for_sensor
+  INNER JOIN devices
+    ON reading_events_for_sensor.device_id = devices.id
+  GROUP BY device_id, particle_id
+) AS results
 INNER JOIN devices
-  ON reading_events_for_sensor.device_id = devices.id
-GROUP BY device_id, particle_id
+ ON results.device_id = devices.id
