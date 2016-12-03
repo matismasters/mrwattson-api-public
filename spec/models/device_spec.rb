@@ -36,6 +36,31 @@ describe 'Device' do
           sensor_3_active: false,
           sensor_3_label: 'three',
           sensor_4_active: false,
+          sensor_4_label: 'four',
+          'sensor_1_active' => false,
+          'sensor_1_label' => 'one1',
+          'sensor_2_active' => false,
+          'sensor_2_label' => 'two2',
+          'sensor_3_active' => true,
+          'sensor_3_label' => 'three3',
+          'sensor_4_active' => true,
+          'sensor_4_label' => 'four4'
+        }
+      device.merge_configuration(device.configuration)
+      expect(device.configuration[:sensor_1_active]).to eq false
+      expect(device.configuration[:sensor_1_label]).to eq 'one1'
+    end
+
+    it 'should update the configuration on save' do
+      device = create :device, particle_id: 'ABC',
+        configuration: {
+          sensor_1_active: true,
+          sensor_1_label: 'one',
+          sensor_2_active: true,
+          sensor_2_label: 'two',
+          sensor_3_active: false,
+          sensor_3_label: 'three',
+          sensor_4_active: false,
           sensor_4_label: 'four'
         }
 

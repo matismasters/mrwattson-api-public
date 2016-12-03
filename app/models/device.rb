@@ -25,7 +25,9 @@ class Device < ActiveRecord::Base
   end
 
   def merge_configuration(new_configuration)
-    self.configuration = configuration.merge(new_configuration)
+    new_configuration.each do |key, value|
+      self.configuration[key.to_sym] = value
+    end
   end
 
   private

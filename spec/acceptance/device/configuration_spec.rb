@@ -87,10 +87,10 @@ resource 'Devices' do
       )
 
       configuration = device.reload.configuration
-      expect(configuration['sensor_1_active']).to be_truthy
-      expect(configuration['sensor_2_active']).to be_falsy
-      expect(configuration['sensor_3_active']).to be_truthy
-      expect(configuration['sensor_4_active']).to be_falsy
+      expect(configuration[:sensor_1_active]).to be_truthy
+      expect(configuration[:sensor_2_active]).to be_falsy
+      expect(configuration[:sensor_3_active]).to be_truthy
+      expect(configuration[:sensor_4_active]).to be_falsy
       expect(status).to eq 200
     end
 
@@ -113,10 +113,10 @@ resource 'Devices' do
       )
 
       configuration = device.reload.configuration
-      expect(configuration['sensor_1_active']).to be_truthy
-      expect(configuration['sensor_2_active']).to be_falsy
-      expect(configuration['sensor_3_active']).to be_truthy
-      expect(configuration['sensor_4_active']).to be_falsy
+      expect(configuration[:sensor_1_active]).to be_truthy
+      expect(configuration[:sensor_2_active]).to be_falsy
+      expect(configuration[:sensor_3_active]).to be_truthy
+      expect(configuration[:sensor_4_active]).to be_falsy
       expect(status).to eq 200
     end
   end
