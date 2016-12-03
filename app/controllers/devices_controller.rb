@@ -1,12 +1,13 @@
 class DevicesController < SecuredApplicationController
   include FindDevice
 
-  before_action :find_device
+  skip_before_filter :authenticate_user!, only: [:smart_plugs]
+  before_action :find_device, except: [:smart_plugs]
 
   def notifications
     render(
       json: {
-        notifications: @device.device_notifications
+        notifications: @device.device_notifications.limit(120)
           .order('created_at::DATE desc, notification_id')
       },
       status: 200
@@ -26,6 +27,18 @@ class DevicesController < SecuredApplicationController
     render(
       json: {
         sensors_last_reads: @device.last_reading_events_reads,
+        status: 200
+      }
+    )
+  end
+
+  def smart_plugs
+    devices =
+      Device.where(id: smart_plugs_permitted_params[:device_ids].split(','))
+
+    render(
+      json: {
+        devices: devices.map { |device| device.last_reading_events_reads },
         status: 200
       }
     )
@@ -68,5 +81,9 @@ class DevicesController < SecuredApplicationController
 
   def configuration_params
     params.require(:configuration)
+  end
+
+  def smart_plugs_permitted_params
+    params.permit(:device_ids)
   end
 end

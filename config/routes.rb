@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     action: 'report',
     defaults: { format: :csv }
 
+  get 'devices/smart_plugs/:device_ids/reading_events/latest',
+    controller: 'devices',
+    action: 'smart_plugs',
+    defaults: { format: :json }
+
   get 'devices/:device_id/reading_events/latest',
     controller: 'devices',
     action: 'latest',
