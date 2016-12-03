@@ -158,35 +158,35 @@ FROM
     ROUND((
       (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
-    ) * 5, 1) AS yesterday_spendings_sensor1,
+    ) * 5) AS yesterday_spendings_sensor1,
     ROUND((
       (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000
-    ) * 5, 1) AS yesterday_spendings_sensor2,
+    ) * 5) AS yesterday_spendings_sensor2,
     ROUND((
       (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000
-    ) * 5, 1) AS yesterday_spendings_sensor3,
+    ) * 5) AS yesterday_spendings_sensor3,
     ROUND((
       (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000
-    ) * 5, 1) AS yesterday_spendings_sensor4,
+    ) * 5) AS yesterday_spendings_sensor4,
     ROUND(
       (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
-    ) AS yesterday_spendings_sensor1,
+    ) AS yesterday_spendings_sensor1_kwh,
     ROUND(
       (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000
-    ) AS yesterday_spendings_sensor2,
+    ) AS yesterday_spendings_sensor2_kwh,
     ROUND(
       (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000
-    ) AS yesterday_spendings_sensor3,
+    ) AS yesterday_spendings_sensor3_kwh,
     ROUND(
       (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)::FLOAT) *
       (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000
-    ) AS yesterday_spendings_sensor4
+    ) AS yesterday_spendings_sensor4_kwh
   FROM reading_events_for_sensor
   INNER JOIN devices
     ON reading_events_for_sensor.device_id = devices.id
@@ -194,6 +194,8 @@ FROM
 ) AS results
 INNER JOIN devices
  ON results.device_id = devices.id
+
+/* yesterday_spendings_sensor1|yesterday_spendings_sensor2|yesterday_spendings_sensor3|yesterday_spendings_sensor4|yesterday_spendings_sensor1_kwh|yesterday_spendings_sensor2_kwh|yesterday_spendings_sensor3_kwh|yesterday_spendings_sensor4_kwh|yesterday|sensor_1_label|sensor_2_label|sensor_3_label|sensor_4_label */
 
 /* GASTO ENTRE LAS 17 y las 23 */
 
