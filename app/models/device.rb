@@ -5,6 +5,7 @@ class Device < ActiveRecord::Base
   has_many :device_notifications
 
   before_create :basic_configuration
+  before_save :update_cached_sensor_labels
 
   def sensor_disabled?(sensor_id)
     configuration[:"sensor_#{sensor_id}_active"] == false
@@ -21,6 +22,10 @@ class Device < ActiveRecord::Base
 
   def last_reading_events_reads
     [0] + last_reading_events.map(&:to_watts)
+  end
+
+  def merge_configuration(new_configuration)
+    self.configuration = configuration.merge(new_configuration)
   end
 
   private
@@ -46,5 +51,12 @@ class Device < ActiveRecord::Base
       sensor_4_active: true,
       sensor_4_label: true
     }.merge(self.configuration)
+  end
+
+  def update_cached_sensor_labels
+    self.sensor_1_label = self.configuration[:sensor_1_label]
+    self.sensor_2_label = self.configuration[:sensor_2_label]
+    self.sensor_3_label = self.configuration[:sensor_3_label]
+    self.sensor_4_label = self.configuration[:sensor_4_label]
   end
 end

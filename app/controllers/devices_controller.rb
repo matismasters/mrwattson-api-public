@@ -68,7 +68,7 @@ class DevicesController < SecuredApplicationController
   end
 
   def update_configuration
-    @device.configuration = @device.configuration.merge(configuration_params)
+    @device.merge_configuration configuration_params
 
     if @device.save
       render json: {}, status: 200

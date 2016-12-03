@@ -6,9 +6,13 @@ describe 'Device' do
       create :device, particle_id: 'ABC',
         configuration: {
           sensor_1_active: true,
+          sensor_1_label: 'one',
           sensor_2_active: true,
+          sensor_2_label: 'two',
           sensor_3_active: false,
-          sensor_4_active: false
+          sensor_3_label: 'three',
+          sensor_4_active: false,
+          sensor_4_label: 'four'
         }
 
       device = Device.find_by_particle_id('ABC')
@@ -16,6 +20,42 @@ describe 'Device' do
       expect(device.configuration[:sensor_2_active]).to eq true
       expect(device.configuration[:sensor_3_active]).to eq false
       expect(device.configuration[:sensor_4_active]).to eq false
+      expect(device.sensor_1_label).to eq 'one'
+      expect(device.sensor_2_label).to eq 'two'
+      expect(device.sensor_3_label).to eq 'three'
+      expect(device.sensor_4_label).to eq 'four'
+    end
+
+    it 'should update the configuration on save' do
+      device = create :device, particle_id: 'ABC',
+        configuration: {
+          sensor_1_active: true,
+          sensor_1_label: 'one',
+          sensor_2_active: true,
+          sensor_2_label: 'two',
+          sensor_3_active: false,
+          sensor_3_label: 'three',
+          sensor_4_active: false,
+          sensor_4_label: 'four'
+        }
+
+      device.merge_configuration(
+        sensor_1_label: '1one',
+        sensor_2_label: '2two',
+        sensor_3_label: '3three',
+        sensor_4_label: '4four'
+      )
+
+      device.save
+
+      expect(device.configuration[:sensor_1_active]).to eq true
+      expect(device.configuration[:sensor_2_active]).to eq true
+      expect(device.configuration[:sensor_3_active]).to eq false
+      expect(device.configuration[:sensor_4_active]).to eq false
+      expect(device.sensor_1_label).to eq '1one'
+      expect(device.sensor_2_label).to eq '2two'
+      expect(device.sensor_3_label).to eq '3three'
+      expect(device.sensor_4_label).to eq '4four'
     end
   end
 
