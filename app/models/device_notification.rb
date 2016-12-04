@@ -6,11 +6,13 @@ class DeviceNotification < ActiveRecord::Base
   after_create :update_latest_device_notification_pointer
   before_save :update_notification_type
 
-  private
-
   def update_notification_type
-    self.notification_type = self.notification.type if self.notification
+    return if self.notification_id.blank?
+    notification = Notification.find_by_id(self.notification_id)
+    self.notification_type = notification.type if notification
   end
+
+  private
 
   def update_latest_device_notification_pointer
     LatestDeviceNotification.find_or_create_by(

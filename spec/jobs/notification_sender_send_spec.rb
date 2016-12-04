@@ -39,7 +39,8 @@ describe 'Sending notifications' do
         receive(:enqueue).with(
           enqueue_expected_params.merge(
             device_id: device.id,
-            notification_id: notification.id
+            notification_id: notification.id,
+            notification_type: notification.type
           )
         )
       )
@@ -60,7 +61,8 @@ describe 'Sending notifications' do
         receive(:enqueue).with(
           enqueue_expected_params.merge(
             device_id: device_1.id,
-            notification_id: notification.id
+            notification_id: notification.id,
+            notification_type: notification.type
           )
         )
       )
@@ -69,7 +71,8 @@ describe 'Sending notifications' do
         receive(:enqueue).with(
           enqueue_expected_params.merge(
             device_id: device_2.id,
-            notification_id: notification.id
+            notification_id: notification.id,
+            notification_type: notification.type
           )
         )
       )
@@ -88,7 +91,8 @@ describe 'Sending notifications' do
         receive(:enqueue).with(
           enqueue_expected_params.merge(
             device_id: device_1.id,
-            notification_id: notification.id
+            notification_id: notification.id,
+            notification_type: notification.type
           )
         )
       )
@@ -97,7 +101,8 @@ describe 'Sending notifications' do
         receive(:enqueue).with(
           enqueue_expected_params.merge(
             device_id: device_2.id,
-            notification_id: notification.id
+            notification_id: notification.id,
+            notification_type: notification.type
           )
         )
       )

@@ -18,5 +18,8 @@ FactoryGirl.define do
       tokens { 'max_read_difference' }
       body { 'The max event diff is {{max_read_difference}}' }
     end
+
+    factory :report, class: 'Report'
+    factory :opportunity, class: 'Opportunity'
   end
 end
