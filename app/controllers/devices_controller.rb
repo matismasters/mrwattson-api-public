@@ -4,7 +4,7 @@ class DevicesController < SecuredApplicationController
   skip_before_filter :authenticate_user!, only: [:smart_plugs]
   before_action :find_device, except: [:smart_plugs]
 
-  def notifications
+  def device_notifications
     render(
       json: {
         notifications: @device.device_notifications.limit(120)
@@ -12,6 +12,16 @@ class DevicesController < SecuredApplicationController
       },
       status: 200
     )
+  end
+
+  def device_notifications_by_notification
+    notifications = @device
+      .device_notifications
+      .where(notification_id: notifications_permitted_params[:notification_id])
+      .limit(120)
+      .order('created_at::DATE desc')
+
+    render(json: { notifications: notifications }, status: 200)
   end
 
   def active_opportunities
@@ -78,6 +88,10 @@ class DevicesController < SecuredApplicationController
   end
 
   private
+
+  def notifications_permitted_params
+    params.permit(:device_id, :notification_id)
+  end
 
   def configuration_params
     params.require(:configuration)
