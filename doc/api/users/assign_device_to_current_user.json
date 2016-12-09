@@ -17,7 +17,7 @@
     {
       "request_method": "POST",
       "request_path": "/users/devices",
-      "request_body": "{\"device_id\":3196}",
+      "request_body": "{\"device_id\":1746}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -32,7 +32,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":3196}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: IwXpFCxi0UlRcohDL3AoYg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: dq_jI7j9aOEm_AGLJJ7jxg\" \\\n\t-H \"Expiry: 1477767394\" \\\n\t-H \"Uid: osbaldo@roberts.co\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/users/devices\" -d '{\"device_id\":1746}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: qzok9ykQnuzzUAgsnzoovg\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: WY9Z5j5988NEq-dF9XZbCA\" \\\n\t-H \"Expiry: 1482466472\" \\\n\t-H \"Uid: henriette_braun@harber.name\""
     }
   ]
 }

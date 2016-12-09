@@ -31,7 +31,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/3182/latest_spendings",
+      "request_path": "/devices/1730/latest_spendings",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -42,12 +42,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"latest_spendings\": {\n    \"yesterday_from_last_week\": 120.0,\n    \"yesterday\": 120.0,\n    \"latest_6_hours\": 15.0\n  }\n}",
+      "response_body": "{\n  \"latest_spendings\": {\n    \"yesterday_from_last_week\": 120.0,\n    \"yesterday\": 120.0\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3182/latest_spendings\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: eQbfwcoNsY57CYm9h6NvTQ\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: 7U027RBeB6yVZBhDtwx2Wg\" \\\n\t-H \"Expiry: 1477767393\" \\\n\t-H \"Uid: keira_kutch@robel.org\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/1730/latest_spendings\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: q7YC6VP6q64saNfUx7jRcw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: hnXMe3CBjgzokKJgYFOttw\" \\\n\t-H \"Expiry: 1482466471\" \\\n\t-H \"Uid: schuyler.hartmann@rodriguez.org\""
     }
   ]
 }

@@ -23,6 +23,13 @@
       "name": "Device",
       "examples": [
         {
+          "description": "Get latest reading events for several devices",
+          "link": "device/get_latest_reading_events_for_several_devices.json",
+          "groups": "all",
+          "route": "devices/smart_plugs/:device_ids/reading_events/latest",
+          "method": "get"
+        },
+        {
           "description": "Get latest spendings for device",
           "link": "device/get_latest_spendings_for_device.json",
           "groups": "all",

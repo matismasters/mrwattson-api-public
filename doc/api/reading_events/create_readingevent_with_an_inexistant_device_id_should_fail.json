@@ -35,7 +35,7 @@
     {
       "request_method": "POST",
       "request_path": "/reading_events",
-      "request_body": "{\"device_id\":\"6415145342\",\"data\":\"d-2|123|321\"}",
+      "request_body": "{\"device_id\":\"8322062626\",\"data\":\"d-2|123|321\"}",
       "request_headers": {
         "Content-Type": "application/json",
         "Accept": "application/json"
@@ -50,7 +50,7 @@
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"6415145342\",\"data\":\"d-2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/reading_events\" -d '{\"device_id\":\"8322062626\",\"data\":\"d-2|123|321\"}' -X POST \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\""
     }
   ]
 }

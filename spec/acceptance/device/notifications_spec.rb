@@ -16,6 +16,9 @@ resource 'Devices' do
   response_field :'*processed_discovery', 'String::Details about what was found'
   response_field :'*processed_opportunity', 'String::Details about what can be improved'
   response_field :'*processed_solution', 'String::Details about how to improve it'
+  response_field :'*notification_type', 'String::Report or Opportunity'
+  response_field :'*notification_id', 'Int::Internal notification id'
+  response_field :'*token_values', 'Hash::Extracted result values from the notification query'
 
   get '/devices/:device_id/notifications' do
     example 'Get All notifications sorted by most recent' do

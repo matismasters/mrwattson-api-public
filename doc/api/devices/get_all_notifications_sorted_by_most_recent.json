@@ -35,12 +35,24 @@
     {
       "name": "*processed_solution",
       "description": "String::Details about how to improve it"
+    },
+    {
+      "name": "*notification_type",
+      "description": "String::Report or Opportunity"
+    },
+    {
+      "name": "*notification_id",
+      "description": "Int::Internal notification id"
+    },
+    {
+      "name": "*token_values",
+      "description": "Hash::Extracted result values from the notification query"
     }
   ],
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/3183/notifications",
+      "request_path": "/devices/1731/notifications",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -51,12 +63,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"notifications\": [\n    {\n      \"id\": 1203,\n      \"device_id\": 3183,\n      \"notification_id\": 1342,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.494Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.494Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1202,\n      \"device_id\": 3183,\n      \"notification_id\": 1342,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.490Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.490Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1201,\n      \"device_id\": 3183,\n      \"notification_id\": 1342,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.486Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.486Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1200,\n      \"device_id\": 3183,\n      \"notification_id\": 1342,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.482Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.482Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 1199,\n      \"device_id\": 3183,\n      \"notification_id\": 1342,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-10-15T18:56:33.468Z\",\n      \"updated_at\": \"2016-10-15T18:56:33.468Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    }\n  ]\n}",
+      "response_body": "{\n  \"notifications\": [\n    {\n      \"id\": 675,\n      \"device_id\": 1731,\n      \"notification_id\": 838,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-12-09T04:14:31.692Z\",\n      \"updated_at\": \"2016-12-09T04:14:31.692Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 674,\n      \"device_id\": 1731,\n      \"notification_id\": 838,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-12-09T04:14:31.688Z\",\n      \"updated_at\": \"2016-12-09T04:14:31.688Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 673,\n      \"device_id\": 1731,\n      \"notification_id\": 838,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-12-09T04:14:31.684Z\",\n      \"updated_at\": \"2016-12-09T04:14:31.684Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 672,\n      \"device_id\": 1731,\n      \"notification_id\": 838,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-12-09T04:14:31.679Z\",\n      \"updated_at\": \"2016-12-09T04:14:31.679Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    },\n    {\n      \"id\": 671,\n      \"device_id\": 1731,\n      \"notification_id\": 838,\n      \"opened\": false,\n      \"token_values\": {\n        \"sample\": \"5\"\n      },\n      \"created_at\": \"2016-12-09T04:14:31.637Z\",\n      \"updated_at\": \"2016-12-09T04:14:31.637Z\",\n      \"title\": \"some title, token 5\",\n      \"body\": \"some body, token 5\",\n      \"notification_type\": null,\n      \"processed_discovery\": null,\n      \"processed_opportunity\": null,\n      \"processed_solution\": null\n    }\n  ]\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3183/notifications\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: fd-t9QxSZTOsNV5i_bGEMw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: AuL1uPgswIGm-XOH0HMETA\" \\\n\t-H \"Expiry: 1477767393\" \\\n\t-H \"Uid: lamont@sauer.name\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/1731/notifications\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: aPFHiHs6Q9JGxnQjJlNMOw\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: yyeV6uZjGSdVQs9BmIuXow\" \\\n\t-H \"Expiry: 1482466471\" \\\n\t-H \"Uid: jacques.fahey@stanton.io\""
     }
   ]
 }

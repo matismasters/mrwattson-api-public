@@ -19,7 +19,7 @@
   "requests": [
     {
       "request_method": "GET",
-      "request_path": "/devices/3180/reading_events/latest",
+      "request_path": "/devices/1728/reading_events/latest",
       "request_body": null,
       "request_headers": {
         "Content-Type": "application/json",
@@ -30,12 +30,12 @@
       "request_content_type": "application/json",
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "{\n  \"sensors_last_reads\": [\n    0,\n    100,\n    200,\n    300,\n    400\n  ]\n}",
+      "response_body": "{\n  \"sensors_last_reads\": [\n    0,\n    100,\n    200,\n    300,\n    400\n  ],\n  \"status\": 200\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/3180/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: AJxvWXw2_ZqPBXvRm4WD6w\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: 0bVdum3hHkMcUcdWvJaSKQ\" \\\n\t-H \"Expiry: 1477767393\" \\\n\t-H \"Uid: bettie@kihn.biz\""
+      "curl": "curl \"https://mrwattson-api.herokuapp.com/devices/1728/reading_events/latest\" -X GET \\\n\t-H \"Content-type: application/json\" \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Access-token: qC-r2UICfAyRfULKb8-H6g\" \\\n\t-H \"Token-type: Bearer\" \\\n\t-H \"Client: EhX-fO_ajz8UjNqaPxlycA\" \\\n\t-H \"Expiry: 1482466471\" \\\n\t-H \"Uid: nestor@hayespfeffer.io\""
     }
   ]
 }
