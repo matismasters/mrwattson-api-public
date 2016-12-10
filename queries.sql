@@ -249,3 +249,81 @@ FROM
 ) AS results
 INNER JOIN devices
  ON results.device_id = devices.id
+
+/* Gasto desde el primer día del mes por pinza > 100kwh */
+
+WITH reading_events_for_sensor AS (
+SELECT id, device_id, sensor_id,
+CASE WHEN sensor_id = 1 THEN 1 ELSE 0 END AS read_count_sensor1,
+CASE WHEN sensor_id = 2 THEN 1 ELSE 0 END AS read_count_sensor2,
+CASE WHEN sensor_id = 3 THEN 1 ELSE 0 END AS read_count_sensor3,
+CASE WHEN sensor_id = 4 THEN 1 ELSE 0 END AS read_count_sensor4,
+CASE WHEN sensor_id = 1 THEN start_read ELSE 0 END AS start_read_sensor1,
+CASE WHEN sensor_id = 2 THEN start_read ELSE 0 END AS start_read_sensor2,
+CASE WHEN sensor_id = 3 THEN start_read ELSE 0 END AS start_read_sensor3,
+CASE WHEN sensor_id = 4 THEN start_read ELSE 0 END AS start_read_sensor4,
+CASE WHEN sensor_id = 1 THEN end_read ELSE 0 END AS end_read_sensor1,
+CASE WHEN sensor_id = 2 THEN end_read ELSE 0 END AS end_read_sensor2,
+CASE WHEN sensor_id = 3 THEN end_read ELSE 0 END AS end_read_sensor3,
+CASE WHEN sensor_id = 4 THEN end_read ELSE 0 END AS end_read_sensor4,
+CASE WHEN sensor_id = 1 THEN read_difference ELSE 0 END AS read_difference_sensor1,
+CASE WHEN sensor_id = 2 THEN read_difference ELSE 0 END AS read_difference_sensor2,
+CASE WHEN sensor_id = 3 THEN read_difference ELSE 0 END AS read_difference_sensor3,
+CASE WHEN sensor_id = 4 THEN read_difference ELSE 0 END AS read_difference_sensor4,
+CASE WHEN sensor_id = 1 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor1,
+CASE WHEN sensor_id = 2 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor2,
+CASE WHEN sensor_id = 3 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor3,
+CASE WHEN sensor_id = 4 THEN seconds_until_next_read ELSE 0 END AS seconds_until_next_read_sensor4,
+created_at, updated_at
+FROM reading_events
+WHERE
+  reading_events.created_at::DATE <= NOW()::DATE-1 AND
+  reading_events.created_at::DATE >= date_trunc('month', NOW())
+)
+SELECT *
+FROM
+(
+  SELECT
+    device_id,
+    particle_id,
+    to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS consumo_hasta_dia,
+    ROUND((
+     (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)) *
+     (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
+   ) * 5, 2) AS this_month_spendings_sensor1,
+   ROUND((
+     (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)) *
+     (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000
+   ) * 5, 2) AS this_month_spendings_sensor2,
+   ROUND((
+     (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)) *
+     (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000
+   ) * 5, 2) AS this_month_spendings_sensor3,
+   ROUND((
+     (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)) *
+     (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000
+   ) * 5, 2) AS this_month_spendings_sensor4,
+   ROUND(
+     (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)) *
+     (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000, 2
+   ) AS this_month_spendings_sensor1_kwh,
+   ROUND(
+     (SUM(end_read_sensor2 * (seconds_until_next_read_sensor2 ))/ (SUM(seconds_until_next_read_sensor2) + 1)) *
+     (SUM(seconds_until_next_read_sensor2) / 3600.0) / 1000, 2
+   ) AS this_month_spendings_sensor2_kwh,
+   ROUND(
+     (SUM(end_read_sensor3 * (seconds_until_next_read_sensor3 ))/ (SUM(seconds_until_next_read_sensor3) + 1)) *
+     (SUM(seconds_until_next_read_sensor3) / 3600.0) / 1000, 2
+   ) AS this_month_spendings_sensor3_kwh,
+   ROUND(
+     (SUM(end_read_sensor4 * (seconds_until_next_read_sensor4 ))/ (SUM(seconds_until_next_read_sensor4) + 1)) *
+     (SUM(seconds_until_next_read_sensor4) / 3600.0) / 1000, 2
+   ) AS this_month_spendings_sensor4_kwh
+ FROM reading_events_for_sensor
+ INNER JOIN devices
+   ON reading_events_for_sensor.device_id = devices.id
+ GROUP BY device_id, particle_id
+) AS results
+INNER JOIN devices
+ON results.device_id = devices.id
+WHERE (results.this_month_spendings_sensor1_kwh / 100) > 1

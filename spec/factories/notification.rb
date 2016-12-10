@@ -8,6 +8,7 @@ FactoryGirl.define do
     discovery { 'is {{start_read}}' }
     opportunity { '{{start_read}} is too much' }
     solution { 'change {{id}}' }
+    once_a_month { false }
 
     trait :max_read_difference do
       sql_query do
