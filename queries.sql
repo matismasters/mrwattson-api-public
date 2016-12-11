@@ -286,7 +286,7 @@ FROM
   SELECT
     device_id,
     particle_id,
-    to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS consumo_hasta_dia,
+    to_char((NOW()::DATE-1), 'DD/MM/YYYY') AS yesterday,
     ROUND((
      (SUM(end_read_sensor1 * (seconds_until_next_read_sensor1 ))/ (SUM(seconds_until_next_read_sensor1) + 1)) *
      (SUM(seconds_until_next_read_sensor1) / 3600.0) / 1000
@@ -327,3 +327,20 @@ FROM
 INNER JOIN devices
 ON results.device_id = devices.id
 WHERE (results.this_month_spendings_sensor1_kwh / 100) > 1
+
+/*
+this_month_spendings_sensor1|this_month_spendings_sensor2|this_month_spendings_sensor3|this_month_spendings_sensor4|this_month_spendings_sensor1_kwh|this_month_spendings_sensor2_kwh|this_month_spendings_sensor3_kwh|this_month_spendings_sensor4_kwh|yesterday|sensor_1_label|sensor_2_label|sensor_3_label|sensor_4_label
+
+El día {{yesterday}} has alcanzado los 100 kWh de consumo, contando desde el primer día de este mes.
+
+A continuación podrás ver el detalle de cuanto se gastó en cada una de las zonas de tu casa que están siendo medidas por cada sensor, durante este período de tiempo. La diferencia entre el gasto sumado de los sensores 2, 3 y 4, y el gasto del sensor principal, corresponde al consumo del resto de la casa que no está siendo medido por ningún sensor.
+
+- Sensor 2 ({{sensor_2_label}}): 
+	- ${{this_month_spendings_sensor2}} ({{this_month_spendings_sensor2_kwh}} kWh)
+- Sensor 3 ({{sensor_3_label}}):
+	- ${{this_month_spendings_sensor3}} ({{this_month_spendings_sensor3_kwh}} kWh)
+- Sensor 4 ({{sensor_4_label}}):
+	- ${{this_month_spendings_sensor4}} ({{this_month_spendings_sensor4_kwh}} kWh)
+
+Por mas detalles sobre los cálculos de costos dirigirse a la sección de consejos.
+*/
