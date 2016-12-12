@@ -7,7 +7,7 @@ class ReadingEvent < ActiveRecord::Base
   after_create :update_seconds_and_device_last_reading_events_id
 
   scope :last_read_from_all_devices, proc {
-    where(id: Device.all.map(&:last_reading_event_for_sensor_1))
+    where(id: Device.order(:id).all.map(&:last_reading_event_for_sensor_1))
   }
 
   def to_watts
