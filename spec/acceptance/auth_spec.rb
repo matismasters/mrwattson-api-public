@@ -13,7 +13,7 @@ resource 'Authentication' do
     end
   end
 
-  get '/operator/reads_total' do
+  get '/operator/last_read_from_all_devices' do
     example 'Access restricted Area' do
       add_signed_in_user_authentication_headers
 

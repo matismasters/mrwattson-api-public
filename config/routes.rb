@@ -56,9 +56,9 @@ Rails.application.routes.draw do
     action: 'update_configuration',
     defaults: { format: :json }
 
-  get 'operator/reads_total',
+  get 'operator/last_read_from_all_devices',
     controller: 'operators',
-    action: 'reads_total',
+    action: 'last_read_from_all_devices',
     defaults: { format: :json }
 
   post 'users/devices',

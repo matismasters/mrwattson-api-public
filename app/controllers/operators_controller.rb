@@ -1,5 +1,5 @@
 class OperatorsController < SecuredApplicationController
-  def reads_total
-    render json: { reads_total: ReadingEvent.reads_total }, status: 200
+  def last_read_from_all_devices
+    render json: { reads: ReadingEvent.last_read_from_all_devices }, status: 200
   end
 end

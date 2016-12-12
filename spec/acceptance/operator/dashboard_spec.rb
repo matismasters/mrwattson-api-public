@@ -11,7 +11,7 @@ resource 'Operator' do
 
   response_field :reads_total, 'Int::Current total consumption of all devices'
 
-  get '/operator/reads_total' do
+  get '/operator/last_read_from_all_devices' do
     example 'Get reads total' do
       device_1 = create :device
       device_2 = create :device
@@ -27,9 +27,11 @@ resource 'Operator' do
       do_request
 
       json_response = JSON.parse(response_body)
+      reads = json_response['reads']
 
-      expect(json_response['reads_total']).not_to be_nil
-      expect(json_response['reads_total']).to eq 150
+      expect(reads).to be_an(Array)
+      expect(reads.size).to eq 3
+      expect(reads[0]['end_read']).not_to be_nil
     end
   end
 end
