@@ -43,8 +43,6 @@ class Device < ActiveRecord::Base
     save
   end
 
-  private
-
   def clean_this_month_notifications
     month_number = Date.today.month
     if this_month != month_number
@@ -52,6 +50,8 @@ class Device < ActiveRecord::Base
       self.this_month_notifications = ''
     end
   end
+
+  private
 
   def last_reading_events_ids
     (1..4).map do |sensor_id|
