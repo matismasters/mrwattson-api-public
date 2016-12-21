@@ -51,6 +51,11 @@ class Device < ActiveRecord::Base
     end
   end
 
+  def clean_this_month_notifications!
+    clean_this_month_notifications
+    save
+  end
+
   private
 
   def last_reading_events_ids
