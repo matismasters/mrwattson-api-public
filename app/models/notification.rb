@@ -4,17 +4,9 @@ class Notification < ActiveRecord::Base
   scope :to_run_now, proc {
     where(
       'last_run IS NULL OR ' \
-      '(' \
-      "  (frequency like 'daily' AND last_run <= ?) OR " \
-      "  (frequency like 'weekly' AND last_run <= ?) OR " \
-      "  (frequency like 'monthly' AND last_run <= ?)" \
-      ') AND ( ' \
-      '  once_a_month = false OR ' \
-      '  ( ' \
-      '    once_a_month = true AND ' \
-      "    date_trunc('month', NOW()) != date_trunc('month', last_run) " \
-      '  ) ' \
-      ')',
+      "(frequency like 'daily' AND last_run <= ?) OR " \
+      "(frequency like 'weekly' AND last_run <= ?) OR " \
+      "(frequency like 'monthly' AND last_run <= ?)",
       Time.now - 1410.minutes, # 23 hours and 30 minutes
       Time.now - 7.days,
       Time.now - 30.days
