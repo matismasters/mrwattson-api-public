@@ -30,7 +30,28 @@ class Device < ActiveRecord::Base
     end
   end
 
+  def update_this_month_notifications(notification)
+    clean_this_month_notifications
+
+    unless this_month_notifications.match notification.name
+      notification_names = this_month_notifications.split(',')
+      notification_names << notification.name
+
+      self.this_month_notifications = notification_names.join(',')
+    end
+
+    save
+  end
+
   private
+
+  def clean_this_month_notifications
+    month_number = Date.today.month
+    if this_month != month_number
+      self.this_month =  month_number
+      self.this_month_notifications = ''
+    end
+  end
 
   def last_reading_events_ids
     (1..4).map do |sensor_id|

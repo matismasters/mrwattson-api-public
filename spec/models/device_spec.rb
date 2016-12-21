@@ -1,6 +1,59 @@
 require 'spec_helper'
 
 describe 'Device' do
+  describe '#update_this_month_notifications' do
+    let(:device) { create :device }
+    let(:notification_1) do
+       create :notification, name: 'notification_1', once_a_month: true
+    end
+    let(:notification_2) do
+       create :notification, name: 'notification_2', once_a_month: true
+    end
+
+    describe 'all notifications within the same month' do
+      it 'should be added' do
+        device.update_this_month_notifications(notification_1)
+        expect(device.this_month_notifications).to eq 'notification_1'
+
+        device.update_this_month_notifications(notification_2)
+        expect(device.this_month_notifications).to(
+          eq 'notification_1,notification_2'
+        )
+      end
+
+      it 'should be added only once' do
+        device.update_this_month_notifications(notification_1)
+        device.update_this_month_notifications(notification_1)
+        expect(device.this_month_notifications).to eq 'notification_1'
+
+        device.update_this_month_notifications(notification_2)
+        device.update_this_month_notifications(notification_2)
+        expect(device.this_month_notifications).to(
+          eq 'notification_1,notification_2'
+        )
+      end
+    end
+
+    describe 'one notification each month' do
+      it 'should add, clean, and add' do
+        device.update_this_month_notifications(notification_1)
+        device.update_this_month_notifications(notification_1)
+        expect(device.this_month_notifications).to eq 'notification_1'
+
+        device.update_this_month_notifications(notification_2)
+        device.update_this_month_notifications(notification_2)
+        expect(device.this_month_notifications).to(
+          eq 'notification_1,notification_2'
+        )
+
+        Timecop.freeze Time.now + 1.month
+
+        device.update_this_month_notifications(notification_2)
+        expect(device.this_month_notifications).to eq 'notification_2'
+      end
+    end
+  end
+
   describe 'configuraiton' do
     it 'should save the configuration on create' do
       create :device, particle_id: 'ABC',
@@ -197,9 +250,9 @@ describe 'Device' do
 
       expect(device.active_opportunities.size).to eq 0
     end
+  end
 
-    after do
-      Timecop.return
-    end
+  after do
+    Timecop.return
   end
 end
