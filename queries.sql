@@ -326,7 +326,9 @@ FROM
 ) AS results
 INNER JOIN devices
 ON results.device_id = devices.id
-WHERE (results.this_month_spendings_sensor1_kwh / 100) > 1
+WHERE
+  (results.this_month_spendings_sensor1_kwh / 100) > 1 AND
+  devices.this_month_notifications NOT LIKE '%gasto_100_kwh%'
 
 /*
 this_month_spendings_sensor1|this_month_spendings_sensor2|this_month_spendings_sensor3|this_month_spendings_sensor4|this_month_spendings_sensor1_kwh|this_month_spendings_sensor2_kwh|this_month_spendings_sensor3_kwh|this_month_spendings_sensor4_kwh|yesterday|sensor_1_label|sensor_2_label|sensor_3_label|sensor_4_label
@@ -335,7 +337,7 @@ El día {{yesterday}} has alcanzado los 100 kWh de consumo, contando desde el pr
 
 A continuación podrás ver el detalle de cuanto se gastó en cada una de las zonas de tu casa que están siendo medidas por cada sensor, durante este período de tiempo. La diferencia entre el gasto sumado de los sensores 2, 3 y 4, y el gasto del sensor principal, corresponde al consumo del resto de la casa que no está siendo medido por ningún sensor.
 
-- Sensor 2 ({{sensor_2_label}}): 
+- Sensor 2 ({{sensor_2_label}}):
 	- ${{this_month_spendings_sensor2}} ({{this_month_spendings_sensor2_kwh}} kWh)
 - Sensor 3 ({{sensor_3_label}}):
 	- ${{this_month_spendings_sensor3}} ({{this_month_spendings_sensor3_kwh}} kWh)
