@@ -16,7 +16,7 @@ describe 'Complex Queries service', type: :unit do
         start_read: 0,
         end_read: 1000,
         sensor_id: 1,
-        seconds_until_next_read: 86400
+        seconds_until_next_read: 86_400
 
       Timecop.freeze(now - 1.day)
       create :reading_event,
@@ -24,13 +24,13 @@ describe 'Complex Queries service', type: :unit do
         start_read: 0,
         end_read: 1000,
         sensor_id: 1,
-        seconds_until_next_read: 86400
+        seconds_until_next_read: 86_400
 
       Timecop.freeze(now)
 
       result = ComplexQueries.yesterday_spendings(device.id).first
 
-      expect(result['daily_spendings']).to eq "120"
+      expect(result['daily_spendings']).to eq '120'
     end
   end
 end

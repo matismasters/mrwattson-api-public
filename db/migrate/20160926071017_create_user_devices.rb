@@ -5,7 +5,7 @@ class CreateUserDevices < ActiveRecord::Migration
       t.integer :user_id
     end
 
-    add_index :user_devices, [:device_id, :user_id]
+    add_index :user_devices, %i[device_id user_id]
     add_index :user_devices, :device_id
     add_index :user_devices, :user_id
   end

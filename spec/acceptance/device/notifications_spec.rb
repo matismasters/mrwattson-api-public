@@ -86,21 +86,21 @@ resource 'Devices' do
   get '/devices/:device_id/active_opportunities' do
     example 'Get active opportunities sorted by most recent' do
       device = create :device
-      notification_1 = create :notification, type: 'Opportunity'
-      notification_2 = create :notification, type: 'Opportunity'
+      notification1 = create :notification, type: 'Opportunity'
+      notification2 = create :notification, type: 'Opportunity'
 
       create_list(
         :device_notification,
         5,
         device_id: device.id,
-        notification_id: notification_1.id
+        notification_id: notification1.id
       )
 
       create_list(
         :device_notification,
         5,
         device_id: device.id,
-        notification_id: notification_2.id
+        notification_id: notification2.id
       )
 
       do_request(device_id: device.id)
@@ -114,7 +114,7 @@ resource 'Devices' do
       expect(first_device_notificaiton['title']).not_to be_empty
       expect(first_device_notificaiton['body']).not_to be_empty
       expect(first_device_notificaiton['device_id']).to eq device.id
-      expect(first_device_notificaiton['notification_id']).to eq notification_1.id
+      expect(first_device_notificaiton['notification_id']).to eq notification1.id
 
       expect(first_device_notificaiton['token_values'].class).to be Hash
     end

@@ -95,6 +95,5 @@ resource 'Device' do
       expect(json_response['latest_spendings']['yesterday_from_last_week']).to eq 120
       expect(json_response['latest_spendings']['yesterday']).to eq 120
     end
-
   end
 end

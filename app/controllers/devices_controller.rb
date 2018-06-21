@@ -1,7 +1,7 @@
 class DevicesController < SecuredApplicationController
   include FindDevice
 
-  skip_before_filter :authenticate_user!, only: [:smart_plugs]
+  skip_before_filter :authenticate_user!, only: %i[smart_plugs]
   before_action :find_device, except: [:smart_plugs]
 
   def device_notifications
@@ -48,7 +48,7 @@ class DevicesController < SecuredApplicationController
 
     render(
       json: {
-        devices: devices.map { |device| device.last_reading_events_reads },
+        devices: devices.map(&:last_reading_events_reads),
         status: 200
       }
     )
@@ -74,7 +74,7 @@ class DevicesController < SecuredApplicationController
   end
 
   def configuration
-    render json: { configuration: @device.configuration() }, status: 200
+    render json: { configuration: @device.configuration }, status: 200
   end
 
   def update_configuration

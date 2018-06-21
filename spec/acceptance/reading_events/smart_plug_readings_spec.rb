@@ -16,47 +16,47 @@ resource 'Device' do
 
   get 'devices/smart_plugs/:device_ids/reading_events/latest' do
     example 'Get latest reading events for several devices' do
-      device_1 = create :device
-      device_2 = create :device
+      device1 = create :device
+      device2 = create :device
       now = Time.now
 
       Timecop.freeze(now - 1.hours)
       create :reading_event,
-        device_id: device_1.id,
+        device_id: device1.id,
         start_read: 0,
         end_read: 1000,
         sensor_id: 1
 
       create :reading_event,
-        device_id: device_2.id,
+        device_id: device2.id,
         start_read: 0,
         end_read: 1000,
         sensor_id: 1
 
       Timecop.freeze(now)
       create :reading_event,
-        device_id: device_1.id,
+        device_id: device1.id,
         start_read: 1000,
         end_read: 1000,
         sensor_id: 1
 
       create :reading_event,
-        device_id: device_2.id,
+        device_id: device2.id,
         start_read: 1000,
         end_read: 999,
         sensor_id: 1
 
-      do_request(device_ids: "#{device_1.id},#{device_2.id}")
+      do_request(device_ids: "#{device1.id},#{device2.id}")
 
       json_response = JSON.parse(response_body)
       devices = json_response['devices']
-      device_1 = devices[0]
-      device_2 = devices[1]
+      device1 = devices[0]
+      device2 = devices[1]
 
       expect(json_response).to be_a Hash
       expect(devices).to be_a Array
-      expect(device_1[1]).to eq 1000
-      expect(device_2[1]).to eq 999
+      expect(device1[1]).to eq 1000
+      expect(device2[1]).to eq 999
     end
   end
 end

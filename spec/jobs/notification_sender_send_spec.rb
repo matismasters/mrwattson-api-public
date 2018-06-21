@@ -51,16 +51,16 @@ describe 'Sending notifications' do
 
   describe 'for 2 devices' do
     it 'should add the notification only to the one matching the criteria' do
-      device_1 = create :device
-      device_2 = create :device
-      create :reading_event, device: device_1, start_read: 0, end_read: 150
-      create :reading_event, device: device_2, start_read: 0, end_read: 1500
+      device1 = create :device
+      device2 = create :device
+      create :reading_event, device: device1, start_read: 0, end_read: 150
+      create :reading_event, device: device2, start_read: 0, end_read: 1500
       notification = create :notification, notification_attributes
 
       expect(queue_manager).to(
         receive(:enqueue).with(
           enqueue_expected_params.merge(
-            device_id: device_1.id,
+            device_id: device1.id,
             notification_id: notification.id,
             notification_type: notification.type
           )
@@ -70,7 +70,7 @@ describe 'Sending notifications' do
       expect(queue_manager).not_to(
         receive(:enqueue).with(
           enqueue_expected_params.merge(
-            device_id: device_2.id,
+            device_id: device2.id,
             notification_id: notification.id,
             notification_type: notification.type
           )
@@ -81,16 +81,16 @@ describe 'Sending notifications' do
     end
 
     it 'should add the notification to the send queue for both users' do
-      device_1 = create :device
-      device_2 = create :device
-      create :reading_event, device: device_1, start_read: 0, end_read: 150
-      create :reading_event, device: device_2, start_read: 0, end_read: 150
+      device1 = create :device
+      device2 = create :device
+      create :reading_event, device: device1, start_read: 0, end_read: 150
+      create :reading_event, device: device2, start_read: 0, end_read: 150
       notification = create :notification, notification_attributes
 
       expect(queue_manager).to(
         receive(:enqueue).with(
           enqueue_expected_params.merge(
-            device_id: device_1.id,
+            device_id: device1.id,
             notification_id: notification.id,
             notification_type: notification.type
           )
@@ -100,7 +100,7 @@ describe 'Sending notifications' do
       expect(queue_manager).to(
         receive(:enqueue).with(
           enqueue_expected_params.merge(
-            device_id: device_2.id,
+            device_id: device2.id,
             notification_id: notification.id,
             notification_type: notification.type
           )

@@ -12,8 +12,8 @@ class DeviceNotification < ActiveRecord::Base
   )
 
   def update_notification_type
-    return if self.notification_id.blank?
-    notification = Notification.find_by_id(self.notification_id)
+    return if notification_id.blank?
+    notification = Notification.find_by_id(notification_id)
     self.notification_type = notification.type if notification
   end
 
@@ -23,12 +23,11 @@ class DeviceNotification < ActiveRecord::Base
     LatestDeviceNotification.find_or_create_by(
       device_id: device_id,
       notification_id: notification_id
-    ).update_attribute(:device_notification_id, self.id)
+    ).update_attribute(:device_notification_id, id)
   end
 
   def update_device_this_month_notifications
-    if
-      device.update_this_month_notifications(notification)
-    end
+    return if notification_id.blank?
+    device.update_this_month_notifications(notification)
   end
 end

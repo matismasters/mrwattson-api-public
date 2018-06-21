@@ -11,6 +11,6 @@ class CreateDeviceNotifications < ActiveRecord::Migration
 
     add_index :device_notifications, :device_id
     add_index :device_notifications, :notification_id
-    add_index :device_notifications, [:device_id, :notification_id]
+    add_index :device_notifications, %i[device_id notification_id]
   end
 end

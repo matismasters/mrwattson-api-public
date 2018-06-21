@@ -19,19 +19,19 @@ describe 'ReadingEvent', type: :unit do
   it 'should save the time since last read in seconds' do
     Timecop.freeze(start_time)
 
-    reading_event_1 = create :reading_event, device: device, sensor_id: 2
+    reading_event1 = create :reading_event, device: device, sensor_id: 2
     create :reading_event, device: device, sensor_id: 3
 
     Timecop.freeze(start_time + 6.seconds)
 
-    reading_event_2 = create :reading_event, device: device, sensor_id: 2
+    reading_event2 = create :reading_event, device: device, sensor_id: 2
 
     Timecop.freeze(start_time + 12.seconds)
 
     create :reading_event, device: device, sensor_id: 2
 
-    expect(reading_event_1.reload.seconds_until_next_read).to eq 6
-    expect(reading_event_2.reload.seconds_until_next_read).to eq 6
+    expect(reading_event1.reload.seconds_until_next_read).to eq 6
+    expect(reading_event2.reload.seconds_until_next_read).to eq 6
   end
 
   it 'should be scoped to the sensor_id' do
@@ -59,13 +59,13 @@ describe 'ReadingEvent', type: :unit do
 
     Timecop.freeze(start_time + 6.seconds)
 
-    reading_event_2 = create :reading_event, device: device, sensor_id: 3
+    reading_event2 = create :reading_event, device: device, sensor_id: 3
 
-    expect(reading_event_2).not_to(
+    expect(reading_event2).not_to(
       receive(:calculate_seconds_since_last_reading_event)
     )
 
-    reading_event_2.save
+    reading_event2.save
   end
 
   after do

@@ -16,12 +16,15 @@ resource 'Devices' do
       'Hash::Each key contains configurations specific to this device'
 
     example 'Get device configuration' do
-      device = create :device, configuration: {
-        sensor_1_active: true,
-        sensor_2_active: true,
-        sensor_3_active: false,
-        sensor_4_active: false
-      }
+      device = create(
+        :device,
+        configuration: {
+          sensor_1_active: true,
+          sensor_2_active: true,
+          sensor_3_active: false,
+          sensor_4_active: false
+        }
+      )
 
       do_request(device_id: device.id)
 
@@ -67,7 +70,8 @@ resource 'Devices' do
       'Boolean::True if the sensor is active, false if not active/used'
 
     example 'Set device configuration' do
-      device = create :device,
+      device = create(
+        :device,
         particle_id: 'AXYZ',
         configuration: {
           sensor_1_active: false,
@@ -75,6 +79,7 @@ resource 'Devices' do
           sensor_3_active: false,
           sensor_4_active: false
         }
+      )
 
       do_request(
         device_id: device.id,
@@ -95,7 +100,8 @@ resource 'Devices' do
     end
 
     example 'Set device configuration with missing keys', document: false do
-      device = create :device,
+      device = create(
+        :device,
         particle_id: 'AXYZ',
         configuration: {
           sensor_1_active: false,
@@ -103,12 +109,13 @@ resource 'Devices' do
           sensor_3_active: false,
           sensor_4_active: false
         }
+      )
 
       do_request(
         device_id: device.id,
         configuration: {
           sensor_1_active: true,
-          sensor_3_active: true,
+          sensor_3_active: true
         }
       )
 

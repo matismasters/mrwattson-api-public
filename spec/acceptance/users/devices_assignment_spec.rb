@@ -42,18 +42,18 @@ resource 'Users' do
     end
 
     example 'Assign multiple', document: false do
-      device_1 = create(:device)
-      device_2 = create(:device)
+      device1 = create(:device)
+      device2 = create(:device)
 
-      do_request(device_id: device_1.id)
-      do_request(device_id: device_2.id)
+      do_request(device_id: device1.id)
+      do_request(device_id: device2.id)
 
       expect(
         UserDevice.where(user_id: current_user.id).count
       ).to eq 2
 
       expect(current_user.reload.assigned_devices).to(
-        eq("#{device_1.id},#{device_2.id}")
+        eq("#{device1.id},#{device2.id}")
       )
     end
 
@@ -72,11 +72,11 @@ resource 'Users' do
         UserDevice.where(device_id: device.id, user_id: current_user.id).count
       ).to eq 1
 
-      expect(current_user.reload.assigned_devices).to eq "#{device.id}"
+      expect(current_user.reload.assigned_devices).to eq device.id.to_s
     end
 
     example 'Without right device id', document: false do
-      do_request(device_id: 99999)
+      do_request(device_id: 99_999)
 
       expect(status).to eq 404
     end
@@ -97,7 +97,7 @@ resource 'Users' do
     end
 
     example 'Without right device id', document: false do
-      do_request(device_id: 99999)
+      do_request(device_id: 99_999)
 
       expect(status).to eq 404
     end

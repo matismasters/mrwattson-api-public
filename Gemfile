@@ -1,40 +1,32 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
-gem 'pg', '~> 0.15'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise_token_auth'
-gem 'devise-i18n',
-  github: 'tigrish/devise-i18n',
-  branch: 'master'
-
-gem 'puma'
-gem 'resque'
-gem 'http'
-gem 'rack-cors', require: 'rack/cors'
-
-# Gems needed for API Docs
 gem 'apitome'
+gem 'devise-i18n'
+gem 'devise_token_auth'
+gem 'http'
+gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'newrelic_rpm'
+gem 'pg', '~> 0.15'
+gem 'puma'
+gem 'rack-cors', require: 'rack/cors'
+gem 'rails', '4.2.6'
+gem 'resque'
+gem 'rspec_api_documentation'
+gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
-gem 'rspec_api_documentation',
-  github: 'dcadenas/rspec_api_documentation',
-  ref: 'b87b0ab'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'faker'
   gem 'factory_girl_rails'
-  gem 'timecop'
+  gem 'faker'
   gem 'mailcatcher'
+  gem 'rspec-rails'
+  gem 'timecop'
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
   gem 'reek'
+  gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
-
-gem 'newrelic_rpm'

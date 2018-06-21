@@ -4,6 +4,23 @@ inherit_from:
 Metrics/LineLength:
   Max: 120
 
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - db/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - config/routes.rb
+    - db/**/*
+
+Metrics/AbcSize:
+  Max: 20
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 AllCops:
   # Include common Ruby source files.
   Include:

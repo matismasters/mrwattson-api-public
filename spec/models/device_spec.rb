@@ -1,32 +1,31 @@
 require 'spec_helper'
 
 describe 'Device' do
-
   describe 'this_month_notifications' do
     let(:device) { create :device }
-    let(:notification_1) do
-       create :notification, name: 'notification_1', once_a_month: true
+    let(:notification1) do
+      create :notification, name: 'notification1', once_a_month: true
     end
-    let(:notification_2) do
-       create :notification, name: 'notification_2', once_a_month: true
+    let(:notification2) do
+      create :notification, name: 'notification2', once_a_month: true
     end
 
     describe '#clean_this_month_notifications' do
       describe 'when same month' do
         it 'should not clean' do
-          device.update_this_month_notifications(notification_1)
-          expect(device.this_month_notifications).to eq 'notification_1'
+          device.update_this_month_notifications(notification1)
+          expect(device.this_month_notifications).to eq 'notification1'
 
           device.clean_this_month_notifications
 
-          expect(device.this_month_notifications).to eq 'notification_1'
+          expect(device.this_month_notifications).to eq 'notification1'
         end
       end
 
       describe 'when different month' do
         it 'should clean' do
-          device.update_this_month_notifications(notification_1)
-          expect(device.this_month_notifications).to eq 'notification_1'
+          device.update_this_month_notifications(notification1)
+          expect(device.this_month_notifications).to eq 'notification1'
 
           Timecop.freeze Time.now + 1.month
 
@@ -40,44 +39,44 @@ describe 'Device' do
     describe '#update_this_month_notifications' do
       describe 'all notifications within the same month' do
         it 'should be added' do
-          device.update_this_month_notifications(notification_1)
-          expect(device.this_month_notifications).to eq 'notification_1'
+          device.update_this_month_notifications(notification1)
+          expect(device.this_month_notifications).to eq 'notification1'
 
-          device.update_this_month_notifications(notification_2)
+          device.update_this_month_notifications(notification2)
           expect(device.this_month_notifications).to(
-            eq 'notification_1,notification_2'
+            eq 'notification1,notification2'
           )
         end
 
         it 'should be added only once' do
-          device.update_this_month_notifications(notification_1)
-          device.update_this_month_notifications(notification_1)
-          expect(device.this_month_notifications).to eq 'notification_1'
+          device.update_this_month_notifications(notification1)
+          device.update_this_month_notifications(notification1)
+          expect(device.this_month_notifications).to eq 'notification1'
 
-          device.update_this_month_notifications(notification_2)
-          device.update_this_month_notifications(notification_2)
+          device.update_this_month_notifications(notification2)
+          device.update_this_month_notifications(notification2)
           expect(device.this_month_notifications).to(
-            eq 'notification_1,notification_2'
+            eq 'notification1,notification2'
           )
         end
       end
 
       describe 'one notification each month' do
         it 'should add, clean, and add' do
-          device.update_this_month_notifications(notification_1)
-          device.update_this_month_notifications(notification_1)
-          expect(device.this_month_notifications).to eq 'notification_1'
+          device.update_this_month_notifications(notification1)
+          device.update_this_month_notifications(notification1)
+          expect(device.this_month_notifications).to eq 'notification1'
 
-          device.update_this_month_notifications(notification_2)
-          device.update_this_month_notifications(notification_2)
+          device.update_this_month_notifications(notification2)
+          device.update_this_month_notifications(notification2)
           expect(device.this_month_notifications).to(
-            eq 'notification_1,notification_2'
+            eq 'notification1,notification2'
           )
 
           Timecop.freeze Time.now + 1.month
 
-          device.update_this_month_notifications(notification_2)
-          expect(device.this_month_notifications).to eq 'notification_2'
+          device.update_this_month_notifications(notification2)
+          expect(device.this_month_notifications).to eq 'notification2'
         end
       end
     end
@@ -85,7 +84,9 @@ describe 'Device' do
 
   describe 'configuraiton' do
     it 'should save the configuration on create' do
-      create :device, particle_id: 'ABC',
+      create(
+        :device,
+        particle_id: 'ABC',
         configuration: {
           sensor_1_active: true,
           sensor_1_label: 'one',
@@ -96,6 +97,7 @@ describe 'Device' do
           sensor_4_active: false,
           sensor_4_label: 'four'
         }
+      )
 
       device = Device.find_by_particle_id('ABC')
       expect(device.configuration[:sensor_1_active]).to eq true
@@ -109,7 +111,9 @@ describe 'Device' do
     end
 
     it 'should update the configuration on save' do
-      device = create :device, particle_id: 'ABC',
+      device = create(
+        :device,
+        particle_id: 'ABC',
         configuration: {
           sensor_1_active: true,
           sensor_1_label: 'one',
@@ -128,13 +132,16 @@ describe 'Device' do
           'sensor_4_active' => true,
           'sensor_4_label' => 'four4'
         }
+      )
       device.merge_configuration(device.configuration)
       expect(device.configuration[:sensor_1_active]).to eq false
       expect(device.configuration[:sensor_1_label]).to eq 'one1'
     end
 
     it 'should update the configuration on save' do
-      device = create :device, particle_id: 'ABC',
+      device = create(
+        :device,
+        particle_id: 'ABC',
         configuration: {
           sensor_1_active: true,
           sensor_1_label: 'one',
@@ -145,6 +152,7 @@ describe 'Device' do
           sensor_4_active: false,
           sensor_4_label: 'four'
         }
+      )
 
       device.merge_configuration(
         sensor_1_label: '1one',
@@ -244,11 +252,11 @@ describe 'Device' do
 
     it 'should return only the latest device notification of each notification ' do
       device = create :device
-      notification_1 = create :notification,
+      notification1 = create :notification,
         frequency: 'daily',
         type: 'Opportunity'
 
-      notification_2 = create :notification,
+      notification2 = create :notification,
         frequency: 'daily',
         type: 'Opportunity'
 
@@ -257,23 +265,23 @@ describe 'Device' do
 
       create :device_notification,
         device: device,
-        notification: notification_1
+        notification: notification1
 
-      device_notification_2 = create :device_notification,
+      device_notification2 = create :device_notification,
         device: device,
-        notification: notification_1
+        notification: notification1
 
-      device_notification_3 = create :device_notification,
+      device_notification3 = create :device_notification,
         device: device,
-        notification: notification_2
+        notification: notification2
 
       Timecop.freeze(now + 18.hours)
 
       opportunities = device.active_opportunities
 
       expect(opportunities.size).to eq 2
-      expect(opportunities.map(&:id)).to include device_notification_2.id
-      expect(opportunities.map(&:id)).to include device_notification_3.id
+      expect(opportunities.map(&:id)).to include device_notification2.id
+      expect(opportunities.map(&:id)).to include device_notification3.id
 
       Timecop.freeze(now + 25.hours)
 

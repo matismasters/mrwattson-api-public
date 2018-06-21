@@ -27,17 +27,17 @@ describe 'Reading Events Creator' do
       factory.create_reading_events
 
       expect(ReadingEvent.count).to eq 2
-      reading_event_1 = ReadingEvent.first
-      expect(reading_event_1.sensor_id).to eq 3
-      expect(reading_event_1.start_read).to eq 123
-      expect(reading_event_1.end_read).to eq 321
-      expect(reading_event_1.read_difference).to eq 198
+      reading_event1 = ReadingEvent.first
+      expect(reading_event1.sensor_id).to eq 3
+      expect(reading_event1.start_read).to eq 123
+      expect(reading_event1.end_read).to eq 321
+      expect(reading_event1.read_difference).to eq 198
 
-      reading_event_2 = ReadingEvent.last
-      expect(reading_event_2.sensor_id).to eq 2
-      expect(reading_event_2.start_read).to eq 100
-      expect(reading_event_2.end_read).to eq 99
-      expect(reading_event_2.read_difference).to eq(-1)
+      reading_event2 = ReadingEvent.last
+      expect(reading_event2.sensor_id).to eq 2
+      expect(reading_event2.start_read).to eq 100
+      expect(reading_event2.end_read).to eq 99
+      expect(reading_event2.read_difference).to eq(-1)
     end
   end
 end

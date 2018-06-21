@@ -24,22 +24,21 @@ resource 'Reading Events' do
       now = Time.now
 
       Timecop.freeze(now - 3.hours)
-      a = create :reading_event,
+      create :reading_event,
         device_id: device.id,
         start_read: 0,
         end_read: 1000,
         sensor_id: 1
 
       Timecop.freeze(now - 2.hours)
-      puts now - 2.hours
-      b = create :reading_event,
+      create :reading_event,
         device_id: device.id,
         start_read: 1000,
         end_read: 0,
         sensor_id: 1
 
-      start_date = ((now - 4.hours).utc).strftime('%Y-%m-%d-%H-%M')
-      end_date = ((now - 1.hours).utc).strftime('%Y-%m-%d-%H-%M')
+      start_date = (now - 4.hours).utc.strftime('%Y-%m-%d-%H-%M')
+      end_date = (now - 1.hours).utc.strftime('%Y-%m-%d-%H-%M')
 
       Timecop.freeze(now)
 

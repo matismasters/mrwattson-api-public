@@ -36,27 +36,24 @@ class ReadingEvent < ActiveRecord::Base
 
   def calculate_seconds_since_last_reading_event
     last_reading_event = device.last_reading_event_for_sensor(sensor_id)
-    if last_reading_event.present?
-      last_reading_event.update_attribute(
-        :seconds_until_next_read,
-        created_at_or_now.to_i - last_reading_event.created_at.to_i
-      )
-    end
+    return unless last_reading_event.present?
+    last_reading_event.update_attribute(
+      :seconds_until_next_read,
+      created_at_or_now.to_i - last_reading_event.created_at.to_i
+    )
   end
 
   def save_last_reading_event_id_to_device
-    if persisted?
-      device.update_attribute(
-        :"last_reading_event_for_sensor_#{sensor_id}",
-        self.id
-      )
-    end
+    return unless persisted?
+    device.update_attribute(
+      :"last_reading_event_for_sensor_#{sensor_id}",
+      id
+    )
   end
 
   def big_read_on_disabled_sensor
-    if end_read >= 5000 && device.sensor_disabled?(sensor_id)
-      errors.add(:configuration, "sensor #{sensor_id} is disabled")
-    end
+    return unless end_read >= 5000 && device.sensor_disabled?(sensor_id)
+    errors.add(:configuration, "sensor #{sensor_id} is disabled")
   end
 
   def calculate_read_difference

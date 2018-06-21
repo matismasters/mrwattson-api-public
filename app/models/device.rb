@@ -26,7 +26,7 @@ class Device < ActiveRecord::Base
 
   def merge_configuration(new_configuration)
     new_configuration.each do |key, value|
-      self.configuration[key.to_sym] = value
+      configuration[key.to_sym] = value
     end
   end
 
@@ -45,10 +45,10 @@ class Device < ActiveRecord::Base
 
   def clean_this_month_notifications
     month_number = Date.today.month
-    if this_month != month_number
-      self.this_month =  month_number
-      self.this_month_notifications = ''
-    end
+    return unless this_month != month_number
+
+    self.this_month =  month_number
+    self.this_month_notifications = ''
   end
 
   def clean_this_month_notifications!
@@ -78,13 +78,13 @@ class Device < ActiveRecord::Base
       sensor_3_label: '',
       sensor_4_active: true,
       sensor_4_label: true
-    }.merge(self.configuration)
+    }.merge(configuration)
   end
 
   def update_cached_sensor_labels
-    self.sensor_1_label = self.configuration[:sensor_1_label]
-    self.sensor_2_label = self.configuration[:sensor_2_label]
-    self.sensor_3_label = self.configuration[:sensor_3_label]
-    self.sensor_4_label = self.configuration[:sensor_4_label]
+    self.sensor_1_label = configuration[:sensor_1_label]
+    self.sensor_2_label = configuration[:sensor_2_label]
+    self.sensor_3_label = configuration[:sensor_3_label]
+    self.sensor_4_label = configuration[:sensor_4_label]
   end
 end

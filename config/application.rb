@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails'
 
@@ -17,13 +17,13 @@ module Mwapi
   class Application < Rails::Application
     config.assets.enabled = false
     config.active_record.raise_in_transactional_callbacks = true
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
         origins '*'
         resource '*',
           headers: :any,
           expose:  ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          methods: [:get, :post, :delete, :put, :options]
+          methods: %i[get post delete put options]
       end
     end
   end

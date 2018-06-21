@@ -9,7 +9,7 @@ class CreateLatestDeviceNotifications < ActiveRecord::Migration
     end
 
     add_index :latest_device_notifications, :device_notification_id
-    add_index :latest_device_notifications, [:device_id, :notification_id],
+    add_index :latest_device_notifications, %i[device_id notification_id],
       name: 'device_and_notification'
   end
 end

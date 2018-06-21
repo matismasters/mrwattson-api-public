@@ -13,10 +13,12 @@ class ReadingEventsCreator
       reading_event.device = @device
       reading_event.save
 
-      add_error(
-        data[:sensor_id],
-        reading_event.errors
-      ) unless reading_event.valid?
+      unless reading_event.valid?
+        add_error(
+          data[:sensor_id],
+          reading_event.errors
+        )
+      end
 
       reading_event
     end

@@ -13,16 +13,16 @@ resource 'Operator' do
 
   get '/operator/last_read_from_all_devices' do
     example 'Get reads total' do
-      device_1 = create :device
-      device_2 = create :device
-      device_3 = create :device
+      device1 = create :device
+      device2 = create :device
+      device3 = create :device
 
-      create :reading_event, device: device_1, end_read: 100, sensor_id: 2
-      create :reading_event, device: device_1, end_read: 500, sensor_id: 1
+      create :reading_event, device: device1, end_read: 100, sensor_id: 2
+      create :reading_event, device: device1, end_read: 500, sensor_id: 1
 
-      create :reading_event, device: device_1, end_read: 100, sensor_id: 1
-      create :reading_event, device: device_2, end_read: 40, sensor_id: 1
-      create :reading_event, device: device_3, end_read: 10, sensor_id: 1
+      create :reading_event, device: device1, end_read: 100, sensor_id: 1
+      create :reading_event, device: device2, end_read: 40, sensor_id: 1
+      create :reading_event, device: device3, end_read: 10, sensor_id: 1
 
       do_request
 

@@ -1,10 +1,9 @@
 class ReadingEventsController < ApplicationController
   include FindDevice
 
-  before_action :find_device_by_particle_id, only: [:create, :report]
+  before_action :find_device_by_particle_id, only: %i[create report]
 
   def create
-    puts params
     factory = ReadingEventsCreator.new(
       @device,
       permitted_params.require(:data)
@@ -19,22 +18,31 @@ class ReadingEventsController < ApplicationController
   end
 
   def report
-    start_date = DateTime.new(*(
-      report_permitted_params[:start_date].split('-').map(&:to_i) + [0]
-    ))
+    render text: generate_csv_string(find_reading_events), status: 200
+  end
 
-    end_date = DateTime.new(*(
-      report_permitted_params[:end_date].split('-').map(&:to_i) + [0]
-    ))
+  private
 
-    reading_events = @device.reading_events
+  def param_date_to_date(param_date)
+    DateTime.new(*(
+      param_date.split('-').map(&:to_i) + [0]
+    ))
+  end
+
+  def find_reading_events
+    start_date = param_date_to_date(report_permitted_params[:start_date])
+    end_date = param_date_to_date(report_permitted_params[:end_date])
+
+    @device.reading_events
       .where('created_at >= ? AND created_at <= ?', start_date, end_date)
       .where('sensor_id = ?', report_permitted_params[:sensor_id])
+  end
 
+  def generate_csv_string(reading_events)
     total_seconds = 0
     total_w = 0
 
-    csv_string = CSV.generate do |csv|
+    CSV.generate do |csv|
       csv << reading_events.attribute_names
       reading_events.all.each do |reading_event|
         total_seconds += reading_event.seconds_until_next_read
@@ -46,13 +54,7 @@ class ReadingEventsController < ApplicationController
       total_wh = ((total_w.to_f / total_seconds) * (total_seconds.to_f / 3600))
       csv << ["Total seconds, #{total_seconds}, w/h , #{total_wh}"]
     end
-
-
-
-    render text: csv_string, status: 200
   end
-
-  private
 
   def permitted_params
     params.permit(:device_id, :data)
